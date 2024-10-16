@@ -12,10 +12,11 @@ Target Users
 * Private Chefs: Professionals looking to offer their culinary services to a wider audience.
 * Consumers: Individuals or groups seeking personalized dining experiences, such as private dinners, events, or cooking classes.
 
-Key Features
+# Key Features
 -------------
 
 For Chefs
+---------
 
 * Profile Creation:
     * Personal bio
@@ -35,6 +36,7 @@ For Chefs
     * Alerts for new bookings, messages, and reviews
 
 For Consumers
+--------------
 
 
 * Chef Browsing:
