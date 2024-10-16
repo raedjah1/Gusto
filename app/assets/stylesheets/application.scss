@@ -1,0 +1,34 @@
+// app/assets/stylesheets/application.scss
+
+
+@import "colors";
+@import "typography";
+// app/assets/stylesheets/application.scss
+@import "buttons";
+
+@import "forms";
+
+
+@import "layout";
+
+
+// Light Theme
+body.light-theme {
+  background-color: $background-color-light;
+  color: $secondary-color-dark;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-color-light;
+}
+
+// Dark Theme
+body.dark-theme {
+  background-color: $background-color-dark;
+  color: $secondary-color-light;
+}
+
+.navbar-dark {
+  background-color: $primary-color-dark;
+  color: $secondary-color-light;
+}

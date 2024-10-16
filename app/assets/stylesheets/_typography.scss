@@ -1,0 +1,31 @@
+// app/assets/stylesheets/_typography.scss
+
+@import url('https://fonts.googleapis.com/css?family=Gilroy:400,600,700');
+
+// Text Themes for Light and Dark Mode
+h1 {
+  font-size: 32px;
+  font-family: 'GilroyBold', sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: 'GilroyBold', sans-serif;
+}
+
+p {
+  font-size: 16px;
+  font-family: 'GilroyRegular', sans-serif;
+}
+
+label {
+  font-size: 14px;
+  font-family: 'GilroyMedium', sans-serif;
+}
+
+// Additional text styling
+.headline-large {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: 'GilroyBold', sans-serif;
+}
