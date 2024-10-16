@@ -16,7 +16,7 @@ Key Features
 -------------
 
 For Chefs
-----------
+
 * Profile Creation:
     * Personal bio
     * Culinary specialties
@@ -35,7 +35,7 @@ For Chefs
     * Alerts for new bookings, messages, and reviews
 
 For Consumers
--------------
+
 
 * Chef Browsing:
     * Search and filter chefs based on cuisine, location, price, and availability
