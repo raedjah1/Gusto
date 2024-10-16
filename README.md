@@ -1,8 +1,9 @@
-#Project plan
 
-Group Members : Jah, Victor and Chris 
+# # # Gusto
+===========
 
-Potential App Name: Gusto
+# Group Members : Jah, Victor and Chris
+
 
 Concept: A platform that connects private chefs with consumers seeking personalized dining experiences. The app allows chefs to showcase their menus, specialties, and services, while consumers can browse, book, and review chefs.
 
@@ -12,8 +13,10 @@ Target Users
 * Consumers: Individuals or groups seeking personalized dining experiences, such as private dinners, events, or cooking classes.
 
 Key Features
+-------------
 
 For Chefs
+----------
 * Profile Creation:
     * Personal bio
     * Culinary specialties
@@ -32,6 +35,7 @@ For Chefs
     * Alerts for new bookings, messages, and reviews
 
 For Consumers
+-------------
 
 * Chef Browsing:
     * Search and filter chefs based on cuisine, location, price, and availability
@@ -61,6 +65,7 @@ Additional Features (Optional/Advanced)
     * Manage users, monitor activity, handle disputes
 
 User Stories(flow)
+-------------------
 
 1. Chef Profile Creation
     * As a private chef, I want to create a profile so that I can showcase my culinary skills to potential clients.
@@ -80,10 +85,11 @@ User Stories(flow)
     * As a consumer, I want to save chefs to a favorites list so that I can easily find them later.
 
 
-App layout for Testing(spec), Models, Views and Controller:
+# # App layout for Testing(spec), Models, Views and Controller:
 
 
 Models
+-------
 
 * User (roles: chef, consumer)
 * ChefProfile (to store chef-specific data)
@@ -93,7 +99,7 @@ Models
 * Message (for communication between chefs and consumers)
 
 Model Relationships:
-
+--------------------
 * A User can be a Chef or a Consumer.
 * A ChefProfile belongs to a User.
 * A Booking belongs to a User (consumer) and a ChefProfile.
@@ -102,6 +108,7 @@ Model Relationships:
 * A Message belongs to both User and can be exchanged between users (chefs and consumers).
 
 Schema Overview:
+-----------------
 
 Table	Fields
 Users	id, name, email, password_digest, role
@@ -113,6 +120,7 @@ Messages	sender_id, receiver_id, content
 
 
 Spec(files for testing)
+-----------------------
 
 spec/
 ├── controllers/
@@ -147,6 +155,7 @@ spec/
 
 
 HTML files (views)
+-------------------
 
 app/
 ├── views/
@@ -184,6 +193,7 @@ app/
 
 
 Views
+------
 
 Chef Profile Page Structure:
 1. Profile Header (app/views/chefs/_profile_header.html.erb)
@@ -199,7 +209,7 @@ Chef Profile Page Structure:
 
 
 Controllers 
-
+------------
 
 1. UsersController: Handles user registration and profile management.
 2. ChefProfilesController: Manages chef profiles, including creating and updating profiles.
