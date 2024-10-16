@@ -1,8 +1,8 @@
 
-# # # Gusto
+ ## Gusto
 ===========
 
-# Group Members : Jah, Victor and Chris
+ Group Members : Jah, Victor and Chris
 
 
 Concept: A platform that connects private chefs with consumers seeking personalized dining experiences. The app allows chefs to showcase their menus, specialties, and services, while consumers can browse, book, and review chefs.
