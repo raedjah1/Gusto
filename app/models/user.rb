@@ -6,14 +6,14 @@ class User < ApplicationRecord
   ROLES = %w[consumer chef admin].freeze
 
   def chef?
-    role == "chef"
+    role == 'chef'
   end
 
   def consumer?
-    role == "consumer"
+    role == 'consumer'
   end
 
   def admin?
-    role == "admin"
+    role == 'admin'
   end
 end

@@ -10,7 +10,7 @@ class ChefProfilesController < ApplicationController
 
   def require_chef
     unless current_user.chef?
-      redirect_to root_path, alert: "You must be a chef to perform this action."
+      redirect_to root_path, alert: 'You must be a chef to perform this action.'
     end
   end
 end
