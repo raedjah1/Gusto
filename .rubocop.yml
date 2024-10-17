@@ -1,8 +1,19 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# Inherit default Ruby styling rules from rubocop-rails-omakase
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# Disable the rule for spaces inside array literal brackets
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+# Disable leading comment space requirement
+Layout/LeadingCommentSpace:
+  Enabled: false
+
+# Allow single-quoted strings
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+# Disable the rule for empty lines around block bodies
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
