@@ -1,25 +1,33 @@
-// app/assets/stylesheets/_forms.scss
+.form-group {
+  margin-bottom: 1.5rem;
+}
 
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid $secondary-color-light;
-    font-size: 16px;
-    color: $secondary-color-dark;
-    margin-bottom: 20px;
-  }
-  
-  input:focus, textarea:focus {
-    outline: none;
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: $tertiary-color-light;
+  margin-bottom: 0.5rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid $neutral-light;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: $tertiary-color-light;
+  background-color: #fefefe;
+  transition: border-color 0.3s ease;
+
+  &:focus {
     border-color: $primary-color-light;
-    box-shadow: 0 0 5px rgba(102, 209, 158, 0.5);
+    outline: none;
   }
-  
-  label {
-    font-size: 14px;
-    color: $secondary-color-dark;
-    margin-bottom: 8px;
-    display: block;
-  }
-  
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}

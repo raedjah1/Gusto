@@ -1,24 +1,34 @@
-// app/assets/stylesheets/_layout.scss
-
+// Spacing
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
-  }
-  
-  .col {
-    flex: 1;
-    padding: 15px;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.margin-top-small { margin-top: 1rem; }
+.margin-top-medium { margin-top: 2rem; }
+.margin-top-large { margin-top: 3rem; }
+
+.padding-small { padding: 1rem; }
+.padding-medium { padding: 2rem; }
+.padding-large { padding: 3rem; }
+
+// Flexbox Utilities
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}

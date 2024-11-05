@@ -1,0 +1,22 @@
+// app/assets/stylesheets/shared/_booking_button.scss
+
+.booking-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .booking-button {
+    padding: 10px 20px;
+    font-size: $font-medium;
+    background-color: $button-primary-bg;
+    color: $button-primary-text;
+    border: none;
+    border-radius: $button-border-radius;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: darken($button-primary-bg, 10%);
+    }
+  }
+  

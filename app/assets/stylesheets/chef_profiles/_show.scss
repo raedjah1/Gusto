@@ -1,0 +1,10 @@
+// app/assets/stylesheets/chef_profiles/show.scss
+
+.chef-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: $background-color-light;
+  }
+  

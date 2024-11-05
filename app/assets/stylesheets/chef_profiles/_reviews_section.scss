@@ -1,0 +1,37 @@
+// app/assets/stylesheets/chef_profiles/_reviews_section.scss
+
+.reviews-section {
+  padding: 20px;
+
+  h3 {
+    font-size: $font-medium;
+    color: $primary-color;
+  }
+
+  .review {
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: $border-radius;
+    background-color: $card-background;
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .reviewer-name {
+      font-weight: bold;
+      color: $primary-color;
+    }
+
+    .review-rating {
+      color: $accent-color;
+    }
+
+    .review-comments {
+      color: $text-secondary;
+      margin-top: 5px;
+    }
+  }
+}

@@ -1,24 +1,38 @@
-// app/assets/stylesheets/_buttons.scss
 
 
-button, .btn {
-    font-size: 16px;
-    font-family: 'GilroyBold', sans-serif;
-    color: white;
-    background-color: $accent-color-light;
-    border-radius: 8px;
-    padding: 12px 24px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
+.button-primary {
+  background-color: $primary-color-light;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color-light, 10%);
   }
-  
-  button:hover, .btn:hover {
-    background-color: darken($accent-color-light, 10%);
+}
+
+.button-secondary {
+  background-color: $secondary-color-light;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($secondary-color-light, 10%);
   }
-  
-  button:disabled, .btn:disabled {
-    background-color: lighten($accent-color-light, 15%);
-    cursor: not-allowed;
-  }
-  
+}
+
+.button-disabled {
+  background-color: lighten($tertiary-color-light, 20%);
+  color: $neutral-dark;
+  cursor: not-allowed;
+  opacity: 0.6;
+}

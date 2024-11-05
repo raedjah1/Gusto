@@ -1,25 +1,42 @@
 // app/assets/stylesheets/_colors.scss
 
-// Primary Colors
-$primary-color-light: #66D19E;  // Light Emerald Green
-$primary-color-dark: #2E7D57;   // Dark Emerald Green
+// Light Theme Colors
+$background-color-light: #F7F3E9;
+$primary-color-light: #47B5A4;
+$secondary-color-light: #FF6F61;
+$tertiary-color-light: #4A4A4A;
+$neutral-light: #EDE8DC;
 
-// Secondary Colors
-$secondary-color-light: #D9E4DD; // Light Misty Gray
-$secondary-color-dark: #4A4A4A;  // Dark Charcoal Gray
+// Dark Theme Colors
+$background-color-dark: #323232;
+$primary-color-dark: #47B5A4;
+$secondary-color-dark: #FF6F61;
+$tertiary-color-dark: #E0E0E0;
+$neutral-dark: #4A4A4A;
 
-// Background Colors
-$background-color-light: #FAF9F6; // Warm Ivory
-$background-color-dark: #1C1C1C;  // Space Black
+// Shared Colors
+$success-color: #82B366;
+$error-color: #D95C5C;
+$warning-color: #FFA726;
 
-// Surface Colors
-$surface-color-light: #FFFFFF;    // Pure White
-$surface-color-dark: #2B2B2B;     // Graphite Gray
 
-// Accent Colors
-$accent-color-light: #1F77FF;     // Royal Blue
-$accent-color-dark: #1F77FF;      // Same Royal Blue
+// Additional UI Colors (Common for Both Themes)
+$button-primary-bg: $primary-color-light; // Button background color
+$button-primary-hover: darken($primary-color-light, 10%); // Hover state for primary button
+$button-secondary-bg: $secondary-color-light; // Secondary button color
+$button-secondary-hover: darken($secondary-color-light, 10%);
+$button-disabled: lighten($neutral-light, 20%); // Disabled button background
+$button-text-light: #ffffff; // Button text color in light theme
+$button-text-dark: #f0f0f0; // Button text color in dark theme
 
-// Error Colors
-$error-color-light: #FF6B6B;      // Coral Red for Light Theme
-$error-color-dark: #FF6B6B;       // Same Coral Red for Dark Theme
+// Link Colors
+$link-color: $primary-color-light; // Link text color
+$link-hover-color: darken($primary-color-light, 15%); // Hover effect for links
+
+// Border and Divider Colors
+$border-color-light: lighten($neutral-light, 10%); // Light theme border
+$border-color-dark: lighten($neutral-dark, 15%); // Dark theme border
+
+// Background Accent Colors
+$card-background-light: lighten($neutral-light, 5%); // Card background in light theme
+$card-background-dark: darken($neutral-dark, 5%); // Card background in dark theme

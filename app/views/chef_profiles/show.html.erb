@@ -1,0 +1,15 @@
+<!-- app/views/chef_profiles/show.html.erb -->
+
+<div class="chef-profile">
+  <!-- Profile Header -->
+  <%= render 'profile_header', chef_profile: @chef_profile %>
+
+  <!-- Menu Section -->
+  <%= render 'menu_section', chef_profile: @chef_profile %>
+
+  <!-- Reviews Section -->
+  <%= render 'reviews_section', chef_profile: @chef_profile %>
+
+  <!-- Booking Button -->
+  <%= render 'shared/booking_button', chef_profile: @chef_profile %>
+</div>

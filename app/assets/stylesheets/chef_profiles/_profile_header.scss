@@ -1,0 +1,35 @@
+// app/assets/stylesheets/chef_profiles/_profile_header.scss
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid $border-color;
+  
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 20px;
+  
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  
+    .profile-info {
+      .profile-name {
+        font-size: $font-large;
+        font-weight: bold;
+        color: $primary-color;
+      }
+  
+      .profile-specialty, .profile-bio {
+        color: $text-secondary;
+        margin: 5px 0;
+      }
+    }
+  }
+  

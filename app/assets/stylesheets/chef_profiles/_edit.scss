@@ -1,0 +1,70 @@
+// app/assets/stylesheets/chef_profiles/edit.scss
+
+.edit-chef-profile {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: $background-color-light;
+    border-radius: $border-radius;
+  
+    h1 {
+      font-size: $font-large;
+      color: $primary-color;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+  
+      label {
+        display: block;
+        font-weight: bold;
+        color: $primary-color;
+        margin-bottom: 5px;
+      }
+  
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: $font-medium;
+        color: $text-primary;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+      }
+    }
+  
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+  
+      .save-button {
+        background-color: $button-primary-bg;
+        color: $button-primary-text;
+        padding: 10px 20px;
+        border: none;
+        border-radius: $button-border-radius;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: darken($button-primary-bg, 10%);
+        }
+      }
+  
+      .cancel-button {
+        background-color: $button-secondary-bg;
+        color: $button-secondary-text;
+        padding: 10px 20px;
+        border: none;
+        border-radius: $button-border-radius;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: darken($button-secondary-bg, 10%);
+        }
+      }
+    }
+  }
+  

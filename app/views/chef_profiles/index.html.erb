@@ -1,0 +1,15 @@
+<!-- app/views/chef_profiles/index.html.erb -->
+
+<div class="chef-profiles">
+  <h1>Our Chefs</h1>
+  <div class="chef-list">
+    <% @chef_profiles.each do |chef_profile| %>
+      <div class="chef-card">
+        <%= image_tag chef_profile.user.avatar.url, alt: chef_profile.user.name, class: 'chef-avatar' %>
+        <h2 class="chef-name"><%= chef_profile.user.name %></h2>
+        <p class="chef-specialty"><%= chef_profile.specialty %></p>
+        <%= link_to 'View Profile', chef_profile_path(chef_profile), class: 'view-profile-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>
