@@ -1,5 +1,9 @@
 // app/assets/stylesheets/chef_profiles/index.scss
-
+@import "colors";       // Import colors first
+@import "typography";   // Import typography next
+@import "buttons";      // Then import buttons, which uses colors
+@import "forms";        // Import forms styles
+@import "layout";       // Import layout styles
 .chef-profiles {
     padding: 20px;
   

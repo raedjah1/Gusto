@@ -1,5 +1,9 @@
 // app/assets/stylesheets/chef_profiles/show.scss
-
+@import "colors";       // Must be first to define variables
+@import "typography";   // Next, typography styles
+@import "buttons";      // Then, buttons styles that might use color variables
+@import "forms";        // Import forms styles
+@import "layout"; 
 .chef-profile {
     display: flex;
     flex-direction: column;

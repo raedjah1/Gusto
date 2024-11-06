@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   # Home page and root route
-  devise_for :users
   get 'home/index'
   root to: 'home#index'  # Ensure HomeController exists and has an index action
 

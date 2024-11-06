@@ -1,12 +1,16 @@
 // app/assets/stylesheets/_typography.scss
+@import 'colors';
 
 @import url('https://fonts.googleapis.com/css?family=Gilroy:400,600,700');
 
 // Text Themes for Light and Dark Mode
 // Font Family
+$border-radius: 5px; 
 $font-primary: 'Helvetica Neue', Arial, sans-serif;
 $font-secondary: 'Roboto', sans-serif;
-
+$font-small: 0.875rem;   // Example definition
+$font-medium: 1rem;      // Define this variable
+$font-large: 1.25rem; 
 // Text Styles
 body {
   font-family: $font-primary;
