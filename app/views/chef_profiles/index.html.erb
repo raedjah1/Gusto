@@ -2,13 +2,47 @@
 
 <div class="chef-profiles">
   <h1>Our Chefs</h1>
+  
+  <div class="search-filters">
+    <%= form_tag chef_profiles_path, method: :get, class: "filters-form" do %>
+      <div class="filter-group">
+        <%= text_field_tag :search, params[:search], placeholder: "Search by name or specialty", class: "search-input" %>
+      </div>
+      <div class="filter-group">
+        <%= select_tag :specialty, 
+            options_for_select(['All Specialties'] + ChefProfile.pluck(:specialty).uniq, params[:specialty]),
+            class: "specialty-select" %>
+      </div>
+      <%= submit_tag "Search", class: "search-button" %>
+    <% end %>
+  </div>
   <div class="chef-list">
-    <% @chef_profiles.each do |chef_profile| %>
-      <div class="chef-card">
-        <%= image_tag chef_profile.user.avatar.url, alt: chef_profile.user.name, class: 'chef-avatar' %>
-        <h2 class="chef-name"><%= chef_profile.user.name %></h2>
-        <p class="chef-specialty"><%= chef_profile.specialty %></p>
-        <%= link_to 'View Profile', chef_profile_path(chef_profile), class: 'view-profile-button' %>
+    <% if @chef_profiles.any? %>
+      <% @chef_profiles.each do |chef_profile| %>
+        <div class="chef-card">
+          <div class="chef-info">
+            <h2 class="chef-name"><%= chef_profile.user.name %></h2>
+            <p class="chef-specialty"><%= chef_profile.specialty %></p>
+            <p class="chef-experience"><%= pluralize(chef_profile.experience, 'year') %> of experience</p>
+            <div class="chef-rating">
+              <% if chef_profile.average_rating.present? %>
+                <div class="stars">
+                  <% chef_profile.average_rating.round.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                </div>
+                <span>(<%= chef_profile.reviews.count %> reviews)</span>
+              <% else %>
+                <span class="no-reviews">No reviews yet</span>
+              <% end %>
+            </div>
+            <%= link_to 'View Profile', chef_profile_path(chef_profile), class: 'view-profile-button' %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="no-results">
+        <p>No chefs found matching your criteria</p>
       </div>
     <% end %>
   </div>
