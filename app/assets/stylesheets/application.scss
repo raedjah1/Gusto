@@ -5,7 +5,16 @@
 @import "buttons";      // Then, buttons styles that might use color variables
 @import "forms";        // Import forms styles
 @import "layout";
-@import "auth";       // Finally, layout styles
+@import "auth";  
+
+
+//  component styles
+@import "components/header";
+@import "components/footer";
+
+//  page-specific styles
+@import "pages/home";
+     // Finally, layout styles
 
 // Light Theme
 body.light-theme {

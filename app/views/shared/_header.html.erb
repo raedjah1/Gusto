@@ -1,0 +1,46 @@
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo-section">
+      <div class="logo-wrapper">
+        <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" class="logo-image animate-logo" style="height: 30px; width: auto;">
+        <span class="brand-name animate-text" style="font-size: 32px; font-weight: 500; margin-left: 12px; line-height: 40px; display: inline-block; color: #2d3436; text-decoration: none; font-family: 'Playfair Display', serif;">Gusto</span>
+      </div>
+    </div>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span>
+    </label>
+
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><%= link_to 'Browse Chefs', chef_profiles_path %></li>
+
+        <% if user_signed_in? %>
+          <% if current_user.chef_profile %>
+            <li><%= link_to 'My Chef Profile', chef_profile_path(current_user.chef_profile) %></li>
+          <% else %>
+            <li><%= link_to 'Become a Chef', new_chef_profile_path %></li>
+          <% end %>
+          <li><%= link_to 'My Bookings', bookings_path %></li>
+          <li><%= link_to 'Messages', messages_path %></li>
+          <li class="user-menu">
+            <div class="dropdown">
+              <button class="dropdown-toggle">
+                <%= image_tag current_user.avatar_url, class: "user-avatar" %>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu">
+                <%= link_to 'Profile Settings', edit_user_registration_path %>
+                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+              </div>
+            </div>
+          </li>
+        <% else %>
+          <li><%= link_to 'Sign In', new_user_session_path, class: "nav-button" %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path, class: "nav-button primary" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

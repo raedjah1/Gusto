@@ -1,2 +1,53 @@
-<h1>Welcome to Gusto</h1>
-<p>This is your homepage.</p>
+<%= render partial: 'shared/header' %>
+
+<div class="home-container">
+  <div class="search-section">
+    <div class="search-wrapper">
+      <%= form_tag chef_profiles_path, method: :get, class: "search-form" do %>
+        <div class="search-input-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <%= text_field_tag :search, params[:search], placeholder: "Search cuisines, locations, or chef specialties...", class: "search-input" %>
+          <%= submit_tag "Find Your Chef", class: "search-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <h2 class="section-title">The Gusto Experience</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <h3>Curated Chefs</h3>
+        <p>Hand-picked professional chefs bringing Michelin-star quality to your home</p>
+        <%= link_to "Meet Our Chefs", chef_profiles_path, class: "feature-link" %>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <h3>Personal Venue</h3>
+        <p>Transform your space into an intimate restaurant with personalized service</p>
+        <%= link_to "How It Works", "#", class: "feature-link" %>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <h3>Seamless Booking</h3>
+        <p>Book your perfect dining experience in minutes with real-time availability</p>
+        <%= link_to "Start Booking", new_booking_path, class: "feature-link" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Ready for an Unforgettable Dining Experience?</h2>
+    <%= link_to "Get Started Today", new_user_registration_path, class: "cta-button" %>
+  </div>
+</div>
+<%= render partial:'shared/footer' %>

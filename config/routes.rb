@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 
   # Chef profiles and nested resources
-  resources :chef_profiles, only: [:index, :show, :create, :update] do
+  resources :chef_profiles, only: [:index, :show, :create, :update, :new] do
     resources :menu_items, only: [:create, :update, :destroy]
     resources :reviews, only: [:index, :create]
   end
 
   # Bookings routes (not nested, accessible by both chefs and consumers)
-  resources :bookings, only: [:index, :show, :create, :update, :destroy]
+  resources :bookings, only: [:index, :show, :create, :update, :destroy, :new]
 
   # Messages routes
   resources :messages, only: [:index, :create]

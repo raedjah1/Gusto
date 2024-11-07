@@ -1,0 +1,63 @@
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About <span>Gusto</span></h3>
+        <p>
+          Connecting private chefs with food lovers seeking personalized dining experiences.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>For Chefs</h3>
+        <ul>
+          <% if !current_user&.chef_profile %>
+            <li><%= link_to 'Create Profile', new_chef_profile_path %></li>
+          <% end %>
+          <% if current_user&.chef_profile %>
+            <li><%= link_to 'Manage Bookings', bookings_path %></li>
+            <li><%= link_to 'View Reviews', reviews_path %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>For Consumers</h3>
+        <ul>
+          <li><%= link_to 'Browse Chefs', chef_profiles_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'My Bookings', bookings_path %></li>
+            <li><%= link_to 'My Reviews', reviews_path %></li>
+          <% else %>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-envelope"></i> support@gusto.com</li>
+          <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Culinary St, Food City</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-container">
+      <p>&copy; <%= Time.current.year %> Gusto. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><%= link_to 'Privacy Policy', '#' %></li>
+        <li><%= link_to 'Terms of Service', '#' %></li>
+        <li><%= link_to 'Contact', '#' %></li>
+      </ul>
+    </div>
+  </div>
+</footer>

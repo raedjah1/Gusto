@@ -1,0 +1,208 @@
+/* app/assets/stylesheets/pages/_home.scss */
+.search-section {
+  padding: 4rem 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              asset-url('backgrounds/appetizer.webp') center/cover no-repeat;
+  
+  .search-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .search-form {
+    width: 100%;
+    
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-icon {
+      color: #636e72;
+      font-size: 1.25rem;
+      margin-left: 1.5rem;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      background: transparent;
+      margin: 0 1rem;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #b2bec3;
+      }
+    }
+
+    .search-button {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #ff8e8e;
+      }
+    }
+  }
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.features-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #fff, #f8f9fa);
+
+  .section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    color: #2d3436;
+    font-weight: 800;
+    background: linear-gradient(45deg, #2d3436, #636e72);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    padding: 0 2rem;
+
+    .feature-card {
+      background: #ffffff;
+      padding: 3rem 2rem;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+
+        i {
+          transform: rotateY(360deg);
+          color: #ff8e8e;
+        }
+      }
+
+      .feature-icon {
+        i {
+          font-size: 3rem;
+          color: #ff6b6b;
+          margin-bottom: 2rem;
+          transition: all 0.8s ease;
+        }
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        color: #2d3436;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+      }
+
+      p {
+        color: #636e72;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .feature-link {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #ff6b6b;
+        color: #ffffff;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #ff4757;
+        }
+      }
+    }
+  }
+}
+
+.cta-section {
+  text-align: center;
+  padding: 4rem 2rem;
+
+  h2 {
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .cta-button {
+    padding: 1rem 2rem;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #ff4757;
+    }
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .features-section {
+    padding: 4rem 1rem;
+
+    .section-title {
+      font-size: 2.5rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .feature-card {
+      padding: 2rem;
+    }
+  }
+
+  .cta-section {
+    padding: 3rem 1rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}

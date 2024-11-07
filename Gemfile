@@ -21,6 +21,7 @@ gem 'jbuilder'
 gem 'pundit'
 gem 'sassc-rails'
 
+
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 # Use Redis adapter to run Action Cable in production

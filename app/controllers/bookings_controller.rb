@@ -43,4 +43,7 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:chef_profile_id, :date, :status)
     end
   end
-  
+  def new
+    @booking = Booking.new
+    @chef_profile = ChefProfile.find(params[:chef_profile_id]) if params[:chef_profile_id]
+  end
