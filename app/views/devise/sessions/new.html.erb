@@ -18,18 +18,23 @@
 
 <div class="auth-container">
   <div class="auth-form">
-    <h1>Welcome Back!</h1>
-    <p class="subtitle">Login to discover exclusive chef experiences</p>
+    <div class="auth-header">
+      <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+        <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" class="logo-image animate-logo" style="height: 40px; width: auto;">
+        <h1 style="margin-left: 1rem; margin-bottom: 0; color: #e17055; font-size: 1.5rem; font-family: 'Helvetica', sans-serif; font-weight: 200;">Sign In</h1>
+      </div>
+      <p class="subtitle">Login to discover exclusive chef experiences</p>
+    </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.label :email, class: "form-label" %>
-        <%= f.email_field :email, autofocus: true, class: "input-field", placeholder: "Email Address" %>
+        <%= f.email_field :email, autofocus: true, class: "input-field", placeholder: "example@gmail.com" %>
       </div>
 
       <div class="form-group">
         <%= f.label :password, class: "form-label" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "input-field", placeholder: "Password" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "input-field", placeholder: "••••••••" %>
       </div>
 
       <div class="form-group remember-me">
@@ -38,10 +43,11 @@
       </div>
 
       <%= f.submit "Login", class: "auth-button primary-button" %>
-
-      <div class="auth-links">
-        <%= link_to "Don't have an account? Sign Up", new_registration_path(resource_name), class: "link" %>
-      </div>
     <% end %>
+
+    <div class="auth-links">
+      <p>Don't have an account?</p>
+      <%= link_to "Sign Up", new_registration_path(resource_name), class: "link" %>
+    </div>
   </div>
 </div>

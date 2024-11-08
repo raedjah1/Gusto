@@ -1,11 +1,11 @@
 @import "colors";
 
-// Background grid layout for images - using smaller grid cells
+// Background grid layout for images with blur and opacity
 .auth-background {
   display: grid;
-  grid-template-columns: repeat(3, 500px); /* Example fixed width */
+  grid-template-columns: repeat(3, 500px); // Example fixed width
   grid-template-rows: repeat(3, 300px);
-  gap: 5px;
+  gap: 8px; // Slightly increased gap for breathing room
   height: 100vh; // Ensures grid fills the viewport
   width: 100vw;
   position: fixed;
@@ -13,18 +13,32 @@
   left: 0;
   z-index: -1;
   overflow: hidden;
+  filter: blur(8px); // Apply moderate blur effect for a softened look
 
-  /* Use fixed heights to control row height */
+  .grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75; // Lower opacity for a softer background
+    transition: transform 1s ease, opacity 1s ease;
+
+    &:hover {
+      transform: scale(1.05); // Slight zoom on hover for a dynamic feel
+      opacity: 0.85;
+    }
+  }
 }
 
-.grid-image {
+// Semi-transparent overlay to soften background further
+.auth-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.center-empty {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1); // Light overlay for softening effect
+  z-index: 1;
 }
 
 // Main auth container with form content
@@ -42,9 +56,9 @@
     flex: 1;
     max-width: 400px;
     padding: 2rem;
-    background-color: $neutral-dark;
+    background-color: rgba(255, 255, 255, 0.95); // Light, slightly transparent background
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 
     h1 {
       color: $primary-color-dark;
@@ -54,7 +68,7 @@
     }
 
     .subtitle {
-      color: $tertiary-color-dark;
+      color: $secondary-color-dark;
       margin-bottom: 1.5rem;
     }
 
@@ -71,11 +85,16 @@
       .input-field {
         width: 100%;
         padding: 0.8rem;
-        border: 1px solid $neutral-dark;
-        color: white;
+        border: 1px solid #ddd;
+        color: $neutral-dark;
         border-radius: 5px;
-        background-color: $background-color-dark;
+        background-color: white;
         box-sizing: border-box;
+
+        &:focus {
+          border-color: $primary-color-dark;
+          outline: none;
+        }
       }
     }
 
@@ -92,7 +111,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: darken($primary-color-light, 10%);
+        background-color: darken($primary-color-dark, 10%);
       }
     }
 
@@ -103,8 +122,10 @@
       .link {
         color: $secondary-color-dark;
         font-weight: 500;
+
         &:hover {
           text-decoration: underline;
+          color: $primary-color-dark;
         }
       }
     }
@@ -117,7 +138,7 @@
     background-color: $background-color-dark;
 
     .auth-form {
-      background-color: $neutral-dark;
+      background-color: rgba(255, 255, 255, 0.95);
 
       h1 {
         color: $primary-color-dark;
@@ -128,24 +149,24 @@
       }
 
       .input-field {
-        background-color: $neutral-dark;
-        color: $tertiary-color-dark;
-        border-color: $secondary-color-dark;
+        background-color: white;
+        color: $neutral-dark;
+        border-color: #ddd;
       }
 
       .auth-button {
-        background-color: $button-secondary-bg;
+        background-color: $primary-color-dark;
 
         &:hover {
-          background-color: $button-secondary-hover;
+          background-color: darken($primary-color-dark, 10%);
         }
       }
 
       .auth-links .link {
-        color: $link-color;
+        color: $secondary-color-dark;
 
         &:hover {
-          color: $link-hover-color;
+          color: $primary-color-dark;
         }
       }
     }

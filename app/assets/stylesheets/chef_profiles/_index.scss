@@ -1,67 +1,122 @@
 // app/assets/stylesheets/chef_profiles/index.scss
 @import "colors";       // Import colors first
+@import "variables";    // Import variables for spacing, widths etc
+@import "mixins";      // Import mixins for reusable styles
 @import "typography";   // Import typography next
 @import "buttons";      // Then import buttons, which uses colors
 @import "forms";        // Import forms styles
 @import "layout";       // Import layout styles
+
 .chef-profiles {
-    padding: 20px;
-  
-    h1 {
-      font-size: $font-large;
-      color: $primary-color;
-      text-align: center;
-      margin-bottom: 20px;
+  padding: $spacing-lg;
+  max-width: $content-max-width;
+  margin: 0 auto;
+
+  h1 {
+    @include section-title;
+    margin-bottom: $spacing-lg;
+  }
+
+  .search-filters {
+    margin-bottom: $spacing-xl;
+    padding: $spacing-md;
+    background-color: $background-light;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-sm;
+
+    .filters-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: $spacing-md;
+      align-items: center;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
     }
-  
-    .chef-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-  
-      .chef-card {
-        width: calc(33.33% - 20px);
-        padding: 15px;
-        border-radius: $border-radius;
-        background-color: $card-background;
-        text-align: center;
-        transition: box-shadow 0.3s ease;
-  
-        &:hover {
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-  
+  }
+
+  .chef-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+
+    .chef-card {
+      background-color: $card-background;
+      border-radius: $border-radius-lg;
+      padding: $spacing-lg;
+      box-shadow: $shadow-md;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-lg;
+      }
+
+      .chef-image {
+        margin-bottom: $spacing-md;
+
         .chef-avatar {
-          width: 80px;
-          height: 80px;
+          width: 120px;
+          height: 120px;
           border-radius: 50%;
-          margin-bottom: 10px;
+          object-fit: cover;
+          border: 3px solid $primary-color;
         }
-  
+      }
+
+      .chef-info {
         .chef-name {
-          font-size: $font-medium;
-          color: $primary-color;
-          margin: 0;
+          @include title-text;
+          margin-bottom: $spacing-xs;
         }
-  
+
         .chef-specialty {
+          @include subtitle-text;
           color: $text-secondary;
+          margin-bottom: $spacing-sm;
         }
-  
-        .view-profile-button {
-          display: inline-block;
-          margin-top: 10px;
-          padding: 8px 16px;
-          background-color: $button-primary-bg;
-          color: $button-primary-text;
-          border-radius: $button-border-radius;
-          text-decoration: none;
-  
-          &:hover {
-            background-color: darken($button-primary-bg, 10%);
+
+        .chef-experience,
+        .chef-rate {
+          @include body-text;
+          color: $text-primary;
+          margin-bottom: $spacing-xs;
+        }
+
+        .chef-rating {
+          margin: $spacing-sm 0;
+          
+          .stars {
+            color: $accent-color;
+            margin-bottom: $spacing-xs;
           }
+
+          .no-reviews {
+            color: $text-muted;
+            font-style: italic;
+          }
+        }
+
+        .view-profile-button {
+          @include primary-button;
+          width: 100%;
+          margin-top: $spacing-md;
         }
       }
     }
   }
-  
+
+  .no-results {
+    text-align: center;
+    padding: $spacing-xl;
+    color: $text-muted;
+    font-style: italic;
+  }
+
+  .pagination {
+    margin-top: $spacing-xl;
+    text-align: center;
+  }
+}
