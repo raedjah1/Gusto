@@ -1,4 +1,8 @@
+# app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
+  include SpeechHelper
+  include SpeechRecognitionHelper
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # Custom error handling for smoother user experience

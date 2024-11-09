@@ -1,0 +1,37 @@
+<div class="auth-container">
+  <div class="auth-form">
+    <h1>Book Your Chef Experience</h1>
+    <p class="subtitle">Complete the details below to request your booking</p>
+
+    <%= form_for(@booking) do |f| %>
+      <div class="form-group">
+        <%= f.label :date, "Preferred Date", class: "form-label" %>
+        <%= f.date_field :date, class: "input-field" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :time, "Preferred Time", class: "form-label" %>
+        <%= f.time_field :time, class: "input-field" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :guests, "Number of Guests", class: "form-label" %>
+        <%= f.number_field :guests, class: "input-field", min: 1 %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :special_requests, "Special Requests", class: "form-label" %>
+        <%= f.text_area :special_requests, class: "input-field", placeholder: "Any dietary restrictions or special requirements?" %>
+      </div>
+
+      <%= f.hidden_field :chef_profile_id %>
+      
+      <%= f.submit "Request Booking", class: "auth-button primary-button" %>
+
+      <div class="auth-links">
+        <%= link_to "Back to Chef Profile", chef_profile_path(@booking.chef_profile), class: "link" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,56 @@
+<%= render partial: 'shared/header' %>
+
+<div class="dashboard-container">
+  
+
+  <div class="search-section">
+    <div class="search-wrapper">
+      <%= form_tag search_path, method: :get, class: "search-form" do %>
+        <div class="search-input-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <%= text_field_tag :search, params[:search], placeholder: "Search for events, chefs, or experiences...", class: "search-input" %>
+          <%= submit_tag "Find Now", class: "search-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="features-section">
+    <h2 class="section-title">Dashboard Highlights</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <h3>Upcoming Bookings</h3>
+        <p>View and manage your upcoming reservations with ease.</p>
+        <%= link_to "Manage Bookings", bookings_path, class: "feature-link" %>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3>Your Favorite Chefs</h3>
+        <p>Quickly access and book your saved chefs for future events.</p>
+        <%= link_to "View Favorites", favorites_path, class: "feature-link" %>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Messages</h3>
+        <p>Stay in touch with your chefs and get updates on bookings.</p>
+        <%= link_to "Go to Messages", messages_path, class: "feature-link" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Ready to Make Your Next Reservation?</h2>
+    <%= link_to "Book Now", new_booking_path, class: "cta-button" %>
+  </div>
+</div>
+
+<%= render partial: 'shared/footer' %>

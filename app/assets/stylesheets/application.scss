@@ -1,38 +1,73 @@
-// app/assets/stylesheets/application.scss
-
-@import "colors";       // Must be first to define variables
-@import "typography";   // Next, typography styles
-@import "buttons";      // Then, buttons styles that might use color variables
-@import "forms";        // Import forms styles
+// Import color variables
+@import "colors";       
+@import "typography";   
+@import "buttons";      
+@import "forms";        
 @import "layout";
 @import "auth";  
 
-
-//  component styles
+// Component styles
 @import "components/header";
 @import "components/footer";
 
-//  page-specific styles
+// Page-specific styles
 @import "pages/home";
-     // Finally, layout styles
 
-// Light Theme
-body.light-theme {
+// Light Theme (default)
+body {
   background-color: $background-color-light;
-  color: $secondary-color-dark;
-}
+  color: $secondary-color-light;
 
-h1, h2, h3, h4, h5, h6 {
-  color: $primary-color-light;
+  h1, h2, h3, h4, h5, h6 {
+    color: $primary-color-light;
+  }
 }
 
 // Dark Theme
 body.dark-theme {
   background-color: $background-color-dark;
-  color: $secondary-color-light;
+  color: $secondary-color-dark;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $primary-color-dark;
+  }
+
+  .navbar-dark {
+    background-color: $primary-color-dark;
+    color: $secondary-color-light;
+  }
 }
 
-.navbar-dark {
+// Button styling for light and dark themes
+.button-primary {
+  background-color: $primary-color-light;
+  color: $button-primary-text;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $button-primary-hover;
+  }
+}
+
+body.dark-theme .button-primary {
   background-color: $primary-color-dark;
-  color: $secondary-color-light;
+  color: $button-text-dark;
+
+  &:hover {
+    background-color: lighten($primary-color-dark, 10%);
+  }
+}
+
+// Additional component styles for dark mode
+body.dark-theme .nav-links {
+  color: $tertiary-color-dark;
+}
+
+body.dark-theme .main-header {
+  background-color: $neutral-dark;
 }

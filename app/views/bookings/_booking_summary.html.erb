@@ -1,0 +1,33 @@
+<div class="auth-container">
+  <div class="auth-form">
+    <h1>Booking Summary</h1>
+    <p class="subtitle">Review your experience details</p>
+
+    <div class="form-group">
+      <label class="form-label">Date</label>
+      <p class="input-field"><%= @booking.date.strftime("%B %d, %Y") %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Time</label>
+      <p class="input-field"><%= @booking.time.strftime("%I:%M %p") %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Number of Guests</label>
+      <p class="input-field"><%= @booking.guests %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Special Requests</label>
+      <p class="input-field"><%= @booking.special_requests.presence || "None" %></p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Total Price</label>
+      <p class="input-field">$<%= number_with_precision(@booking.total_price, precision: 2) %></p>
+    </div>
+
+    <%= link_to "Back to Bookings", bookings_path, class: "auth-button primary-button" %>
+  </div>
+</div>

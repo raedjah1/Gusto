@@ -1,0 +1,41 @@
+<% if @pagy.pages > 1 %>
+  <nav class="pagination" role="navigation" aria-label="pagination">
+    <div class="pagination-container">
+      <% if @pagy.prev %>
+        <%= link_to_unless_current raw('&laquo; Previous'), pagy_url_for(@pagy, @pagy.prev), 
+            class: "pagination-previous",
+            rel: "prev",
+            aria: { label: "Previous page" } %>
+      <% else %>
+        <span class="pagination-previous disabled" aria-disabled="true">&laquo; Previous</span>
+      <% end %>
+
+      <ul class="pagination-list">
+        <% @pagy.series.each do |item| %>
+          <% if item.is_a?(Integer) %>
+            <li>
+              <%= link_to_unless_current item, pagy_url_for(@pagy, item),
+                  class: "pagination-link#{' is-current' if item == @pagy.page}",
+                  aria: { label: "Go to page #{item}", current: (item == @pagy.page) } %>
+            </li>
+          <% elsif item.is_a?(String) %>
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+          <% end %>
+        <% end %>
+      </ul>
+
+      <% if @pagy.next %>
+        <%= link_to_unless_current raw('Next &raquo;'), pagy_url_for(@pagy, @pagy.next),
+            class: "pagination-next",
+            rel: "next", 
+            aria: { label: "Next page" } %>
+      <% else %>
+        <span class="pagination-next disabled" aria-disabled="true">Next &raquo;</span>
+      <% end %>
+    </div>
+
+    <div class="pagination-info">
+      Showing <%= @pagy.from %>-<%= @pagy.to %> of <%= @pagy.count %> items
+    </div>
+  </nav>
+<% end %>

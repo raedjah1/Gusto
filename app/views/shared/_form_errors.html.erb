@@ -1,0 +1,16 @@
+<% if object.errors.any? %>
+  <div class="form-errors">
+    <div class="form-errors__header">
+      <h2><%= pluralize(object.errors.count, "error") %> prevented this <%= object.class.name.downcase %> from being saved:</h2>
+    </div>
+
+    <ul class="form-errors__list">
+      <% object.errors.full_messages.each do |message| %>
+        <li class="form-errors__item">
+          <i class="fas fa-exclamation-circle"></i>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

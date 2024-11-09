@@ -10,4 +10,11 @@
       </div> 
     <% end %>
   </div>
+
+  <%link_to 
 </div>
+<div class="menu-actions">
+  <%= link_to "Add Menu Item", new_chef_profile_menu_item_path(@chef_profile), class: "button-primary" %>
+  <%= link_to "Edit Menu", edit_chef_profile_menu_path(@chef_profile), class: "button-secondary" %>
+</div>
+

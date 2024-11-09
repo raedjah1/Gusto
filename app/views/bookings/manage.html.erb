@@ -1,0 +1,66 @@
+<div class="bookings-management">
+  <h1>Manage Bookings</h1>
+
+  <div class="booking-filters">
+    <div class="filter-group">
+      <%= form_tag manage_bookings_path, method: :get do %>
+        <%= select_tag :status, 
+            options_for_select(['All', 'Pending', 'Accepted', 'Declined', 'Completed'], params[:status]), 
+            class: "filter-select" %>
+        <%= submit_tag "Filter", class: "button-secondary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="bookings-list">
+    <% if @bookings.any? %>
+      <% @bookings.each do |booking| %>
+        <div class="booking-card">
+          <div class="booking-header">
+            <h3>Booking from <%= booking.user.name %></h3>
+            <span class="booking-status <%= booking.status %>"><%= booking.status.titleize %></span>
+          </div>
+
+          <div class="booking-details">
+            <p><strong>Date:</strong> <%= booking.date.strftime("%B %d, %Y") %></p>
+            <p><strong>Time:</strong> <%= booking.time.strftime("%I:%M %p") %></p>
+            <p><strong>Guests:</strong> <%= booking.guests %></p>
+            <p><strong>Total Price:</strong> <%= number_to_currency(booking.total_price) %></p>
+            
+            <% if booking.special_requests.present? %>
+              <p><strong>Special Requests:</strong> <%= booking.special_requests %></p>
+            <% end %>
+          </div>
+
+          <div class="booking-actions">
+            <% if booking.pending? %>
+              <%= button_to "Accept", accept_booking_path(booking), 
+                  method: :patch,
+                  class: "button-success" %>
+              <%= button_to "Decline", decline_booking_path(booking), 
+                  method: :patch,
+                  class: "button-danger" %>
+            <% end %>
+
+            <% if booking.accepted? %>
+              <%= button_to "Mark as Completed", complete_booking_path(booking),
+                  method: :patch,
+                  class: "button-primary" %>
+            <% end %>
+
+            <%= link_to "View Details", booking_path(booking), class: "button-secondary" %>
+            
+            <% if booking.accepted? %>
+              <%= link_to "Message Client", new_message_path(recipient_id: booking.user.id), 
+                  class: "button-secondary" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="empty-state">
+        <p>You don't have any bookings to manage.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
