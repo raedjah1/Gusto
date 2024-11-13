@@ -1,12 +1,23 @@
-<!-- app/views/chef_profiles/index.html.erb -->
+<div class="hero-section">
+  <div class="hero-overlay">
+    <h1>Meet Our Chefs</h1>
+    <p>Explore our curated list of culinary experts and find your next taste inspiration</p>
+  </div>
+</div>
 
 <div class="chef-profiles">
-  <h1>Our Chefs</h1>
-  
   <div class="search-filters">
     <%= form_tag chef_profiles_path, method: :get, class: "filters-form" do %>
       <div class="filter-group">
         <%= text_field_tag :search, params[:search], placeholder: "Search by name or specialty", class: "search-input" %>
+      </div>
+      <div class="filter-group">
+        <div class="location-group">
+          <%= text_field_tag :location, params[:location], 
+              placeholder: "Enter location (click to use current)", 
+              class: "search-input",
+              data: { action: "focus->location#promptLocation" } %>
+        </div>
       </div>
       <div class="filter-group">
         <%= select_tag :specialty, 
@@ -16,27 +27,29 @@
       <%= submit_tag "Search", class: "search-button" %>
     <% end %>
   </div>
+
   <div class="chef-list">
     <% if @chef_profiles.any? %>
-      <% @chef_profiles.each do |chef_profile| %>
-        <div class="chef-card">
+      <% last_image = nil %>
+      <% @chef_profiles.each_with_index do |chef_profile, index| %>
+        <% image = @chef_images[index % @chef_images.size] %>
+        <% image = @chef_images.rotate!.first while image == last_image %>
+        <% last_image = image %>
+
+        <div class="chef-card" style="background-image: url(<%= asset_path("chefs/#{image}") %>)">
           <div class="chef-info">
             <h2 class="chef-name"><%= chef_profile.user.name %></h2>
             <p class="chef-specialty"><%= chef_profile.specialty %></p>
-            <p class="chef-experience"><%= pluralize(chef_profile.experience, 'year') %> of experience</p>
-            <div class="chef-rating">
-              <% if chef_profile.average_rating.present? %>
-                <div class="stars">
-                  <% chef_profile.average_rating.round.times do %>
-                    <i class="fas fa-star"></i>
-                  <% end %>
-                </div>
-                <span>(<%= chef_profile.reviews.count %> reviews)</span>
-              <% else %>
-                <span class="no-reviews">No reviews yet</span>
-              <% end %>
-            </div>
-            <%= link_to 'View Profile', chef_profile_path(chef_profile), class: 'view-profile-button' %>
+            <% if chef_profile.average_rating.present? %>
+              <div class="stars">
+                <% chef_profile.average_rating.round.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <span>(<%= chef_profile.reviews.count %>)</span>
+              </div>
+            <% else %>
+              <span class="no-reviews">No reviews yet</span>
+            <% end %>
           </div>
         </div>
       <% end %>

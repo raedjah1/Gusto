@@ -118,7 +118,7 @@ Bookings	user_id, chef_profile_id, date, status
 Reviews	user_id, chef_profile_id, rating, comments
 MenuItems	chef_profile_id, name, description, price
 Messages	sender_id, receiver_id, content
-
+potenitals(TTS, whisper,etc)
 
 Spec(files for testing)
 -----------------------
@@ -218,3 +218,47 @@ Controllers
 4. ReviewsController: Allows consumers to leave reviews and ratings for chefs.
 5. MessagesController: Manages messaging between users.
 =======
+
+
+
+
+Jah's notes(possible features):
+-----------
+
+📢 Voice-Interactive Gusto Feature
+The Voice-Interactive Gusto feature offers users a dynamic and conversational way to discover meals, cuisines, and chefs based on their preferences. Powered by Whisper for speech-to-text and Mozilla TTS for text-to-speech, this feature provides a seamless voice-enabled experience with visual suggestions.
+
+🎯 Key Functionality
+Voice Input Recognition:
+
+Uses Whisper’s speech-to-text capability to recognize user commands.
+Interprets phrases such as “I’m hungry,” “I want Italian,” or “Show me options” to guide the interaction.
+Conditional Question Flow:
+
+Gusto asks a series of branching questions, gathering details about the user's preferences in a conversational style.
+Questions adjust dynamically based on prior responses (e.g., "Do you prefer Italian or Chinese cuisine?").
+Visual Suggestions:
+
+Displays clickable options for each question to guide indecisive users and provide inspiration.
+Options are dynamically generated based on the user’s previous choices, like “Quick Meals,” “Popular Near You,” or specific cuisine types.
+Chef and Dish Recommendations:
+
+Based on user preferences, Gusto presents mock recommendations of chefs or dishes tailored to the user's selected criteria.
+Users can either respond by voice or select recommendations directly from the display.
+Optional Interaction Buttons:
+
+For each question, quick-reply buttons such as “Italian,” “Surprise Me!” or “Top Rated” allow the user to continue by tapping instead of speaking.
+Simulated Booking Experience:
+
+After finalizing preferences, users are presented with booking options to simulate reserving a meal or chef experience.
+💻 Technical Overview
+Speech-to-Text: Whisper transcribes user input and interprets phrases to guide the interaction.
+Text-to-Speech: Mozilla TTS generates realistic, natural-sounding audio responses from Gusto.
+Conditional Logic: The feature uses conditional branches to control the question flow based on user input.
+Visual Interface: For each prompt, options are displayed as interactive tiles or buttons, enabling users to interact by either speaking or tapping.
+📜 Example User Flow
+Gusto Initiates: “Hi! What type of meal are you interested in today?”
+User Response (by voice or tap): “Italian.”
+Gusto Asks Follow-up: “Got it! Do you prefer something quick or a full course?”
+User Choice: Taps on “Quick.”
+Recommendation Displayed: Gusto presents a list of Italian quick meals, like “Margherita Pizza” or “Pasta Carbonara,” and offers a “Tell Me More” button.
