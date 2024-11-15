@@ -11,6 +11,9 @@ $font-secondary: 'Roboto', sans-serif;
 $font-small: 0.875rem;   // Example definition
 $font-medium: 1rem;      // Define this variable
 $font-large: 1.25rem; 
+$font-size-small: 0.875rem;
+$font-size-medium: 1rem;
+$font-size-large: 1.25rem;
 // Text Styles
 body {
   font-family: $font-primary;

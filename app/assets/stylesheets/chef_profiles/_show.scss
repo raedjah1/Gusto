@@ -4,11 +4,106 @@
 @import "buttons";      // Then, buttons styles that might use color variables
 @import "forms";        // Import forms styles
 @import "layout"; 
+
 .chef-profile {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    background-color: $background-color-light;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2d3436;
+    font-weight: 800;
+    background: linear-gradient(45deg, #2d3436, #636e72);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  
+
+  .profile-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+
+    .chef-info {
+      text-align: center;
+      margin-bottom: 2rem;
+
+      .chef-name {
+        font-size: 1.8rem;
+        color: #2d3436;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .chef-specialty {
+        font-size: 1rem;
+        color: #636e72;
+        margin-bottom: 0.5rem;
+      }
+
+      .chef-experience {
+        font-size: 1rem;
+        color: #b2bec3;
+        margin-bottom: 1rem;
+      }
+
+      .chef-rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        
+        .stars {
+          color: #ff6b6b;
+          margin-right: 0.5rem;
+
+          i {
+            font-size: 1.2rem;
+          }
+        }
+
+        .no-reviews {
+          font-size: 0.9rem;
+          color: #b2bec3;
+          font-style: italic;
+        }
+      }
+    }
+
+    .chef-bio {
+      padding: 2rem;
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+
+      h2 {
+        color: #2d3436;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: #636e72;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .chef-profile {
+    padding: 2rem 1rem;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .profile-content {
+      padding: 1rem;
+    }
+  }
+}

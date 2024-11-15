@@ -26,6 +26,9 @@ class ChefProfilesController < ApplicationController
 
   def new
     @chef_profile = ChefProfile.new
+    respond_to do |format|
+      format.html # new.html.erb
+    end
   end
 
   def create

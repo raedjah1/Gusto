@@ -1,20 +1,38 @@
+// Define spacing variables
+$padding-small: 1rem;
+$padding-medium: 2rem;
+$padding-large: 3rem;
+// _spacing.scss or _layout.scss
+
+$border-radius-small: 4px;
+$border-radius-medium: 8px;
+$border-radius-large: 16px; // Define this if you haven’t already
+
+$margin-top-small: 1rem;
+$margin-top-medium: 2rem;
+$margin-top-large: 3rem;
+
+// Component imports
 @import 'colors';
-// Spacing
+
+// Container and utility classes
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.margin-top-small { margin-top: 1rem; }
-.margin-top-medium { margin-top: 2rem; }
-.margin-top-large { margin-top: 3rem; }
+// Margin classes for top margin
+.margin-top-small { margin-top: $margin-top-small; }
+.margin-top-medium { margin-top: $margin-top-medium; }
+.margin-top-large { margin-top: $margin-top-large; }
 
-.padding-small { padding: 1rem; }
-.padding-medium { padding: 2rem; }
-.padding-large { padding: 3rem; }
+// Padding classes
+.padding-small { padding: $padding-small; }
+.padding-medium { padding: $padding-medium; }
+.padding-large { padding: $padding-large; }
 
-// Flexbox Utilities
+// Flexbox utilities
 .flex {
   display: flex;
 }

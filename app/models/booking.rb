@@ -4,9 +4,10 @@ class Booking < ApplicationRecord
   belongs_to :chef_profile
 
   # Validations
-  validates :date, presence: true
+  validates :date, :time, :guests, presence: true
+  validates :guests, numericality: { only_integer: true, greater_than: 0 }
   validates :status, presence: true, inclusion: { in: %w[pending confirmed completed cancelled] }
-  
+
   # Scopes for filtering bookings based on status
   scope :pending, -> { where(status: 'pending') }
   scope :confirmed, -> { where(status: 'confirmed') }
@@ -25,13 +26,18 @@ class Booking < ApplicationRecord
     date < Date.today
   end
 
-  # Marks the booking as completed
+  # Marks the booking as completed if the date has passed and it was confirmed
   def mark_as_completed
-    update(status: 'completed') if date < Date.today && status == 'confirmed'
+    update(status: 'completed') if past? && status == 'confirmed'
   end
 
-  # Marks the booking as cancelled
+  # Cancels a pending booking
   def cancel
     update(status: 'cancelled') if status == 'pending'
+  end
+
+  # Formats the date and time for display
+  def formatted_date_time
+    "#{date.strftime('%B %d, %Y')} at #{time.strftime('%I:%M %p')}"
   end
 end

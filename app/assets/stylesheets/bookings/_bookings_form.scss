@@ -1,0 +1,126 @@
+
+
+// Importing essential variables and styles in order
+@import "colors";       // Global color variables
+@import "typography";   // Typography, referencing colors where needed
+@import "buttons";      // Button styles, using color and typography
+@import "forms";        // Form styling, leveraging colors and typography
+@import "layout";       // General container and positioning layouts
+
+// Booking Form Container
+.booking-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: $padding-medium;
+  background: linear-gradient(120deg, lighten($background-color-light, 5%), darken($background-color-light, 5%));
+}
+
+// Booking Form
+.booking-form {
+  width: 100%;
+  max-width: 600px;
+  padding: $padding-large;
+  background-color: $background-color-light;
+  border-radius: $border-radius;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-in-out;
+
+  @media (max-width: 600px) {
+    padding: $padding-medium;
+  }
+}
+
+// Booking Header
+.booking-header {
+  text-align: center;
+  margin-bottom: $padding-small;
+
+  h1 {
+    font-size: $font-size-large;
+    color: $primary-color; // Corrected to use $primary-color from _colors.scss
+    margin-bottom: $padding-small;
+  }
+
+  .booking-subtitle {
+    font-size: $font-size-small;
+    color: $tertiary-color; // Corrected to use $tertiary-color from _colors.scss
+  }
+}
+
+// Booking Form Group
+.booking-form-group {
+  margin-bottom: $padding-small;
+
+  .form-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $secondary-color; // Corrected to use $secondary-color from _colors.scss
+    margin-bottom: 0.25rem;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: $padding-small;
+    font-size: 1rem;
+    border: 1px solid $border-color; // Corrected to use $border-color from _colors.scss
+    border-radius: $border-radius;
+    color: $secondary-color; // Corrected to use $secondary-color from _colors.scss
+    background-color: $input-background-color;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: $primary-color; // Corrected to use $primary-color from _colors.scss
+      outline: none;
+    }
+  }
+}
+
+// Booking Button
+.primary-button {
+  width: 100%;
+  padding: $padding-small;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: $primary-color; // Corrected to use $primary-color from _colors.scss
+  color: $button-primary-text; // Assuming $button-primary-text is defined in _colors.scss
+  border: none;
+  border-radius: $border-radius-large;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $button-primary-hover; // Assuming $button-primary-hover is defined in _colors.scss
+  }
+}
+
+// Booking Links
+.booking-links {
+  text-align: center;
+  margin-top: $padding-medium;
+
+  .link {
+    font-size: $font-size-small;
+    color: $primary-color; // Corrected to use $primary-color from _colors.scss
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color-dark; // Assuming $primary-color-dark is defined in _colors.scss
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

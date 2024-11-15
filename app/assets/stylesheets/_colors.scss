@@ -1,5 +1,3 @@
-// app/assets/stylesheets/_colors.scss
-
 // Light Theme Colors
 $background-color-light: #EFEFEF; // Soft, warm cream for an inviting, neutral background
 $primary-color-light: #FF6B6B; // Warm coral for a vibrant, friendly primary color
@@ -14,6 +12,11 @@ $secondary-color-dark: #A0A0A0; // Soft gray for secondary accents in dark mode
 $tertiary-color-dark: #EAEAEA; // Light gray for readable text contrast on dark backgrounds
 $neutral-dark: #333333; // Deep charcoal for dividers and neutral areas in dark mode
 
+// Default Primary Color (based on theme)
+$primary-color: $primary-color-light; // Change to $primary-color-dark for dark theme
+$secondary-color: $secondary-color-light; // Similar logic for secondary colors
+$tertiary-color: $tertiary-color-light;
+
 // Accent Colors (Common for Both Themes)
 $accent-gold: #FFD700; // Warm gold for highlights, buttons, or key call-to-actions
 $accent-teal: #3DDC97; // Fresh teal for interactive elements, adding a complementary contrast to coral
@@ -24,13 +27,13 @@ $error-color: #E57373; // Soft red for error messages, aligned with the warm cor
 $warning-color: #FFB74D; // Muted orange for gentle warnings
 
 // Additional UI Colors (Common for Both Themes)
-$button-primary-bg: $primary-color-light; // Primary button background color in light mode
+$button-primary-bg: $primary-color; // Use the theme-based primary color
 $button-primary-text: #FFFFFF; // White text for contrast on primary buttons
-$text-primary: $tertiary-color-light; // Dark gray for readability in light mode
+$text-primary: $tertiary-color; // Dark gray for readability in light mode
 $button-border-radius: 8px; // Rounded corners for a polished look
 $border-color: #D3D3D3; // Light gray for borders, keeping a soft appearance
-$button-secondary-text: $tertiary-color-light; // Secondary button text in light theme
-$button-primary-hover: darken($primary-color-light, 10%); // Darker coral on hover for primary buttons
+$button-secondary-text: $tertiary-color; // Secondary button text in light theme
+$button-primary-hover: darken($primary-color, 10%); // Darker primary color on hover for primary buttons
 $button-secondary-bg: $accent-teal; // Teal background for secondary buttons
 $button-secondary-hover: lighten($accent-teal, 10%); // Lighter teal on hover
 $button-disabled: lighten($neutral-light, 20%); // Lightened neutral for disabled button state
@@ -38,8 +41,8 @@ $button-text-light: #FFFFFF; // Button text color in light theme
 $button-text-dark: #EAEAEA; // Button text color in dark theme
 
 // Link Colors
-$link-color: $primary-color-light; // Coral for link text
-$link-hover-color: darken($primary-color-light, 15%); // Slightly darker coral on hover for emphasis
+$link-color: $primary-color; // Use theme-based primary color for links
+$link-hover-color: darken($primary-color, 15%); // Slightly darker primary color on hover for emphasis
 
 // Border and Divider Colors
 $border-color-light: lighten($neutral-light, 5%); // Light border for subtle dividers in light mode
@@ -48,3 +51,4 @@ $border-color-dark: lighten($neutral-dark, 15%); // Dark border color for divide
 // Background Accent Colors
 $card-background-light: lighten($neutral-light, 5%); // Light background for cards in light theme
 $card-background-dark: darken($neutral-dark, 5%); // Dark background for cards in dark theme
+$input-background-color: #FFFFFF;

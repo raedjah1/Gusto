@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_05_021249) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_15_145908) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chef_profile_id", null: false
@@ -18,6 +18,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_05_021249) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "time"
+    t.integer "guests"
+    t.text "special_requests"
     t.index ["chef_profile_id"], name: "index_bookings_on_chef_profile_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
