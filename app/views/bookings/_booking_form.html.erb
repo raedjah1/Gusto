@@ -27,14 +27,12 @@
           <%= f.text_area :special_requests, class: "input-field", placeholder: "Any dietary restrictions or requirements?" %>
         </div>
 
-        <%= f.hidden_field :chef_profile_id %>
-        
         <div class="booking-actions">
           <%= f.submit "Request Booking", class: "button primary-button" %>
         </div>
 
         <div class="booking-links">
-          <%= link_to "Back to Chef Profile", chef_profile_path(@booking.chef_profile), class: "link" %>
+          <%= link_to "Back to Bookings", bookings_path, class: "link" %>
         </div>
       <% end %>
     <% else %>

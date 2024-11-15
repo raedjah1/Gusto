@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_booking, only: [:show, :update, :destroy]
-  before_action :set_chef_profile, only: [:new, :create]
 
   def index
     bookings = current_user.role == 'chef' ? current_user.chef_profile.bookings : current_user.bookings
@@ -13,8 +12,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = current_user.bookings.build(booking_params)
-    @booking.chef_profile = @chef_profile if @chef_profile # Associate chef profile if found
+    @booking = current_user.bookings.build(booking_params.except(:chef_profile_id))
     if @booking.save
       render json: @booking, status: :created
     else
@@ -36,7 +34,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new(chef_profile: @chef_profile)
+    @booking = Booking.new
   end
 
   private
@@ -45,11 +43,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-  def set_chef_profile
-    @chef_profile = ChefProfile.find_by(id: params[:chef_profile_id]) if params[:chef_profile_id]
-  end
-
   def booking_params
-    params.require(:booking).permit(:chef_profile_id, :date, :time, :guests, :special_requests, :status)
+    params.require(:booking).permit(:date, :status)
   end
 end
