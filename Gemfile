@@ -64,13 +64,10 @@ group :development do
 end
 gem 'rspec-rails', group: [:development, :test]
 group :development, :test do
-
-
   gem 'faker' # For generating fake data (optional)
-
 end
 
-gem 'factory_bot_rails'
-gem 'shoulda-matchers'
-
-
+group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+end
