@@ -62,12 +62,15 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 end
-
+gem 'rspec-rails', group: [:development, :test]
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0'
-  gem 'factory_bot_rails' # For generating test data
+
+
   gem 'faker' # For generating fake data (optional)
-  gem 'shoulda-matchers'
+
 end
+
+gem 'factory_bot_rails'
+gem 'shoulda-matchers'
 
 
