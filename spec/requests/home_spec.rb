@@ -7,4 +7,18 @@ RSpec.describe "Homes", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "POST /create" do
+    it "creates a new home" do
+      post "/homes", params: { home: { address: "123 Main St", city: "Anytown", state: "CA", zip: "12345" } }
+      expect(response).to have_http_status(:created)
+    end
+  end
+
+  describe "DELETE /destroy" do
+    it "deletes a home" do
+      delete "/homes/1"
+      expect(response).to have_http_status(:no_content)
+    end
+  end
 end

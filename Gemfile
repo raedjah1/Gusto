@@ -19,8 +19,13 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 # For access issues
 gem 'pundit'
-gem 'sassc-rails'
+gem 'sassc-rails', '~> 2.1.0'
 
+
+group :development, :test do
+  gem 'spring'
+  gem 'spring-commands-rspec' # if you want to use spring with RSpec
+end
 
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
@@ -62,4 +67,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0'
   gem 'factory_bot_rails' # For generating test data
   gem 'faker' # For generating fake data (optional)
+  gem 'shoulda-matchers'
 end
+
+
