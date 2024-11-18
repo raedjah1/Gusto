@@ -4,17 +4,18 @@ class ChefProfilesController < ApplicationController
 
   def index
     @chef_profiles = ChefProfile.all
-
-    # Filter by search term
+  
+    # Filter by search term (case-insensitive)
     if params[:search].present?
-      @chef_profiles = @chef_profiles.where("specialty ILIKE ?", "%#{params[:search]}%")
+      search_term = params[:search].downcase
+      @chef_profiles = @chef_profiles.where("LOWER(specialty) LIKE ?", "%#{search_term}%")
     end
-
+  
     # Filter by specialty
     if params[:specialty].present? && params[:specialty] != 'All Specialties'
       @chef_profiles = @chef_profiles.where(specialty: params[:specialty])
     end
-
+  
     # Load and shuffle background images for chef profiles
     images_path = Rails.root.join('app', 'assets', 'images', 'chefs')
     @chef_images = Dir.entries(images_path).select { |f| f.match?(/\.(jpg|jpeg|png|gif)$/) }.shuffle

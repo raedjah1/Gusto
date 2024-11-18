@@ -1,2 +1,49 @@
-<h1>Search#show</h1>
-<p>Find me in app/views/search/show.html.erb</p>
+<% if @search_results.present? && @search_results.respond_to?(:any?) && @search_results.any? %>
+  <h1>Search Results</h1>
+  <% if params[:q].present? %>
+    <p>Results for: <%= params[:q] %></p>
+  <% else %>
+    <p>All results:</p>
+  <% end %>
+
+  <div class="search-results">
+    <% @search_results.each do |result| %>
+      <div class="result-item">
+        <h3><%= link_to result.title, result_path(result), aria: { label: "View details for #{result.title}" } %></h3>
+        <p class="result-type"><%= result.class.name.humanize %></p>
+        <% if result.description.present? %>
+          <p class="result-excerpt"><%= truncate(result.description, length: 200) %></p>
+        <% else %>
+          <p class="result-excerpt">No description available.</p>
+        <% end %>
+
+        <% if result.respond_to?(:created_at) && result.created_at.present? %>
+          <p class="result-date">Created: <%= result.created_at.strftime("%B %d, %Y") %></p>
+        <% else %>
+          <p class="result-date">Date not available</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if defined?(paginate) %>
+    <%= paginate @search_results %>
+  <% else %>
+    <p class="pagination-info">Pagination is not enabled or supported for this list.</p>
+  <% end %>
+
+<% else %>
+  <div class="no-results">
+    <h1>No Results Found</h1>
+    <p>Your search "<%= params[:q] || 'your query' %>" did not match any records. Please try:</p>
+    <ul>
+      <li>Checking your spelling</li>
+      <li>Using more general keywords</li>
+      <li>Using fewer keywords</li>
+    </ul>
+    <div class="button-group">
+      <%= link_to "Home", root_path, class: "btn btn-primary", aria: { label: "Go to Home" } %>
+      <%= link_to "New Search", search_path, class: "btn btn-secondary", aria: { label: "Start a new search" } %>
+    </div>
+  </div>
+<% end %>

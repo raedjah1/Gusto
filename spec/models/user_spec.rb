@@ -1,3 +1,4 @@
+# spec/models/user_spec.rb
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -7,5 +8,7 @@ RSpec.describe User, type: :model do
 
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:role) }
-  it { should have_many(:chef_profiles) }
+  
+  # Change has_many to has_one because a user has one chef_profile
+  it { should have_one(:chef_profile) }
 end

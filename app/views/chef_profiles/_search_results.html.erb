@@ -1,0 +1,18 @@
+<!-- app/views/chef_profiles/_search_results.html.erb -->
+<% if search_results.any? %>
+  <% search_results.each do |result| %>
+    <div class="result-item">
+      <h3><%= link_to result.title, result_path(result) %></h3>
+      <p class="result-type"><%= result.class.name.humanize %></p>
+      <p class="result-excerpt"><%= truncate(result.description, length: 200) %></p>
+      <% if result.respond_to?(:created_at) && result.created_at.present? %>
+        <p class="result-date">Created: <%= result.created_at.strftime("%B %d, %Y") %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="no-results">
+    <h1>No Results Found</h1>
+    <p>Try adjusting your search criteria for better results.</p>
+  </div>
+<% end %>

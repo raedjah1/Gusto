@@ -6,6 +6,7 @@
 </div>
 
 <div class="chef-profiles">
+  <!-- Search Filters -->
   <div class="search-filters">
     <%= form_tag chef_profiles_path, method: :get, class: "filters-form" do %>
       <div class="filter-group">
@@ -28,6 +29,7 @@
     <% end %>
   </div>
 
+  <!-- Chef List -->
   <div class="chef-list">
     <% if @chef_profiles.any? %>
       <% last_image = nil %>
