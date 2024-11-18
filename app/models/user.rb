@@ -31,6 +31,6 @@ class User < ApplicationRecord
 
   # Authentication Token
   def auth_token
-    JWT.encode({ user_id: id }, Rails.application.secrets.secret_key_base)
+    JWT.encode({ user_id: id }, Rails.application.credentials.secret_key_base)
   end
 end
