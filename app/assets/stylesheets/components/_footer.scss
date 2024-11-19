@@ -1,11 +1,11 @@
 .footer {
-    background-color: #2d3436;
-    color: #dfe6e9;
+    background-color: $background-color-dark;
+    color: $secondary-color-dark;
     font-family: 'Open Sans', sans-serif;
   
     .footer-top {
       padding: 4rem 0;
-      background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+      background: linear-gradient(135deg, $background-color-dark 0%, darken($background-color-dark, 10%) 100%);
   
       .footer-container {
         max-width: 1200px;
@@ -23,10 +23,11 @@
         h3 {
           font-size: 1.5rem;
           margin-bottom: 1.5rem;
-          color: #ffffff;
+          color: $text-primary;
   
           span {
-            color: #ff6b6b;
+            color: $primary-color-dark;
+            opacity: 0.9;
           }
         }
   
@@ -42,12 +43,13 @@
             margin-bottom: 1rem;
   
             a {
-              color: #b2bec3;
+              color: $secondary-color-dark;
               text-decoration: none;
               transition: color 0.3s;
   
               &:hover {
-                color: #ff6b6b;
+                color: $primary-color-dark;
+                opacity: 0.9;
               }
             }
           }
@@ -60,7 +62,8 @@
   
             i {
               margin-right: 0.5rem;
-              color: #ff6b6b;
+              color: $primary-color-dark;
+              opacity: 0.9;
             }
           }
         }
@@ -69,13 +72,14 @@
           margin-top: 1.5rem;
   
           a {
-            color: #dfe6e9;
+            color: $secondary-color-dark;
             margin-right: 1rem;
             font-size: 1.2rem;
             transition: color 0.3s;
   
             &:hover {
-              color: #ff6b6b;
+              color: $primary-color-dark;
+              opacity: 0.9;
             }
           }
         }
@@ -83,7 +87,7 @@
     }
   
     .footer-bottom {
-      background-color: #1e272e;
+      background-color: darken($background-color-dark, 3%);
       padding: 1.5rem 0;
   
       .footer-container {
@@ -115,17 +119,74 @@
             margin: 0 0.5rem;
   
             a {
-              color: #b2bec3;
+              color: $secondary-color-dark;
               text-decoration: none;
               transition: color 0.3s;
   
               &:hover {
-                color: #ff6b6b;
+                color: $primary-color-dark;
+                opacity: 0.9;
               }
             }
           }
         }
       }
     }
+}
+
+/* Dark Theme Styles */
+body.dark-theme .footer {
+  background-color: $background-color-light;
+  color: $secondary-color-light;
+
+  .footer-top {
+    background: linear-gradient(135deg, $background-color-light 0%, darken($background-color-light, 10%) 100%);
+
+    .footer-column {
+      h3 {
+        color: $text-primary;
+
+        span {
+          color: $primary-color-light;
+          opacity: 0.9;
+        }
+      }
+
+      ul li a {
+        color: $secondary-color-light;
+
+        &:hover {
+          color: $primary-color-light;
+          opacity: 0.9;
+        }
+      }
+
+      .contact-info li i {
+        color: $primary-color-light;
+        opacity: 0.9;
+      }
+
+      .social-icons a {
+        color: $secondary-color-light;
+
+        &:hover {
+          color: $primary-color-light;
+          opacity: 0.9;
+        }
+      }
+    }
   }
-  
+
+  .footer-bottom {
+    background-color: darken($background-color-light, 3%);
+
+    .footer-links li a {
+      color: $secondary-color-light;
+
+      &:hover {
+        color: $primary-color-light;
+        opacity: 0.9;
+      }
+    }
+  }
+}
