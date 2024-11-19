@@ -1,43 +1,75 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="auth-container">
+  <div class="auth-form">
+    <div class="auth-header">
+      <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" class="logo-image">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <p class="subtitle">Update your account details</p>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <!-- Display All Error Messages -->
+      <% if resource.errors.any? %>
+        <div class="error-message">
+          <%= pluralize(resource.errors.count, "error") %> prohibited this update:
+          <ul>
+            <% resource.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <!-- Email field -->
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field" %>
+        <%= f.object.errors[:email].any? ? "<span class='error-message'>#{f.object.errors[:email].first}</span>".html_safe : "" %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <!-- Waiting for confirmation message -->
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="error-message">
+          Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <!-- Password field -->
+      <div class="field">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+        <%= f.password_field :password, autocomplete: "new-password", class: "input-field" %>
+        <%= f.object.errors[:password].any? ? "<span class='error-message'>#{f.object.errors[:password].first}</span>".html_safe : "" %>
+        <% if @minimum_password_length %>
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <!-- Password confirmation -->
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field" %>
+        <%= f.object.errors[:password_confirmation].any? ? "<span class='error-message'>#{f.object.errors[:password_confirmation].first}</span>".html_safe : "" %>
+      </div>
+
+      <!-- Current password -->
+      <div class="field">
+        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "input-field" %>
+        <%= f.object.errors[:current_password].any? ? "<span class='error-message'>#{f.object.errors[:current_password].first}</span>".html_safe : "" %>
+      </div>
+
+      <!-- Submit button -->
+      <%= f.submit "Update", class: "auth-button" %>
     <% end %>
+
+    <!-- Cancel Account Section -->
+    <div class="cancel-account">
+      <h3>Cancel my account</h3>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "cancel-button" %></p>
+    </div>
+
+    <!-- Back Link -->
+    <div class="auth-links">
+      <%= link_to "Back", :back, class: "link-back" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>

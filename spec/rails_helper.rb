@@ -1,4 +1,3 @@
-# spec/rails_helper.rb
 require_relative '../config/environment'
 ENV['RAILS_ENV'] ||= 'test'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -26,4 +25,8 @@ RSpec.configure do |config|
       config.library :rails
     end
   end
+
+  # Include Devise helpers for tests
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end

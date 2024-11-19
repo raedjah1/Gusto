@@ -15,7 +15,7 @@ $neutral-dark: #333333; // Deep charcoal for dividers and neutral areas in dark 
 // Default Primary Color (based on theme)
 $primary-color: $primary-color-light; // Change to $primary-color-dark for dark theme
 $secondary-color: $secondary-color-light; // Similar logic for secondary colors
-$tertiary-color: $tertiary-color-light;
+$tertiary-color: $tertiary-color-light; // Default tertiary color (light theme)
 
 // Accent Colors (Common for Both Themes)
 $accent-gold: #FFD700; // Warm gold for highlights, buttons, or key call-to-actions
@@ -51,4 +51,4 @@ $border-color-dark: lighten($neutral-dark, 15%); // Dark border color for divide
 // Background Accent Colors
 $card-background-light: lighten($neutral-light, 5%); // Light background for cards in light theme
 $card-background-dark: darken($neutral-dark, 5%); // Dark background for cards in dark theme
-$input-background-color: #FFFFFF;
+$input-background-color: #FFFFFF; // White input background for clear contrast

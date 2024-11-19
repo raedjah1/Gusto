@@ -17,7 +17,7 @@
       position: relative;
       display: flex;
       align-items: center;
-      background: #fff;
+      background: $background-color-light;
       border-radius: 50px;
       padding: 0.5rem;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -36,6 +36,7 @@
       font-size: 1.1rem;
       background: transparent;
       margin: 0 1rem;
+      color: $background-color-dark;
 
       &:focus {
         outline: none;
@@ -48,7 +49,7 @@
 
     .search-button {
       background: #ff6b6b;
-      color: white;
+      color: $background-color-light;
       border: none;
       padding: 1rem 2rem;
       border-radius: 25px;
@@ -71,15 +72,15 @@
 
 .features-section {
   padding: 6rem 0;
-  background: linear-gradient(180deg, #fff, #f8f9fa);
+  background: linear-gradient(180deg, $background-color-light, darken($background-color-light, 5%));
 
   .section-title {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 4rem;
-    color: #2d3436;
+    color: $background-color-dark;
     font-weight: 800;
-    background: linear-gradient(45deg, #2d3436, #636e72);
+    background: linear-gradient(45deg, $background-color-dark, lighten($background-color-dark, 20%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -91,7 +92,7 @@
     padding: 0 2rem;
 
     .feature-card {
-      background: #ffffff;
+      background: $background-color-light;
       padding: 3rem 2rem;
       border-radius: 25px;
       text-align: center;
@@ -120,13 +121,13 @@
 
       h3 {
         font-size: 1.8rem;
-        color: #2d3436;
+        color: $background-color-dark;
         margin-bottom: 1.5rem;
         font-weight: 700;
       }
 
       p {
-        color: #636e72;
+        color: $background-color-dark;
         line-height: 1.8;
         font-size: 1.1rem;
         margin-bottom: 2rem;
@@ -136,7 +137,7 @@
         display: inline-block;
         padding: 0.75rem 1.5rem;
         background-color: #ff6b6b;
-        color: #ffffff;
+        color: $background-color-light;
         border-radius: 25px;
         text-decoration: none;
         font-weight: 600;
@@ -156,7 +157,7 @@
 
   h2 {
     font-size: 2.5rem;
-    color: #2d3436;
+    color: $background-color-dark;
     margin-bottom: 2rem;
     font-weight: 700;
   }
@@ -164,7 +165,7 @@
   .cta-button {
     padding: 1rem 2rem;
     background-color: #ff6b6b;
-    color: #ffffff;
+    color: $background-color-light;
     border: none;
     border-radius: 30px;
     font-size: 1.2rem;
@@ -203,6 +204,101 @@
 
     h2 {
       font-size: 2rem;
+    }
+  }
+}
+
+/* Dark Theme */
+body.dark-theme {
+  .search-section {
+    .search-form {
+      .search-input-wrapper {
+        background: $background-color-dark;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .search-icon {
+        color: $background-color-light;
+      }
+
+      .search-input {
+        color: $background-color-light;
+
+        &::placeholder {
+          color: darken($background-color-light, 30%);
+        }
+      }
+
+      .search-button {
+        background: $primary-color-dark;
+        color: $background-color-dark;
+
+        &:hover {
+          background: lighten($primary-color-dark, 10%);
+        }
+      }
+    }
+  }
+
+  .features-section {
+    background: linear-gradient(180deg, $background-color-dark, darken($background-color-dark, 5%));
+
+    .section-title {
+      color: $background-color-light;
+      background: linear-gradient(45deg, $background-color-light, lighten($background-color-light, 20%));
+      -webkit-background-clip: text;
+    }
+
+    .features-grid {
+      .feature-card {
+        background: $background-color-dark;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+
+          i {
+            color: lighten($primary-color-dark, 10%);
+          }
+        }
+
+        .feature-icon i {
+          color: $primary-color-dark;
+        }
+
+        h3 {
+          color: $background-color-light;
+        }
+
+        p {
+          color: $background-color-light;
+        }
+
+        .feature-link {
+          background-color: $primary-color-dark;
+          color: $background-color-dark;
+
+          &:hover {
+            background-color: lighten($primary-color-dark, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .cta-section {
+    h2 {
+      color: $background-color-light;
+    }
+
+    .cta-button {
+      background-color: $primary-color-dark;
+      color: $background-color-dark;
+
+      &:hover {
+        background-color: lighten($primary-color-dark, 10%);
+      }
     }
   }
 }

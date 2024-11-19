@@ -1,16 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable, and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   # Constants
   ROLES = %w[consumer chef admin].freeze
 
   # Validations
   validates :role, presence: true, inclusion: { in: ROLES }
-
-  # Devise modules
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   # Associations
   has_one :chef_profile
@@ -29,8 +27,17 @@ class User < ApplicationRecord
     role == 'admin'
   end
 
-  # Authentication Token
+  # Authentication Token (JWT)
   def auth_token
-    JWT.encode({ user_id: id }, Rails.application.credentials.secret_key_base)
+    JWT.encode({ user_id: id }, Rails.application.credentials.jwt_secret_key)
+  end
+
+  # Set default role to 'consumer' if not provided
+  before_validation :set_default_role, on: :create
+
+  private
+
+  def set_default_role
+    self.role ||= 'consumer' # Default to 'consumer' if no role is provided
   end
 end

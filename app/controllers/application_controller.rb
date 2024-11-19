@@ -1,4 +1,3 @@
-# app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
   include SpeechHelper
   include SpeechRecognitionHelper
@@ -11,10 +10,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # Configures extra permitted parameters for Devise, specifically allowing the `role` field.
+  # Configures extra permitted parameters for Devise, specifically allowing the `name` and `role` fields.
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :role]) # Allow both `name` and `role`
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :role]) # Allow both `name` and `role`
   end
 
   # Redirect user after sign-in based on role

@@ -1,0 +1,262 @@
+/* Import color variables */
+@import "colors";
+
+/* Edit Profile Form Container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(120deg, rgba($background-color-light, 0.9), rgba(darken($background-color-light, 2%), 0.9));
+}
+
+.auth-form {
+  background-color: $card-background-light;
+  padding: 2rem;
+  border-radius: $button-border-radius;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+
+  h2 {
+    text-align: center;
+    color: $primary-color-light;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    .logo-image {
+      width: 40px;
+      height: auto;
+      transition: filter 0.3s ease;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: $tertiary-color-light;
+      margin-top: 0.5rem;
+    }
+  }
+
+  /* Success and Error Messages */
+  .error-message,
+  .success-message {
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: $button-border-radius;
+  }
+
+  .error-message {
+    background-color: $error-color;
+    color: $button-text-light;
+  }
+
+  .success-message {
+    background-color: $success-color;
+    color: $button-text-light;
+  }
+
+  /* Form Field Styles */
+  .field {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      color: $text-primary;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid $border-color;
+      border-radius: $button-border-radius;
+      font-size: 1rem;
+      color: $text-primary;
+      background-color: $input-background-color;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: $primary-color-light;
+        outline: none;
+        background-color: $input-background-color;
+      }
+    }
+
+    .error-message {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: $error-color;
+    }
+  }
+
+  /* Submit Button */
+  .auth-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: $button-primary-bg;
+    color: $button-text-light;
+    border: none;
+    border-radius: $button-border-radius;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $button-primary-hover;
+    }
+  }
+
+  /* Cancel Account Section */
+  .cancel-account {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+
+    .cancel-button {
+      background-color: $error-color;
+      color: $button-text-light;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: $button-border-radius;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($error-color, 10%);
+      }
+    }
+  }
+
+  /* Links */
+  .auth-links {
+    text-align: center;
+    margin-top: 1rem;
+
+    .link {
+      color: $link-color;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+
+      &:hover {
+        color: $link-hover-color;
+        text-decoration: underline;
+      }
+    }
+
+    .link-back {
+      font-size: 0.9rem;
+      color: $tertiary-color-light;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+}
+
+/* Dark Theme Styles */
+body.dark-theme {
+  .auth-container {
+    background: linear-gradient(120deg, rgba($background-color-dark, 0.9), rgba(darken($background-color-dark, 2%), 0.9));
+  }
+
+  .auth-form {
+    background-color: $card-background-dark;
+
+    h2 {
+      color: $primary-color-dark;
+    }
+
+    .auth-header {
+      .logo-image {
+        filter: invert(1);
+      }
+
+      .subtitle {
+        color: $tertiary-color-dark;
+      }
+    }
+
+    .field {
+      label {
+        color: $tertiary-color-dark;
+      }
+
+      .input-field {
+        background-color: $neutral-dark;
+        border-color: $border-color-dark;
+        color: $tertiary-color-dark;
+
+        &:focus {
+          border-color: $primary-color-dark;
+        }
+      }
+    }
+
+    .auth-button {
+      background-color: $primary-color-dark;
+      color: $button-text-dark;
+
+      &:hover {
+        background-color: darken($primary-color-dark, 10%);
+      }
+    }
+
+    .auth-links {
+      .link {
+        color: $primary-color-dark;
+
+        &:hover {
+          color: lighten($primary-color-dark, 10%);
+        }
+      }
+
+      .link-back {
+        color: $tertiary-color-dark;
+
+        &:hover {
+          color: $primary-color-dark;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 1rem;
+  }
+
+  .auth-form {
+    width: 100%;
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    .field {
+      margin-bottom: 1rem;
+    }
+
+    .input-field {
+      padding: 0.75rem;
+    }
+
+    .auth-button {
+      font-size: 1rem;
+      padding: 0.9rem;
+    }
+  }
+}

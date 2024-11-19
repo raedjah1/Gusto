@@ -1,5 +1,4 @@
 <div class="auth-background">
-  
   <!-- Row 1 -->
   <img src="<%= asset_path('backgrounds/salad.jpg') %>" alt="Salad" class="grid-image">
   <img src="<%= asset_path('backgrounds/dessert.jpg') %>" alt="Dessert" class="grid-image">
@@ -27,27 +26,50 @@
     </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <!-- Display success or error messages if any -->
+      <% if flash[:alert] %>
+        <div class="error-message" style="margin-bottom: 1rem; color: #e74c3c; text-align: center;">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="success-message" style="margin-bottom: 1rem; color: #2ecc71; text-align: center;">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <!-- Email field with error handling -->
       <div class="form-group">
         <%= f.label :email, class: "form-label" %>
         <%= f.email_field :email, autofocus: true, class: "input-field", placeholder: "example@gmail.com" %>
+        <%= f.object.errors[:email].any? ? '<span class="error-message">Email is required</span>'.html_safe : "" %>
       </div>
 
+      <!-- Password field with error handling -->
       <div class="form-group">
         <%= f.label :password, class: "form-label" %>
         <%= f.password_field :password, autocomplete: "current-password", class: "input-field", placeholder: "••••••••" %>
+        <%= f.object.errors[:password].any? ? '<span class="error-message">Password is required</span>'.html_safe : "" %>
       </div>
 
+      <!-- Remember Me checkbox -->
       <div class="form-group remember-me">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me, class: "form-label" %>
       </div>
 
+      <!-- Submit button -->
       <%= f.submit "Login", class: "auth-button primary-button" %>
     <% end %>
 
+    <!-- Links -->
     <div class="auth-links">
       <p>Don't have an account?</p>
       <%= link_to "Sign Up", new_registration_path(resource_name), class: "link" %>
+      <div style="margin-top: 0.5rem;">
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "link" %>
+      </div>
     </div>
   </div>
 </div>
