@@ -30,9 +30,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_235956) do
     t.text "bio"
     t.string "specialty"
     t.integer "experience"
+    t.string "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "availability"
     t.integer "years_of_experience"
     t.text "cuisine_types"
     t.index ["user_id"], name: "index_chef_profiles_on_user_id"
@@ -49,12 +49,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_235956) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "receiver_id"
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.bigint "chef_profile_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["chef_profile_id"], name: "index_messages_on_chef_profile_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
+  
 
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
