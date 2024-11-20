@@ -1,0 +1,13 @@
+<div class="message-section">
+  <h2>Send a Message to <%= chef_profile.name %></h2>
+  <%= form_with model: @message, url: messages_path, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :content, "Your Message" %>
+      <%= form.text_area :content, rows: 5, placeholder: "Write your message here...", class: "form-control" %>
+    </div>
+    <%= form.hidden_field :chef_profile_id, value: chef_profile.id %>
+    <div class="form-group">
+      <%= form.submit "Send Message", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
