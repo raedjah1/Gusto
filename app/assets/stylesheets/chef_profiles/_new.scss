@@ -1,0 +1,253 @@
+/* _new.scss - Chef Profile Creation Form */
+
+/* General Styles for Chef Profile Page */
+.chef-profile-form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 3rem auto;
+    max-width: 1200px;
+  }
+  
+  .form-wrapper {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $background-color-dark;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-subtitle {
+    font-size: 1.2rem;
+    color: $background-color-dark;
+    margin-bottom: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $background-color-dark;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    background-color: #f5f6fa;
+    transition: all 0.3s ease;
+    color: $background-color-dark;
+  
+    &:focus {
+      border-color: $primary-color;
+      background-color: #fff;
+    }
+  
+    &::placeholder {
+      color: #b2bec3;
+    }
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .button-primary {
+    padding: 1rem 2rem;
+    background-color: $primary-color;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+  
+  .button-secondary {
+    padding: 1rem 2rem;
+    background-color: #ecf0f1;
+    color: $background-color-dark;
+    font-weight: 600;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: 1px solid #dfe6e9;
+  
+    &:hover {
+      background-color: #bdc3c7;
+    }
+  }
+  
+  /* Error Messages */
+  .error-messages {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .error-messages ul {
+    margin-top: 1rem;
+  }
+  
+  /* Sidebar for Information */
+  .info-sidebar {
+    flex-basis: 30%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $background-color-dark;
+    margin-bottom: 1rem;
+  }
+  
+  .info-card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .info-card li {
+    font-size: 1rem;
+    color: $background-color-dark;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-card li i {
+    color: #ff6b6b;
+    margin-right: 0.5rem;
+  }
+  
+  /* Responsive Styles for Mobile */
+  @media (max-width: 768px) {
+    .chef-profile-form-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .form-wrapper {
+      padding: 1.5rem;
+    }
+  
+    .info-sidebar {
+      max-width: 100%;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .button-primary,
+    .button-secondary {
+      width: 100%;
+    }
+  }
+  
+  /* Dark Mode */
+  body.dark-theme {
+    .chef-profile-form-container {
+      .form-wrapper {
+        background-color: $background-color-dark;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+  
+      h1 {
+        color: $background-color-light;
+      }
+  
+      .form-subtitle {
+        color: $background-color-light;
+      }
+  
+      .form-group input,
+      .form-group textarea {
+        background-color: $background-color-dark;
+        color: $background-color-light;
+        border: 1px solid $border-color-dark;
+      }
+  
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: $primary-color-dark;
+      }
+  
+      .button-primary {
+        background-color: $primary-color-dark;
+        color: $background-color-dark;
+      }
+  
+      .button-primary:hover {
+        background-color: lighten($primary-color-dark, 10%);
+      }
+  
+      .button-secondary {
+        background-color: $background-color-dark;
+        color: $background-color-light;
+        border: 1px solid $border-color-dark;
+      }
+  
+      .button-secondary:hover {
+        background-color: lighten($background-color-dark, 10%);
+      }
+    }
+  
+    .info-sidebar {
+      background-color: $background-color-dark;
+    }
+  
+    .info-card {
+      background-color: $background-color-dark;
+      border: 1px solid $border-color-dark;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  
+    .info-card h3 {
+      color: $background-color-light;
+    }
+  
+    .info-card li {
+      color: $background-color-light;
+    }
+  
+    .info-card li i {
+      color: $primary-color-dark;
+    }
+  }
+  

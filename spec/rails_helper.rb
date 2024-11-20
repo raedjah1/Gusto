@@ -29,4 +29,7 @@ RSpec.configure do |config|
   # Include Devise helpers for tests
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # Faker setup (if needed for locale or configuration)
+  Faker::Config.locale = 'en-US' # Set Faker locale for consistent data generation
 end

@@ -7,6 +7,9 @@ class ChefProfile < ApplicationRecord
 
   # Validations
   validates :bio, :specialty, :experience, :availability, presence: true
+  validates :specialty, format: { with: /\A[a-zA-Z, ]+\z/, message: "can only contain letters and commas" }
+  validate :valid_availability_format
+
 
   # Instance methods
   def average_rating
@@ -26,9 +29,8 @@ class ChefProfile < ApplicationRecord
   end
 
   def available_on?(date)
-    # Placeholder for availability logic
-    # Consider implementing based on availability format (e.g., array of dates, time slots)
-    true
+    # Check if the provided date is available (assuming it's stored as an array of dates)
+    availability.include?(date.to_s) # availability is assumed to be an array of strings
   end
 
   def top_menu_items
@@ -37,5 +39,31 @@ class ChefProfile < ApplicationRecord
 
   def specialties_list
     specialty&.split(',')&.map(&:strip)
+  end
+
+  private
+
+  # Custom validation for availability format (ensures dates are valid)
+  def valid_availability_format
+    if availability.is_a?(Array)
+      # Check that each item in the array is a valid date
+      invalid_dates = availability.reject { |date| valid_date_format?(date) }
+      if invalid_dates.any?
+        errors.add(:availability, "contains invalid dates: #{invalid_dates.join(', ')}")
+      end
+    elsif availability.is_a?(String)
+      # If availability is a string, split it and check the dates
+      availability.split(',').each do |date|
+        if !valid_date_format?(date.strip)
+          errors.add(:availability, "must be a valid comma-separated list of dates")
+          break
+        end
+      end
+    end
+  end
+
+  # Helper method to check date format validity
+  def valid_date_format?(date)
+    Date.parse(date.strip) rescue false
   end
 end

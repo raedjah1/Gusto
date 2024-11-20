@@ -1,22 +1,31 @@
-# spec/factories/bookings.rb
 FactoryBot.define do
   factory :booking do
-    # Ensure `user` is properly associated, with a role of 'consumer'
-    user { association :user, role: 'consumer' }
-    
-    # Ensure `chef_profile` is associated
-    chef_profile
+    # Associate a user with the role of 'consumer'
+    association :user, factory: :user, role: 'consumer'
 
-    # Add date as required, using Faker to generate a future date
+    # Associate with a chef_profile
+    association :chef_profile
+
+    # Generate future date and time
     date { Faker::Date.forward(days: 30) }
+    time { Faker::Time.forward(days: 30, period: %i[morning afternoon evening].sample) }
 
-    # Add time as required (using a default time if needed)
-    time { Faker::Time.forward(days: 30, period: :morning) }  # You can change the period to :afternoon, :evening, etc.
+    # Default guests (must be greater than 0)
+    guests { Faker::Number.between(from: 1, to: 10) }
 
-    # Add guests as required (a valid number for the guests field)
-    guests { 2 }  # Example: Setting a default value for guests
-
-    # Sample status values for `status` attribute
+    # Status must be one of: pending, confirmed, completed, cancelled
     status { %w[pending confirmed completed cancelled].sample }
+
+    # Add trait for completed bookings in the past
+    trait :completed do
+      status { 'completed' }
+      date { Faker::Date.backward(days: 30) }
+    end
+
+    # Add trait for upcoming confirmed bookings
+    trait :upcoming_confirmed do
+      status { 'confirmed' }
+      date { Faker::Date.forward(days: 30) }
+    end
   end
 end

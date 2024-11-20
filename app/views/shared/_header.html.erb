@@ -32,7 +32,7 @@
               </button>
               <div class="dropdown-menu">
                 <%= link_to 'Profile Settings', edit_user_registration_path %>
-                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-button", data: { turbo_method: :delete } %>
               </div>
             </div>
           </li>

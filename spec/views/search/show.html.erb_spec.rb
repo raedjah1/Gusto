@@ -29,6 +29,14 @@ RSpec.describe "search/show.html.erb", type: :view do
       expect(rendered).to have_selector('.result-excerpt', text: 'Test description')
       expect(rendered).to have_selector('.result-date')
     end
+
+    it "handles missing description gracefully" do
+      # Set description to nil to simulate a missing description
+      @search_results.first.description = nil
+      render
+      expect(rendered).to have_selector('.result-item')
+      expect(rendered).to have_content("No description available.")
+    end
   end
 
   context "when there are no search results" do
