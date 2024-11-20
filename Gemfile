@@ -74,3 +74,7 @@ end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
 gem 'font-awesome-rails'
+
+group :test do
+  gem 'capybara'
+end

@@ -1,6 +1,9 @@
 require 'rails_helper'
+require 'capybara/rspec'
 
 RSpec.describe 'home/index.html.erb', type: :view do
+  include Capybara::RSpecMatchers
+
   before do
     # Mock any necessary helpers and methods
     allow(view).to receive(:user_signed_in?).and_return(false)
@@ -13,6 +16,9 @@ RSpec.describe 'home/index.html.erb', type: :view do
 
     # Render the view
     render template: 'home/index', layout: 'layouts/application'
+    
+    # Debugging output (uncomment to debug rendered output)
+    # puts rendered
   end
 
   it 'displays the features section title' do
