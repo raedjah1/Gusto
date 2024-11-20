@@ -262,3 +262,18 @@ User Response (by voice or tap): “Italian.”
 Gusto Asks Follow-up: “Got it! Do you prefer something quick or a full course?”
 User Choice: Taps on “Quick.”
 Recommendation Displayed: Gusto presents a list of Italian quick meals, like “Margherita Pizza” or “Pasta Carbonara,” and offers a “Tell Me More” button.
+
+Victor's notes(in-process features):
+-----------
+
+1. Modify the GustoGram page to make each chef's picture clickable, redirecting to a dedicated Chef Menu Page (like instagram homepage).
+ 
+2. On the Chef Menu Page, list the menu items (e.g., "Jerk Chicken," "Barbecue Beef")
+in a visually amusing way (like a decent menu).
+  
+3. Make each menu item clickable, redirecting to a page showing the image of the food.
+
+4. Add a return icon on Gustogram. Currently the user have to manually cllick on the "returning" on webpage in order to go back. 
+Attempt to add features such that the user is able to go back to the homepage at any page it currently is. 
+
+
