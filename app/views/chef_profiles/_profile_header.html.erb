@@ -1,11 +1,18 @@
 <!-- _profile_header.html.erb -->
 
 <div class="profile-header">
-  <div class="profile-image">
-    <%= image_tag @chef_profile.user.avatar.url, alt: @chef_profile.user.name %>
+  <div class="profile-image-container">
+    <%= image_tag @chef_profile.user.avatar.url, alt: @chef_profile.user.name, class: "profile-image" %>
+
+    <!-- Message Button Overlay -->
+    <a href="#message-section" class="message-button">Message</a>
   </div>
+  
   <div class="profile-info">
-    <h2 class="profile-name"><%= @chef_profile.user.name %> <span class="profile-role">Chef</span></h2>
+    <h2 class="profile-name">
+      <%= @chef_profile.user.name %> 
+      <span class="profile-role">Chef</span>
+    </h2>
     <p class="profile-specialty"><%= @chef_profile.specialty %></p>
     <p class="profile-bio"><%= @chef_profile.bio %></p>
   </div>
