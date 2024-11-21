@@ -263,17 +263,27 @@ Gusto Asks Follow-up: “Got it! Do you prefer something quick or a full course?
 User Choice: Taps on “Quick.”
 Recommendation Displayed: Gusto presents a list of Italian quick meals, like “Margherita Pizza” or “Pasta Carbonara,” and offers a “Tell Me More” button.
 
-Victor's notes(in-process features):
+Victor's notes(finished and in-process features):
 -----------
 
 1. Modify the GustoGram page to make each chef's picture clickable, redirecting to a dedicated Chef Menu Page (like instagram homepage).
  
-2. On the Chef Menu Page, list the menu items (e.g., "Jerk Chicken," "Barbecue Beef")
-in a visually amusing way (like a decent menu).
-  
-3. Make each menu item clickable, redirecting to a page showing the image of the food.
+2. On the Chef Menu Page, list the menu items (e.g., "Roast Chicken," "Barbecue Beef") in a visually amusing way (like a decent menu).
 
-4. Add a return icon on Gustogram. Currently the user have to manually cllick on the "returning" on webpage in order to go back. 
+3. The Chef profile properly displays the Chef's serving category (French, Mediterranean), a brief self description, and the dishes being served.
+
+4. There are independent icons clickable by chefs named "Add Menu Item" and "Edit Menu", which redirect to the chef login page for attempting to make modifications to their menu offerings/descriptions.
+
+5. There are customer reviews displayed at the bottom of each chef's homepage. The reviews capture the username, star rating, and their comments to this chef.
+  
+6. Each menu item is now clickable, redirecting to a page showing the image of the food. Now it shows the randomly-selected images from 
+assets folder, along with the description. (this being said, the description of a food such as "Capresse" may not lead to an actual "Capresse" images, given the limited amount of food images and the randomly-generated nature of chef/chefname db at this stage).
+
+7. The Chef should have an overall star rating based on all reviews and ratings from Customer Reviews.
+
+8. The Chef should be searchable based on their star rating. Added a panel under searching features for filtering chefs based on their overall star rating.
+
+9. Add a return icon on Gustogram. Currently the user have to manually cllick on the "returning" on webpage in order to go back. 
 Attempt to add features such that the user is able to go back to the homepage at any page it currently is. 
 
 
