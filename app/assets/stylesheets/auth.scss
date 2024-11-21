@@ -3,41 +3,28 @@
 // Background grid layout for images with blur and opacity
 .auth-background {
   display: grid;
-  grid-template-columns: repeat(3, 500px); // Example fixed width
-  grid-template-rows: repeat(3, 300px);
-  gap: 8px; // Slightly increased gap for breathing room
-  height: 100vh; // Ensures grid fills the viewport
+  grid-template-columns: repeat(3, 1fr); // Use fractional units instead of fixed width
+  grid-template-rows: repeat(3, 1fr); // Use fractional units for rows too
+  gap: 8px;
+  height: 100vh;
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
   overflow: hidden;
+  background-color: transparent; 
+
 
   .grid-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    opacity: 0.75; // Lower opacity for a softer background
-    transition: transform 1s ease, opacity 1s ease;
+    object-fit: cover; // Ensure images cover their grid cells properly
 
     &:hover {
-      transform: scale(1.05); // Slight zoom on hover for a dynamic feel
-      opacity: 0.85;
+      transform: scale(1.05);
     }
   }
-}
-
-// Semi-transparent overlay to soften background further
-.auth-background::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8); // Increased opacity for better form visibility
-  z-index: 1;
 }
 
 // Main auth container with form content
@@ -49,26 +36,29 @@
   position: relative;
   z-index: 1;
   padding: 2rem;
-  box-sizing: border-box;
   
   .auth-form {
     flex: 1;
-    max-width: 400px;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.95); // Light, slightly transparent background
+    width: 100%;
+    max-width: 480px; // Slightly wider for better text readability
+    min-width: 320px; // Minimum width to prevent squishing
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    
 
     h1 {
       color: $primary-color-dark;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem); // Responsive font size
       font-weight: 600;
       margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
 
     .subtitle {
       color: $secondary-color-dark;
       margin-bottom: 1.5rem;
+      font-size: clamp(0.9rem, 3vw, 1rem);
     }
 
     .form-group {
@@ -79,16 +69,18 @@
         font-weight: 500;
         color: $secondary-color-dark;
         margin-bottom: 0.5rem;
+        font-size: 0.95rem;
       }
 
       .input-field {
         width: 100%;
-        padding: 0.8rem;
+        padding: 0.8rem 1rem;
         border: 1px solid #ddd;
         color: $neutral-dark;
         border-radius: 5px;
         background-color: white;
         box-sizing: border-box;
+        font-size: 1rem;
 
         &:focus {
           border-color: $primary-color-dark;
@@ -99,10 +91,10 @@
 
     .auth-button {
       width: 100%;
-      padding: 0.8rem;
+      padding: 1rem;
       background-color: $primary-color-dark;
       color: white;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       border: none;
       border-radius: 5px;
@@ -117,6 +109,7 @@
     .auth-links {
       text-align: center;
       margin-top: 1.5rem;
+      font-size: 0.95rem;
 
       .link {
         color: $secondary-color-dark;
@@ -134,8 +127,6 @@
 // Dark theme adjustments
 .dark-theme {
   .auth-container {
-    background-color: $background-color-dark;
-
     .auth-form {
       background-color: rgba(255, 255, 255, 0.95);
 

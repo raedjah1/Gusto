@@ -1,0 +1,49 @@
+/* Register Custom Properties */
+@property --gradient-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* Keyframes for Gradient Animation */
+@keyframes gradientShift {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
+}
+
+/* Subtle Border Animation */
+.animated-border {
+    position: relative;
+    padding: 20px;
+    background: white;
+    z-index: 1;
+    
+    /* Simulated Border */
+    border-radius: 12px;
+    background-clip: padding-box;
+    
+    /* Animated Gradient */
+    &:before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        bottom: -2px;
+        left: -2px;
+        z-index: -1;
+        
+        /* Subtle professional gradient */
+        background: linear-gradient(
+            var(--gradient-angle),
+            rgba($primary-color-light, 0.6),
+            rgba($primary-color-light, 0.2),
+            rgba($primary-color-light, 0.6)
+        );
+        border-radius: inherit;
+        animation: gradientShift 8s infinite linear;
+    }
+}
