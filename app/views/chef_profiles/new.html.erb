@@ -1,7 +1,11 @@
 <div class="chef-profile-container">
   <div class="form-wrapper">
-    <h1>Create Your Chef Profile</h1>
-    <p class="form-subtitle">Share your culinary expertise with food lovers in your area</p>
+  <div style="text-align: left; margin: -10px 0 15px;">
+      <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" style="height: 40px; width: auto;">
+    </div>
+    <h1 class="form-title">Create Your Chef Profile</h1>
+  
+    <p class="form-subtitle">Showcase your culinary expertise and connect with food enthusiasts.</p>
 
     <%= form_for @chef_profile, html: { class: "profile-form" } do |f| %>
       <% if @chef_profile.errors.any? %>
@@ -15,26 +19,29 @@
         </div>
       <% end %>
 
-      <div class="form-group">
-        <%= f.label :bio, "About You" %>
-        <%= f.text_area :bio, placeholder: "Tell us about your culinary journey and passion for cooking...", rows: 5 %>
+      <div class="form-section">
+        <h2 class="section-title">Basic Information</h2>
+        <div class="form-group">
+          <%= f.label :bio, "About You", class: "form-label" %>
+          <%= f.text_area :bio, placeholder: "Tell us about your culinary journey and passion for cooking...", rows: 5, class: "input-field" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :specialty, "Specialties", class: "form-label" %>
+          <%= f.text_field :specialty, placeholder: "Italian, French, Asian Fusion (comma separated)", class: "input-field" %>
+        </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :specialty, "Specialties" %>
-        <%= f.text_field :specialty, placeholder: "Italian, French, Asian Fusion (comma separated)" %>
+      <div class="form-section">
+        <h2 class="section-title">Professional Details</h2>
+        <div class="form-group">
+          <%= f.label :experience, "Years of Experience", class: "form-label" %>
+          <%= f.number_field :experience, min: 0, class: "input-field" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :availability, "Availability", class: "form-label" %>
+          <%= f.text_area :availability, placeholder: "Describe your general availability (e.g., weekends, evenings)", rows: 3, class: "input-field" %>
+        </div>
       </div>
-
-      <div class="form-group">
-        <%= f.label :experience, "Years of Experience" %>
-        <%= f.number_field :experience, min: 0 %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :availability, "Availability" %>
-        <%= f.text_area :availability, placeholder: "Describe your general availability (e.g., weekends, evenings)", rows: 3 %>
-      </div>
-
 
       <div class="form-actions">
         <%= f.submit "Create Profile", class: "button-primary" %>
@@ -45,12 +52,12 @@
 
   <div class="info-sidebar">
     <div class="info-card">
-      <h3>Why Join Gusto?</h3>
-      <ul>
-        <li><i class="fas fa-users"></i> Connect with food enthusiasts</li>
-        <li><i class="fas fa-calendar-alt"></i> Flexible scheduling</li>
-        <li><i class="fas fa-star"></i> Build your reputation</li>
-        <li><i class="fas fa-dollar-sign"></i> Set your own rates</li>
+      <h3 class="info-title">Why Join Gusto?</h3>
+      <ul class="info-list">
+        <li><i class="fas fa-users icon"></i> Connect with food enthusiasts</li>
+        <li><i class="fas fa-calendar-alt icon"></i> Flexible scheduling</li>
+        <li><i class="fas fa-star icon"></i> Build your reputation</li>
+        <li><i class="fas fa-dollar-sign icon"></i> Set your own rates</li>
       </ul>
     </div>
   </div>

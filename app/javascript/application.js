@@ -3,3 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import './dropdown-toggle';
 import "./dark_mode_toggle"
+import "./chef_profile" 
