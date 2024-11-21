@@ -25,9 +25,12 @@ Rails.application.routes.draw do
 
   # Chef profiles and nested resources
   resources :chef_profiles, only: [:index, :show, :create, :update, :new] do
-    resources :menu_items, only: [:create, :update, :destroy]
+    resources :menu_items, only: [:create, :update, :destroy, :edit, :new] #Added new and edit actions
     resources :reviews, only: [:index, :create, :update, :destroy]
   end
+
+  # Menu items
+  resources :menu_items, only: [:show]
 
   # Bookings routes (not nested, accessible by both chefs and consumers)
   resources :bookings, only: [:index, :show, :create, :update, :destroy, :new]

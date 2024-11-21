@@ -1,0 +1,15 @@
+<!-- app/views/menu_items/show.html.erb -->
+
+<div class="menu-item-details">
+  <h1><%= @menu_item.name %></h1>
+  <p><%= @menu_item.description %></p>
+  <p><strong>Price:</strong> $<%= @menu_item.price %></p>
+  <div class="menu-item-image">
+    <%# image_tag "background/#{@menu_item.name.parameterize}.jpg", alt: @menu_item.name %>
+    <%# Use randomly-selected food images from background folder temporarily %>
+    <% images = Dir.glob(Rails.root.join("app/assets/images/backgrounds/*")).map { |file| File.basename(file) } %>
+    <% random_image = images.sample %>
+    <%= image_tag "backgrounds/#{random_image}", alt: @menu_item.name %>
+  </div>
+</div>
+

@@ -30,9 +30,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_235956) do
     t.text "bio"
     t.string "specialty"
     t.integer "experience"
+    t.string "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "availability"
     t.integer "years_of_experience"
     t.text "cuisine_types"
     t.index ["user_id"], name: "index_chef_profiles_on_user_id"

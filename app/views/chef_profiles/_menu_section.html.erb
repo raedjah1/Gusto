@@ -5,16 +5,20 @@
   <div class="menu-items">
     <% @chef_profile.menu_items.each do |menu_item| %>
       <div class="menu-item">
-        <h4 class= "menu-item-name"><%= menu_item.name %> - <%= number_to_currency(menu_item.price) %></h4>
+        <h4 class="menu-item-name">
+          <%= link_to menu_item.name, menu_item_path(menu_item), class: "menu-item-link" %>
+        </h4>
         <p class="menu-item-description"><%= menu_item.description %></p>
-      </div> 
+        <p><strong>Price:</strong> <%= number_to_currency(menu_item.price) %></p>
+      </div>
     <% end %>
   </div>
-
-  <%link_to 
 </div>
+
 <div class="menu-actions">
   <%= link_to "Add Menu Item", new_chef_profile_menu_item_path(@chef_profile), class: "button-primary" %>
-  <%= link_to "Edit Menu", edit_chef_profile_menu_path(@chef_profile), class: "button-secondary" %>
+  <% if @chef_profile.menu_items.any? %>
+    <%= link_to "Edit Menu", edit_chef_profile_menu_item_path(@chef_profile, @chef_profile.menu_items.first), class: "button-secondary" %>
+  <% end %>
 </div>
 

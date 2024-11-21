@@ -1,7 +1,15 @@
 class MenuItemsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_chef_profile
-    before_action :set_menu_item, only: [:update, :destroy]
+    before_action :authenticate_user!, except: [:show] #Allow unauthenticated users to browse chef menus
+    before_action :set_chef_profile, except: [:show]
+    before_action :set_menu_item, only: [:show, :edit, :update, :destroy] #Add placeholder edit
+
+    def show 
+      # @menu_item 
+    end
+
+    def edit
+      #Placeholder, for editing functionality
+    end
   
     def create
       @menu_item = @chef_profile.menu_items.build(menu_item_params)
@@ -32,7 +40,7 @@ class MenuItemsController < ApplicationController
     end
   
     def set_menu_item
-      @menu_item = @chef_profile.menu_items.find(params[:id])
+      @menu_item = MenuItem.find(params[:id]) # Look up menu_item directly by its ID
     end
   
     def menu_item_params

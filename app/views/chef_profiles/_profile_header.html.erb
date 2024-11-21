@@ -2,7 +2,7 @@
 
 <div class="profile-header">
   <div class="profile-image">
-    <%= image_tag @chef_profile.user.avatar.url, alt: @chef_profile.user.name %>
+    <%= image_tag asset_path("default_avatar.png"), alt: @chef_profile.user.name %>
   </div>
   <div class="profile-info">
     <h2 class="profile-name"><%= @chef_profile.user.name %> <span class="profile-role">Chef</span></h2>

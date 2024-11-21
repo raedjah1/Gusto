@@ -1,6 +1,11 @@
 # db/seeds.rb
 
 # Clear existing users
+#User.destroy_all
+Booking.destroy_all
+Review.destroy_all
+MenuItem.destroy_all
+ChefProfile.destroy_all
 User.destroy_all
 
 # Create users

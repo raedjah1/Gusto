@@ -23,6 +23,9 @@ class ChefProfilesController < ApplicationController
 
   def show
     @reviews = @chef_profile.reviews
+    # Update by allowing chef images(chef cards) to be clickable
+    @chef_profile = ChefProfile.find(params[:id])
+    @menu_items = @chef_profile.menu_items
   end
 
   def new

@@ -7,7 +7,9 @@ class ChefProfile < ApplicationRecord
 
   # Validations
   validates :bio, :specialty, :experience, :availability, presence: true
-  validates :specialty, format: { with: /\A[a-zA-Z, ]+\z/, message: "can only contain letters and commas" }
+  #For debug and make functions more compatible with text-generation
+  #validates :specialty, format: { with: /\A[a-zA-Z, ]+\z/, message: "can only contain letters and commas" }
+  validates :specialty, format: { with: /\A[a-zA-Z, ,&-]+\z/, message: "can only contain letters, commas, &, and -" }
   validate :valid_availability_format
 
 

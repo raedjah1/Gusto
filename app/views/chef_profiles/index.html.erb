@@ -37,23 +37,26 @@
         <% image = @chef_images[index % @chef_images.size] %>
         <% image = @chef_images.rotate!.first while image == last_image %>
         <% last_image = image %>
-
+      <!-- Chef card -->
+      <%# Chef card should display chef image, name, specialty, and rating. The entire card is clickable and links to the chef's menu page. %>
+      <%= link_to chef_profile_path(chef_profile), class: "chef-link" do %>
         <div class="chef-card" style="background-image: url(<%= asset_path("chefs/#{image}") %>)">
           <div class="chef-info">
-            <h2 class="chef-name"><%= chef_profile.user.name %></h2>
-            <p class="chef-specialty"><%= chef_profile.specialty %></p>
-            <% if chef_profile.average_rating.present? %>
-              <div class="stars">
-                <% chef_profile.average_rating.round.times do %>
-                  <i class="fas fa-star"></i>
-                <% end %>
-                <span>(<%= chef_profile.reviews.count %>)</span>
-              </div>
-            <% else %>
-              <span class="no-reviews">No reviews yet</span>
-            <% end %>
+              <h2 class="chef-name"><%= chef_profile.user.name %></h2>
+              <p class="chef-specialty"><%= chef_profile.specialty %></p>
+              <% if chef_profile.average_rating.present? %>
+                <div class="stars">
+                  <% chef_profile.average_rating.round.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <span>(<%= chef_profile.reviews.count %>)</span>
+                </div>
+              <% else %>
+                <span class="no-reviews">No reviews yet</span>
+              <% end %>
           </div>
         </div>
+      <% end %>
       <% end %>
     <% else %>
       <div class="no-results">
