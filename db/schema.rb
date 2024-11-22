@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_19_235956) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_21_225320) do
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chef_profile_id", null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_235956) do
     t.datetime "updated_at", null: false
     t.integer "years_of_experience"
     t.text "cuisine_types"
+    t.float "average_rating"
     t.index ["user_id"], name: "index_chef_profiles_on_user_id"
   end
 

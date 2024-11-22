@@ -15,6 +15,12 @@ class ChefProfilesController < ApplicationController
     if params[:specialty].present? && params[:specialty] != 'All Specialties'
       @chef_profiles = @chef_profiles.where(specialty: params[:specialty])
     end
+
+    # Filter by minimum rating
+    if params[:minimum_rating].present?
+      min_rating = params[:minimum_rating].to_f
+      @chef_profiles = @chef_profiles.where('average_rating >= ?', min_rating)
+    end
   
     # Load and shuffle background images for chef profiles
     images_path = Rails.root.join('app', 'assets', 'images', 'chefs')

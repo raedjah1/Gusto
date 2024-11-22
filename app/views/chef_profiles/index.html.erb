@@ -25,6 +25,22 @@
             options_for_select(['All Specialties'] + ChefProfile.pluck(:specialty).uniq, params[:specialty]),
             class: "specialty-select" %>
       </div>
+      <!-- Star Rating Filter -->
+      <div class="filter-group">
+      <%= select_tag :minimum_rating,
+        options_for_select(
+          [
+            ['1 star and above', 1],
+            ['2 stars and above', 2],
+            ['3 stars and above', 3],
+            ['4 stars and above', 4],
+            ['5 stars', 5]
+          ],
+          selected: params[:minimum_rating]
+        ),
+        include_blank: "Select star rating", 
+        class: "rating-select"  %>
+      </div> 
       <%= submit_tag "Search", class: "search-button" %>
     <% end %>
   </div>

@@ -28,6 +28,11 @@
   </head>
 
   <body>
+    <!-- Header with return link to homepage -->
+    <header>
+      <%= link_to 'Home', root_path, class: 'home-link' %>
+    </header>
+    <!-- Main content for each page -->
     <%= yield %>
   </body>
 </html>

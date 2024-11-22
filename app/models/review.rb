@@ -1,7 +1,10 @@
 class Review < ApplicationRecord
   # Associations
   belongs_to :user
-  belongs_to :chef_profile
+  belongs_to :chef_profile, touch: true
+
+  # Callbacks
+  after_commit :update_chef_average_rating
 
   # Validations
   validates :rating, presence: true, inclusion: { in: 1..5 }
@@ -23,5 +26,12 @@ class Review < ApplicationRecord
   # Checks if the review was left by a particular user
   def authored_by?(user)
     user_id == user.id
+  end
+
+  private 
+
+  # Updates the chef's average star rating
+  def update_chef_average_rating
+    chef_profile.update(average_rating: chef_profile.reviews.average(:rating).to_f)
   end
 end
