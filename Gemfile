@@ -29,6 +29,8 @@ end
 
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+
+gem 'simplecov', require: false
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

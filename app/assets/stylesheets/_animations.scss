@@ -1,4 +1,6 @@
 /* Register Custom Properties */
+@import "colors";
+    
 @property --gradient-angle {
     syntax: "<angle>";
     inherits: false;

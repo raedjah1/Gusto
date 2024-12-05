@@ -106,6 +106,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    docile (1.4.1)
     dockerfile-rails (1.6.24)
       rails (>= 3.0.0)
     dotenv (3.1.4)
@@ -336,6 +337,12 @@ GEM
     securerandom (0.3.2)
     shoulda-matchers (6.4.0)
       activesupport (>= 5.2.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -424,6 +431,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   sassc-rails (~> 2.1.0)
   shoulda-matchers
+  simplecov
   spring
   spring-commands-rspec
   sprockets-rails
