@@ -4,7 +4,7 @@
 #   context "when there are search results" do
 #     before do
 #       @search_results = [
-#         double("Result", 
+#         double("Result",
 #           title: "Test Result",
 #           description: "Test description",
 #           class: double(name: "TestClass"),

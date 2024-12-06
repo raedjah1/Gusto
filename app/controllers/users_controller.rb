@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   # GET /dashboard
   def dashboard
-    @user = current_user 
+    @user = current_user
     # This will render the dashboard view, using @user for the current user
     # Add any additional data here if needed, like recent activity or notifications
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def set_user
     @user = params[:id] ? User.find_by(id: params[:id]) : current_user
     unless @user
-      render json: { error: "User not found" }, status: :not_found
+      render json: { error: 'User not found' }, status: :not_found
     end
   end
 

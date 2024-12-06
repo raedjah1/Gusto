@@ -4,5 +4,4 @@ module SpeechRecognitionHelper
       transcription = `python3 transcribe_audio.py #{audio_path}`
       transcription.strip # Remove any leading/trailing whitespace
     end
-  end
-  
+end

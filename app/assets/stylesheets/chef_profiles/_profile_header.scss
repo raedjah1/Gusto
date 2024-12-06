@@ -1,39 +1,127 @@
-// app/assets/stylesheets/chef_profiles/_profile_header.scss
-@import "colors";       // Must be first to define variables
-@import "typography";   // Next, typography styles
-@import "buttons";      // Then, buttons styles that might use color variables
-@import "forms";        // Import forms styles
-@import "layout"; 
+@import "colors";
+@import "typography";
+@import "buttons";
+@import "forms";
+@import "layout";
+@import "animations";
+
+@property --scale-effect {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes subtleScale {
+  0% {
+    --scale-effect: 0.98;
+  }
+  100% {
+    --scale-effect: 1;
+  }
+}
+
+@keyframes underlineGrow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 120px;
+    opacity: 1;
+  }
+}
+
 .profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+  animation: subtleScale 0.7s ease-in-out forwards;
+  transform: scale(var(--scale-effect));
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba($primary-color, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(var(--scale-effect));
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 30px rgba($primary-color, 0.3);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .profile-info {
     display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid $border-color;
-  
-    .profile-image {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 20px;
-  
-      img {
-        width: 100%;
-        height: auto;
+    flex-direction: column;
+    gap: 1rem;
+
+    .profile-name {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      text-transform: capitalize;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 4px;
+        background: linear-gradient(90deg, $primary-color, lighten($primary-color, 20%));
+        border-radius: 2px;
+        animation: underlineGrow 0.8s ease-out forwards;
+        box-shadow: 0 2px 4px rgba($primary-color, 0.3);
       }
     }
-  
+
+    .profile-specialty {
+      font-size: 1.6rem;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .profile-bio {
+      color: #2c3e50;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      max-width: 800px;
+    }
+  }
+}
+
+/* Dark Mode */
+body.dark-theme {
+  .profile-header {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
     .profile-info {
       .profile-name {
-        font-size: $font-large;
-        font-weight: bold;
-        color: $primary-color;
+        color: #f5f5f5;
       }
-  
-      .profile-specialty, .profile-bio {
-        color: $text-secondary;
-        margin: 5px 0;
+
+      .profile-specialty,
+      .profile-bio {
+        color: #d4d4d4;
       }
     }
   }
-  
+}

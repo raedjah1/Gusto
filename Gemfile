@@ -20,23 +20,23 @@ gem 'jbuilder'
 # For access issues
 gem 'pundit'
 gem 'sassc-rails', '~> 2.1.0'
-
-
+gem 'image_processing', '~> 1.2'
+gem 'activestorage-validator'
 group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec' # if you want to use spring with RSpec
 end
-
+gem 'bundler-audit', require: false
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 
 gem 'simplecov', require: false
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
-
+gem 'nested_form'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
-
+gem 'cocoon'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -74,7 +74,7 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', group: :development
 gem 'font-awesome-rails'
 
 group :test do

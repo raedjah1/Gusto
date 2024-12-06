@@ -15,7 +15,7 @@ RSpec.describe MenuItem, type: :model do
   # Instance method tests
   describe '#formatted_price' do
     let(:menu_item) { build(:menu_item, price: 29.99) }
-    
+
     it 'returns price formatted as currency' do
       expect(menu_item.formatted_price).to eq('$29.99')
     end

@@ -14,13 +14,18 @@
 // Page-specific styles
 @import "pages/home";
 @import "chef_profiles/chef_profiles";  
-@import "chef_profiles/show";  
-
+@import "chef_profiles/show"; 
+@import "chef_profiles/menu_section";
+@import "chef_profiles/reviews_section";
+@import "chef_profiles/profile_header";
+@import "chef_profiles/booking_button";   
+@import "chef_profiles/edit"; 
+  
 @import "bookings/bookings_form"; 
 @import "pages/edit_profile";
 
 
-
+@import "pages/menu_item_form";  
 
 // Light Theme (default)
 body {

@@ -4,12 +4,13 @@ class ChefProfile < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :menu_items, dependent: :destroy
+  has_many :chef_availabilities, dependent: :destroy
 
   # Validations
-  validates :bio, :specialty, :experience, :availability, presence: true
-  validates :specialty, format: { with: /\A[a-zA-Z, ]+\z/, message: "can only contain letters and commas" }
-  validate :valid_availability_format
-
+  validates :bio, :specialty, :experience, presence: true
+  validates :specialty, format: { with: /\A[a-zA-Z, ]+\z/, message: 'can only contain letters and commas' }
+  # No need to validate availability anymore
+  validate :valid_availability_dates
 
   # Instance methods
   def average_rating
@@ -29,8 +30,8 @@ class ChefProfile < ApplicationRecord
   end
 
   def available_on?(date)
-    # Check if the provided date is available (assuming it's stored as an array of dates)
-    availability.include?(date.to_s) # availability is assumed to be an array of strings
+    # Check if the provided date exists in the chef_availabilities table
+    chef_availabilities.exists?(date: date)
   end
 
   def top_menu_items
@@ -44,26 +45,17 @@ class ChefProfile < ApplicationRecord
   private
 
   # Custom validation for availability format (ensures dates are valid)
-  def valid_availability_format
-    if availability.is_a?(Array)
-      # Check that each item in the array is a valid date
-      invalid_dates = availability.reject { |date| valid_date_format?(date) }
-      if invalid_dates.any?
-        errors.add(:availability, "contains invalid dates: #{invalid_dates.join(', ')}")
-      end
-    elsif availability.is_a?(String)
-      # If availability is a string, split it and check the dates
-      availability.split(',').each do |date|
-        if !valid_date_format?(date.strip)
-          errors.add(:availability, "must be a valid comma-separated list of dates")
-          break
-        end
+  def valid_availability_dates
+    # Since we're using a separate table for availability, this can be simplified
+    chef_availabilities.each do |availability|
+      if !valid_date_format?(availability.date.to_s)
+        errors.add(:chef_availabilities, "contains an invalid date: #{availability.date}")
       end
     end
   end
 
   # Helper method to check date format validity
   def valid_date_format?(date)
-    Date.parse(date.strip) rescue false
+    Date.parse(date) rescue false
   end
 end

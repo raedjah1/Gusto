@@ -3,72 +3,198 @@
 @import "typography";   // Next, typography styles
 @import "buttons";      // Then, buttons styles that might use color variables
 @import "forms";        // Import forms styles
-@import "layout"; 
-.edit-chef-profile {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background-color: $background-color-light;
-    border-radius: $border-radius;
+@import "layout";
+@import "animations";
+
+/* Chef Profile Container */
+.chef-profile-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: white;
+  position: relative;
+  z-index: 1;
+  @extend .animated-border;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+  background: rgba(#fff, 0.95);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(#000, 0.1);
+  animation: fadeInScale 0.6s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.form-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d3436;
+  margin-bottom: 1rem;
+}
+
+.form-subtitle {
+  font-size: 1rem;
+  color: #636e72;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
   
-    h1 {
-      font-size: $font-large;
-      color: $primary-color;
-      text-align: center;
-      margin-bottom: 20px;
+  .section-title {
+    font-size: 1.4rem;
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2d3436;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
+    background: #fff;
+    
+    &:focus {
+      border-color: #ff6b6b;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(#ff6b6b, 0.1);
     }
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
   
-    .form-group {
-      margin-bottom: 15px;
+  .button-primary, .button-secondary {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
   
-      label {
-        display: block;
-        font-weight: bold;
-        color: $primary-color;
-        margin-bottom: 5px;
-      }
-  
-      .form-control {
-        width: 100%;
-        padding: 10px;
-        font-size: $font-medium;
-        color: $text-primary;
-        border: 1px solid $border-color;
-        border-radius: $border-radius;
-      }
-    }
-  
-    .form-actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-  
-      .save-button {
-        background-color: $button-primary-bg;
-        color: $button-primary-text;
-        padding: 10px 20px;
-        border: none;
-        border-radius: $button-border-radius;
-        transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: darken($button-primary-bg, 10%);
-        }
-      }
-  
-      .cancel-button {
-        background-color: $button-secondary-bg;
-        color: $button-secondary-text;
-        padding: 10px 20px;
-        border: none;
-        border-radius: $button-border-radius;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: darken($button-secondary-bg, 10%);
-        }
-      }
+  .button-primary {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    animation: pulseGlow 2s infinite ease-in-out;
+    
+    &:hover {
+      background: #ff4757;
+      animation: buttonGlow 1s infinite alternate ease-in-out;
     }
   }
   
+  .button-secondary {
+    background: transparent;
+    color: #2d3436;
+    border: 1px solid #dfe6e9;
+    
+    &:hover {
+      background: rgba(#ff6b6b, 0.1);
+    }
+  }
+}
+
+/* Info Sidebar */
+.info-sidebar {
+  background: rgba(#fff, 0.95);
+  border-radius: 10px;
+  padding: 2rem;
+  animation: sidebarFade 0.6s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.info-card {
+  .info-title {
+    font-size: 1.6rem;
+    color: #ff6b6b;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-list {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: #2d3436;
+      
+      .icon {
+        color: #ff6b6b;
+        margin-right: 0.8rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Error Messages */
+.error-messages {
+  background: rgba(#ff4757, 0.1);
+  border-left: 4px solid #ff4757;
+  color: #ff4757;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.5rem;
+    
+    li {
+      list-style: disc;
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+/* Dark Mode */
+body.dark-theme {
+  .chef-profile-container {
+    background: #1a1a1a;
+  }
+  
+  .form-wrapper, .info-sidebar {
+    background: rgba(#2d2d2d, 0.95);
+    color: #fff;
+  }
+  
+  .form-title, .form-label, .info-card li {
+    color: #fff;
+  }
+  
+  .form-subtitle {
+    color: #a0a0a0;
+  }
+  
+  .input-field {
+    background: #333;
+    border-color: #444;
+    color: #fff;
+  }
+}

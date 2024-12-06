@@ -2,7 +2,7 @@
 # config/importmap.rb
 
 # Pin application.js
-pin "application", to: "application.js"
+pin 'application', to: 'application.js'
 
 # Pin npm packages
 pin '@hotwired/turbo-rails', to: 'turbo.min.js'
@@ -13,5 +13,5 @@ pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js'
 pin_all_from 'app/javascript/controllers', under: 'controllers'
 
 # Pin dark_mode_toggle.js
-pin "dark_mode_toggle", to: "dark_mode_toggle.js"
-pin "dropdown_toggle", to: "dropdown_toggle.js"
+pin 'dark_mode_toggle', to: 'dark_mode_toggle.js'
+pin 'dropdown_toggle', to: 'dropdown_toggle.js'

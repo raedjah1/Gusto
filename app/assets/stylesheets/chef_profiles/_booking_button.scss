@@ -3,26 +3,66 @@
 @import "typography";   // Next, typography styles
 @import "buttons";      // Then, buttons styles that might use color variables
 @import "forms";        // Import forms styles
-@import "layout"; 
-
+@import "layout";
+@import "animations";
 
 .booking-button-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem;
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.booking-button {
+  padding: 0.8rem 1.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff6b6b, #ff4757);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: pulseGlow 2s infinite ease-in-out;
+  backdrop-filter: blur(10px);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: 0.5s;
   }
-  
-  .booking-button {
-    padding: 10px 20px;
-    font-size: $font-medium;
-    background-color: $button-primary-bg;
-    color: $button-primary-text;
-    border: none;
-    border-radius: $button-border-radius;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: darken($button-primary-bg, 10%);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    animation: buttonGlow 1s infinite alternate ease-in-out;
+
+    &:before {
+      left: 100%;
     }
   }
-  
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Dark Mode */
+body.dark-theme {
+  .booking-button {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+  }
+}

@@ -3,39 +3,108 @@
 @import "typography";   // Next, typography styles
 @import "buttons";      // Then, buttons styles that might use color variables
 @import "forms";        // Import forms styles
-@import "layout"; 
+@import "layout";
+@import "animations";
+
 .reviews-section {
-  padding: 20px;
+  padding: 2.5rem;
+  background: rgba(#fff, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(#000, 0.1);
+  animation: fadeInScale 0.6s ease-out;
+  backdrop-filter: blur(10px);
+  margin: 2rem 0;
 
   h3 {
-    font-size: $font-medium;
-    color: $primary-color;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 1.5rem;
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+      border-radius: 2px;
+    }
   }
 
   .review {
-    margin-top: 10px;
-    padding: 15px;
-    border-radius: $border-radius;
-    background-color: $card-background;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(#dfe6e9, 0.5);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    }
 
     .review-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
+      align-items: center;
+      margin-bottom: 1rem;
     }
 
     .reviewer-name {
-      font-weight: bold;
-      color: $primary-color;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ff6b6b;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ff4757;
+      }
     }
 
     .review-rating {
-      color: $accent-color;
+      color: #ff6b6b;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      animation: pulseGlow 2s infinite ease-in-out;
     }
 
     .review-comments {
-      color: $text-secondary;
-      margin-top: 5px;
+      color: #636e72;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+    }
+  }
+}
+
+/* Dark Mode */
+body.dark-theme {
+  .reviews-section {
+    background: rgba(#2d2d2d, 0.95);
+    
+    h3 {
+      color: #fff;
+    }
+
+    .review {
+      background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+      border-color: rgba(#fff, 0.1);
+
+      .reviewer-name {
+        color: #ff6b6b;
+      }
+
+      .review-comments {
+        color: #a0a0a0;
+      }
     }
   }
 }

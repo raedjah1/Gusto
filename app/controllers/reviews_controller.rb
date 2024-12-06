@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   def index
     @reviews = current_user.reviews  # Adjust based on your association setup
   end
-  
+
   # Define other actions as needed
 end
   def new

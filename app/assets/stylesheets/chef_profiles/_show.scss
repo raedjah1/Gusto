@@ -3,91 +3,142 @@
 @import "typography";   // Next, typography styles
 @import "buttons";      // Then, buttons styles that might use color variables
 @import "forms";        // Import forms styles
-@import "layout"; 
+@import "layout";
+@import "animations";   // Import animations
 
 .chef-profile {
-  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: #ffffff;
-
-  h1 {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #2d3436;
-    font-weight: 800;
-    background: linear-gradient(45deg, #2d3436, #636e72);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: $background-color-light;
+  position: relative;
+  z-index: 1;
+  animation: fadeInScale 0.6s ease-out;
 
   .profile-content {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    background: rgba($background-color-light, 0.95);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 
     .chef-info {
-      text-align: center;
       margin-bottom: 2rem;
+      
+      .section-title {
+        font-size: 1.4rem;
+        color: #ff6b6b;
+        margin-bottom: 1rem;
+      }
 
       .chef-name {
-        font-size: 1.8rem;
-        color: #2d3436;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: $background-color-dark;
+        margin-bottom: 1rem;
       }
 
       .chef-specialty {
-        font-size: 1rem;
-        color: #636e72;
-        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        color: lighten($background-color-dark, 20%);
+        margin-bottom: 1rem;
+        font-weight: 500;
       }
 
       .chef-experience {
-        font-size: 1rem;
-        color: #b2bec3;
-        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: lighten($background-color-dark, 30%);
+        margin-bottom: 1.5rem;
       }
 
       .chef-rating {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
         
         .stars {
           color: #ff6b6b;
-          margin-right: 0.5rem;
+          animation: pulseGlow 2s infinite ease-in-out;
 
           i {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            margin: 0 0.2rem;
           }
         }
 
         .no-reviews {
-          font-size: 0.9rem;
-          color: #b2bec3;
+          font-size: 1rem;
+          color: lighten($background-color-dark, 40%);
           font-style: italic;
         }
       }
     }
 
     .chef-bio {
+      background: rgba($background-color-light, 0.95);
+      border-radius: 10px;
       padding: 2rem;
-      background-color: #f8f9fa;
-      border-radius: 15px;
       margin-bottom: 2rem;
+      animation: sidebarFade 0.6s ease-out;
+      backdrop-filter: blur(10px);
 
       h2 {
-        color: #2d3436;
-        margin-bottom: 1rem;
+        font-size: 1.6rem;
+        color: #ff6b6b;
+        margin-bottom: 1.5rem;
       }
 
       p {
-        color: #636e72;
-        line-height: 1.6;
+        color: $background-color-dark;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .booking-section {
+    background: rgba($background-color-light, 0.95);
+    border-radius: 10px;
+    padding: 2rem;
+    animation: sidebarFade 0.6s ease-out;
+    backdrop-filter: blur(10px);
+
+    .booking-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      
+      .button-primary, .button-secondary {
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .button-primary {
+        background: #ff6b6b;
+        color: #fff;
+        border: none;
+        animation: buttonGlow 1s infinite alternate ease-in-out;
+        
+        &:hover {
+          background: #ff4757;
+        }
+      }
+      
+      .button-secondary {
+        background: transparent;
+        color: $background-color-dark;
+        border: 1px solid #dfe6e9;
+        
+        &:hover {
+          background: rgba(#ff6b6b, 0.1);
+        }
       }
     }
   }
@@ -96,14 +147,35 @@
 /* Responsive Styling */
 @media (max-width: 768px) {
   .chef-profile {
-    padding: 2rem 1rem;
-
-    h1 {
-      font-size: 2.5rem;
-    }
+    grid-template-columns: 1fr;
+    padding: 1rem;
 
     .profile-content {
-      padding: 1rem;
+      padding: 1.5rem;
+    }
+  }
+}
+
+/* Dark Theme */
+body.dark-theme {
+  .chef-profile {
+    background: $background-color-dark;
+
+    .profile-content, .booking-section {
+      background: rgba(darken($background-color-dark, 2%), 0.95);
+      color: $background-color-light;
+
+      .chef-name, .chef-specialty, .chef-experience {
+        color: $background-color-light;
+      }
+
+      .chef-bio {
+        background: rgba(darken($background-color-dark, 3%), 0.95);
+        
+        p {
+          color: darken($background-color-light, 15%);
+        }
+      }
     }
   }
 }

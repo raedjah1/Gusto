@@ -7,4 +7,3 @@ FactoryBot.define do
       price { Faker::Commerce.price(range: 10.0..50.0) }
     end
   end
-  

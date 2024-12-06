@@ -8,7 +8,7 @@ RSpec.describe 'home/index.html.erb', type: :view do
     # Mock any necessary helpers and methods
     allow(view).to receive(:user_signed_in?).and_return(false)
     allow(view).to receive(:current_user).and_return(nil)
-    
+
     # Stub route helpers
     allow(view).to receive(:chef_profiles_path).and_return('/chef_profiles')
     allow(view).to receive(:new_booking_path).and_return('/bookings/new')
@@ -16,7 +16,7 @@ RSpec.describe 'home/index.html.erb', type: :view do
 
     # Render the view
     render template: 'home/index', layout: 'layouts/application'
-    
+
     # Debugging output (uncomment to debug rendered output)
     # puts rendered
   end

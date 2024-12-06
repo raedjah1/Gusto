@@ -1,15 +1,25 @@
 <!-- app/views/chef_profiles/show.html.erb -->
 
 <div class="chef-profile">
-  <!-- Profile Header -->
-  <%= render 'profile_header', chef_profile: @chef_profile %>
+  <div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-section">
+      <%= render 'profile_header', chef_profile: @chef_profile %>
+    </div>
 
-  <!-- Menu Section -->
-  <%= render 'menu_section', chef_profile: @chef_profile %>
+    <!-- Menu Section -->
+    <div class="menu-section">
+      <%= render 'menu_section', chef_profile: @chef_profile %>
+    </div>
 
-  <!-- Reviews Section -->
-  <%= render 'reviews_section', chef_profile: @chef_profile %>
+    <!-- Reviews Section -->
+    <div class="reviews-section">
+      <%= render 'reviews_section', chef_profile: @chef_profile %>
+    </div>
 
-  <!-- Booking Button -->
-  <%= render 'shared/booking_button', chef_profile: @chef_profile %>
+    <!-- Booking Section -->
+    <div class="booking-section">
+      <%= render 'shared/booking_button', chef_profile: @chef_profile %>
+    </div>
+  </div>
 </div>

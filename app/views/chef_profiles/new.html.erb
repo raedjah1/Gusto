@@ -1,6 +1,6 @@
 <div class="chef-profile-container">
   <div class="form-wrapper">
-  <div style="text-align: left; margin: -10px 0 15px;">
+    <div style="text-align: left; margin: -10px 0 15px;">
       <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" style="height: 40px; width: auto;">
     </div>
     <h1 class="form-title">Create Your Chef Profile</h1>
@@ -16,6 +16,12 @@
               <li><%= msg %></li>
             <% end %>
           </ul>
+        </div>
+      <% end %>
+
+      <% flash.each do |name, msg| %>
+        <div class="<%= name %>-message">
+          <%= msg %>
         </div>
       <% end %>
 
@@ -37,14 +43,27 @@
           <%= f.label :experience, "Years of Experience", class: "form-label" %>
           <%= f.number_field :experience, min: 0, class: "input-field" %>
         </div>
+        
+        <!-- Updated availability field using flatpickr -->
         <div class="form-group">
-          <%= f.label :availability, "Availability", class: "form-label" %>
-          <%= f.text_area :availability, placeholder: "Describe your general availability (e.g., weekends, evenings)", rows: 3, class: "input-field" %>
+          <%= f.label :chef_availabilities, "Availability", class: "form-label" %>
+          <div class="help-text" style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #666;">
+            Select multiple available dates.
+          </div>
+
+          <!-- Use fields_for to add nested fields for chef_availabilities -->
+          <%= f.fields_for :chef_availabilities, @chef_profile.chef_availabilities.build do |avail_form| %>
+            <%= avail_form.text_field :date, 
+                placeholder: "Pick multiple dates", 
+                class: "input-field", 
+                id: "availability-picker", 
+                name: "chef_profile[chef_availabilities_attributes][0][date]" %>
+          <% end %>
         </div>
       </div>
 
       <div class="form-actions">
-        <%= f.submit "Create Profile", class: "button-primary" %>
+        <%= f.submit "Create Profile", class: "button-primary", data: { turbo: false } %>
         <%= link_to "Cancel", root_path, class: "button-secondary" %>
       </div>
     <% end %>
@@ -62,3 +81,22 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    flatpickr("#availability-picker", {
+      mode: "multiple", // Allows selecting multiple dates
+      dateFormat: "Y-m-d", // Format the selected dates
+      onChange: function(selectedDates) {
+        // Collect the selected dates as an array of strings
+        let dates = selectedDates.map(date => date.toISOString().split('T')[0]);
+        // Update the availability field with the selected dates
+        document.querySelector("#availability-picker").value = dates.join(',');
+        
+        // Dynamically add the selected dates to the hidden field
+        let availabilityInput = document.querySelector("[name='chef_profile[chef_availabilities_attributes][0][date]']");
+        availabilityInput.value = dates.join(',');
+      }
+    });
+  });
+</script>

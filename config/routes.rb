@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "favorites/index"
   # Home page and root route
   get 'home/index'
   root to: 'home#index'  # Ensure HomeController exists and has an index action
@@ -20,13 +19,13 @@ Rails.application.routes.draw do
   get 'service-worker' => 'rails/pwa#service_worker', as: :pwa_service_worker
   get 'manifest' => 'rails/pwa#manifest', as: :pwa_manifest
 
-  # User routes
-  resources :users, only: [:show, :update]
-
   # Chef profiles and nested resources
   resources :chef_profiles, only: [:index, :show, :create, :update, :new] do
-    resources :menu_items, only: [:create, :update, :destroy]
+    resources :menu_items do # Allow all CRUD actions for menu items
+      resources :ingredients, only: [:create, :update, :destroy]
+    end
     resources :reviews, only: [:index, :create, :update, :destroy]
+    resources :chef_availabilities, only: [:index, :create, :destroy] # Add chef availabilities routes
   end
 
   # Bookings routes (not nested, accessible by both chefs and consumers)
@@ -35,8 +34,7 @@ Rails.application.routes.draw do
   # Messages routes
   resources :messages, only: [:index, :create]
 
-
   # Optional routes for additional features
   resources :notifications, only: [:index] if defined?(NotificationsController)
-  resources :favorites, only: [:index, :create, :destroy] if defined?(FavoritesController)
+  resources :favorites, only: [:create, :destroy] if defined?(FavoritesController) # Remove duplicate index route
 end

@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
 
   # Friendly error redirection for not found errors
   def not_found
-    redirect_to root_path, alert: "Page not found."
+    redirect_to root_path, alert: 'Page not found.'
   end
 end

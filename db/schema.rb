@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_20_031523) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_05_025139) do
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chef_profile_id", null: false
@@ -25,6 +53,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_031523) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "chef_availabilities", force: :cascade do |t|
+    t.integer "chef_profile_id", null: false
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chef_profile_id"], name: "index_chef_availabilities_on_chef_profile_id"
+  end
+
   create_table "chef_profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "bio"
@@ -32,7 +68,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_031523) do
     t.integer "experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "availability"
     t.integer "years_of_experience"
     t.text "cuisine_types"
     t.integer "profile_completion_step", default: 0
@@ -82,8 +117,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_031523) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "chef_profiles"
   add_foreign_key "bookings", "users"
+  add_foreign_key "chef_availabilities", "chef_profiles"
   add_foreign_key "chef_profiles", "users"
   add_foreign_key "menu_items", "chef_profiles"
   add_foreign_key "reviews", "chef_profiles"
