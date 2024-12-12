@@ -1,9 +1,16 @@
 <!-- app/views/chef_profiles/show.html.erb -->
 
 <div class="chef-profile">
-  <div class="profile-container">
+  <div class="main-content">
     <!-- Profile Header -->
     <div class="profile-section">
+     <div class="back-section">
+       <%= link_to root_path, class: "back-button" do %>
+         <i class="fas fa-arrow-left"></i>
+         <span>Back to Home</span>
+       <% end %>
+     </div>
+  
       <%= render 'profile_header', chef_profile: @chef_profile %>
     </div>
 
@@ -12,14 +19,20 @@
       <%= render 'menu_section', chef_profile: @chef_profile %>
     </div>
 
-    <!-- Reviews Section -->
-    <div class="reviews-section">
-      <%= render 'reviews_section', chef_profile: @chef_profile %>
-    </div>
-
     <!-- Booking Section -->
     <div class="booking-section">
-      <%= render 'shared/booking_button', chef_profile: @chef_profile %>
+      <%= render 'chef_profiles/booking_button', chef_profile: @chef_profile %>
     </div>
+  </div>
+
+  <div class="sidebar">
+    <!-- Reviews Summary -->
+    <%= render 'reviews_section', chef_profile: @chef_profile %>
+
+    <!-- Wallet Card -->
+    <%= render 'wallet_card', chef_profile: @chef_profile %>
+
+    <!-- Stats Card -->
+    <%= render 'chef_profiles/stats_card', chef_profile: @chef_profile %>
   </div>
 </div>

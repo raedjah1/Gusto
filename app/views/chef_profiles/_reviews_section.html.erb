@@ -1,14 +1,15 @@
 <!-- _reviews_section.html.erb -->
 
 <div class="reviews-section">
-  <h3>Customer Reviews</h3>
-  <% @chef_profile.reviews.each do |review| %>
-    <div class="review">
-      <div class="review-header">
-        <span class="reviewer-name"><%= review.user.name %></span>
-        <span class="review-rating">⭐ <%= review.rating %></span>
-      </div>
-      <p class="review-comments"><%= review.comments %></p>
+  <div class="rating-summary">
+    <div class="average-rating">
+      <% if @chef_profile.reviews.any? %>
+        <span class="stars">
+          <%= "⭐" * @chef_profile.reviews.average(:rating).round %>
+        </span>
+      <% else %>
+        <span class="stars empty-stars"></span>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

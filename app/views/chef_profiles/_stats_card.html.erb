@@ -1,0 +1,12 @@
+<div class="card stats-card">
+  <h3>Chef Stats</h3>
+  <div class="card-content">
+    <% total_bookings = @chef_profile.bookings.count %>
+    <% past_bookings = @chef_profile.past_bookings.count %>
+    <% completion_rate = total_bookings > 0 ? ((past_bookings.to_f / total_bookings) * 100).round : 0 %>
+
+    <p>Total Bookings: <%= total_bookings %></p>
+    <p>Completion Rate: <%= completion_rate %>%</p>
+    <p>Response Time: N/A</p>
+  </div>
+</div>

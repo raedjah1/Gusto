@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_05_025139) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_11_224411) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -71,7 +71,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_05_025139) do
     t.integer "years_of_experience"
     t.text "cuisine_types"
     t.integer "profile_completion_step", default: 0
+    t.decimal "wallet_balance"
     t.index ["user_id"], name: "index_chef_profiles_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "quantity"
+    t.integer "menu_item_id", null: false
+    t.string "unit"
+    t.index ["menu_item_id"], name: "index_ingredients_on_menu_item_id"
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -92,6 +105,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_05_025139) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "chef_profile_id", null: false
@@ -101,6 +121,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_05_025139) do
     t.datetime "updated_at", null: false
     t.index ["chef_profile_id"], name: "index_reviews_on_chef_profile_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.decimal "amount"
+    t.string "transaction_type"
+    t.integer "chef_profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chef_profile_id"], name: "index_transactions_on_chef_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,7 +152,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_05_025139) do
   add_foreign_key "bookings", "users"
   add_foreign_key "chef_availabilities", "chef_profiles"
   add_foreign_key "chef_profiles", "users"
+  add_foreign_key "ingredients", "menu_items"
+  add_foreign_key "ingredients", "recipes"
   add_foreign_key "menu_items", "chef_profiles"
   add_foreign_key "reviews", "chef_profiles"
   add_foreign_key "reviews", "users"
+  add_foreign_key "transactions", "chef_profiles"
 end

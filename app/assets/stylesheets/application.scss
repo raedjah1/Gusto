@@ -10,7 +10,7 @@
 // Component styles
 @import "components/header";
 @import "components/footer";
-
+@import "chef_profiles/wallet_card";  
 // Page-specific styles
 @import "pages/home";
 @import "chef_profiles/chef_profiles";  
@@ -20,11 +20,12 @@
 @import "chef_profiles/profile_header";
 @import "chef_profiles/booking_button";   
 @import "chef_profiles/edit"; 
-  
 @import "bookings/bookings_form"; 
 @import "pages/edit_profile";
-
-
+@import "chef_profiles/stats_card";
+@import "chef_profiles/menu_section"; 
+@import "chef_profiles/stats_card";
+@import "ingredients/ingredient_fields";  
 @import "pages/menu_item_form";  
 
 // Light Theme (default)

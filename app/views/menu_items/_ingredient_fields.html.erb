@@ -1,0 +1,15 @@
+<div class="ingredient-fields">
+  <%= f.label :name, "Ingredient Name" %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Ingredient Name" %>
+
+  <%= f.label :quantity, "Quantity" %>
+  <%= f.text_field :quantity, class: "form-control", placeholder: "Quantity" %>
+
+  <%= f.label :unit, "Unit" %>
+  <%= f.text_field :unit, class: "form-control", placeholder: "Unit (e.g., kg, cup)" %>
+
+  <%= f.hidden_field :_destroy, value: '0' %> <!-- This hidden field marks the ingredient for deletion -->
+
+  <!-- The remove ingredient button -->
+  <%= link_to "Remove Ingredient", "#", class: "remove-ingredient-btn js-remove-ingredient" %>
+</div>

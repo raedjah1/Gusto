@@ -5,6 +5,7 @@ class ChefProfile < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :menu_items, dependent: :destroy
   has_many :chef_availabilities, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   # Validations
   validates :bio, :specialty, :experience, presence: true
@@ -40,6 +41,10 @@ class ChefProfile < ApplicationRecord
 
   def specialties_list
     specialty&.split(',')&.map(&:strip)
+  end
+
+  def wallet_balance
+    transactions.sum(:amount)
   end
 
   private

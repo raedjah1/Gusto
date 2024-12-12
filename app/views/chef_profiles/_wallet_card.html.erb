@@ -1,0 +1,73 @@
+<div class="wallet-section">
+  <h3>Wallet</h3>
+  <div class="wallet-content">
+    <div class="balance-display animate-balance">
+      <div class="balance-amount">
+        <span class="currency">$</span>
+        <span class="amount"><%= number_with_precision(@chef_profile.wallet_balance || 0, precision: 2) %></span>
+      </div>
+      <p class="balance-label">Available Balance</p>
+    </div>
+
+    <div class="wallet-actions">
+      <button class="btn-secondary withdraw-funds">
+        <i class="fas fa-arrow-circle-down"></i>
+        Withdraw
+      </button>
+    </div>
+
+    <div class="recent-transactions">
+      <h4>Recent Transactions</h4>
+      <% if @chef_profile.transactions.present? %>
+        <div class="transaction-list">
+          <% @chef_profile.transactions.limit(5).each do |transaction| %>
+            <div class="transaction-item animate-transaction">
+              <div class="transaction-info">
+                <span class="transaction-type <%= transaction.transaction_type %>">
+                  <%= transaction.transaction_type.titleize %>
+                </span>
+                <span class="transaction-date">
+                  <%= transaction.created_at.strftime("%b %d, %Y") %>
+                </span>
+              </div>
+              <span class="transaction-amount <%= transaction.amount.positive? ? 'positive' : 'negative' %>">
+                <%= number_to_currency(transaction.amount) %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="no-transactions">No recent transactions</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <style>
+    @keyframes balancePulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideIn {
+      from { 
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-balance {
+      animation: balancePulse 1s ease-in-out;
+    }
+
+    .animate-transaction {
+      animation: slideIn 0.3s ease-out forwards;
+    }
+  </style>
+<% end %>

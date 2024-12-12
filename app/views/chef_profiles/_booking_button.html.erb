@@ -1,5 +1,56 @@
 <!-- app/views/chef_profiles/_booking_button.html.erb -->
 
-<div class="booking-button-container">
-  <%= link_to 'Book Now', new_booking_path(chef_profile_id: chef_profile.id), class: 'booking-button' %>
+<div class="bookings-section">
+  <h3>My Bookings</h3>
+  
+  <div class="bookings-tabs">
+    <button class="tab-button active" data-tab="upcoming">Upcoming</button>
+    <button class="tab-button" data-tab="past">Past</button>
+  </div>
+
+  <div class="bookings-content">
+    <div class="tab-content active" id="upcoming">
+      <% upcoming_bookings = chef_profile.bookings.select(&:upcoming?) %>
+      <% if upcoming_bookings.any? %>
+        <% upcoming_bookings.each do |booking| %>
+          <div class="booking-card">
+            <div class="booking-details">
+              <h4>Booking with <%= booking.user.name %></h4>
+              <p><i class="far fa-calendar"></i> <%= booking.date.strftime("%B %d, %Y") %></p>
+              <p><i class="far fa-clock"></i> <%= booking.time.strftime("%I:%M %p") %></p>
+              <p><i class="fas fa-map-marker-alt"></i> <%= booking.location %></p>
+              <p class="status <%= booking.status %>"><%= booking.status.titleize %></p>
+            </div>
+            <div class="booking-actions">
+              <%= link_to "View Details", booking_path(booking), class: "btn-secondary" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="no-bookings">No upcoming bookings</p>
+      <% end %>
+    </div>
+
+    <div class="tab-content" id="past">
+      <% past_bookings = chef_profile.bookings.select(&:past?) %>
+      <% if past_bookings.any? %>
+        <% past_bookings.each do |booking| %>
+          <div class="booking-card">
+            <div class="booking-details">
+              <h4>Booking with <%= booking.user.name %></h4>
+              <p><i class="far fa-calendar"></i> <%= booking.date.strftime("%B %d, %Y") %></p>
+              <p><i class="far fa-clock"></i> <%= booking.time.strftime("%I:%M %p") %></p>
+              <p><i class="fas fa-map-marker-alt"></i> <%= booking.location %></p>
+              <p class="status <%= booking.status %>"><%= booking.status.titleize %></p>
+            </div>
+            <div class="booking-actions">
+              <%= link_to "View Details", booking_path(booking), class: "btn-secondary" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="no-bookings">No past bookings</p>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,135 @@
+@import "../colors";
+@import "../typography";
+@import "../buttons";
+@import "../forms";
+@import "../layout";
+@import "../animations";
+
+.ingredient-fields {
+  background: rgba($background-color-light, 0.95);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  animation: fadeInDown 0.4s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .ingredient-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+
+    .ingredient-name, .ingredient-quantity {
+      .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #dfe6e9;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: #ff6b6b;
+          box-shadow: 0 0 0 2px rgba(#ff6b6b, 0.1);
+        }
+
+        &::placeholder {
+          color: lighten($background-color-dark, 40%);
+        }
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: $background-color-dark;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+    }
+
+    .ingredient-actions {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 0.5rem;
+
+      .remove-ingredient-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+        color: #ff6b6b;
+        border: 1px solid #ff6b6b;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+
+        i {
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background: #ff6b6b;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .ingredient-fields {
+    padding: 1rem;
+
+    .ingredient-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      .ingredient-actions {
+        padding: 0.5rem 0;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+/* Dark Theme */
+body.dark-theme {
+  .ingredient-fields {
+    background: rgba(darken($background-color-dark, 2%), 0.95);
+
+    .ingredient-row {
+      .ingredient-name, .ingredient-quantity {
+        label {
+          color: $background-color-light;
+        }
+
+        .form-control {
+          background: darken($background-color-dark, 3%);
+          border-color: lighten($background-color-dark, 10%);
+          color: $background-color-light;
+
+          &::placeholder {
+            color: lighten($background-color-dark, 30%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
