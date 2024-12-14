@@ -51,16 +51,16 @@ class ChefProfile < ApplicationRecord
 
   # Custom validation for availability format (ensures dates are valid)
   def valid_availability_dates
-    # Since we're using a separate table for availability, this can be simplified
     chef_availabilities.each do |availability|
-      if !valid_date_format?(availability.date.to_s)
-        errors.add(:chef_availabilities, "contains an invalid date: #{availability.date}")
+      unless valid_date_format?(availability.date.to_s)
+        errors.add(:base, "Invalid date in availability: #{availability.date}")
       end
     end
   end
+  
 
   # Helper method to check date format validity
   def valid_date_format?(date)
-    Date.parse(date) rescue false
+    Date.iso8601(date) rescue false
   end
 end

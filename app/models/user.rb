@@ -13,7 +13,6 @@ class User < ApplicationRecord
   # Associations
   has_one :chef_profile
   has_many :bookings # Ensures each user can have multiple bookings
-  has_one_attached :avatar
 
   # Role Methods
   def chef?

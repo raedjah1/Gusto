@@ -32,12 +32,9 @@ class MenuItem < ApplicationRecord
 
   # Returns a placeholder if no image is uploaded
   def display_image
-    if image.attached?
-      image.variant(resize_to_limit: [300, 300]) # Resize image for consistent display
-    else
-      'default_image.png' # Path to a default placeholder image
-    end
+    image.attached? ? image.variant(resize_to_limit: [300, 300]) : Rails.application.assets.find_asset('default_image.png')
   end
+  
 
   private
 
