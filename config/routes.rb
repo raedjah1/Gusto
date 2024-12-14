@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root to: 'home#index'  # Ensure HomeController exists and has an index action
 
   resources :reviews, only: [:index, :show, :new, :create]
-  # Devise for User authentication
-  devise_for :users
+  # Devise for User authentication with custom registrations controller
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:show, :update]
   get 'search', to: 'search#show', as: 'search'
   get 'favorites', to: 'favorites#index', as: 'favorites'
@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   get 'manifest' => 'rails/pwa#manifest', as: :pwa_manifest
 
   # Chef profiles and nested resources
-  resources :chef_profiles, only: [:index, :show, :create, :update, :new] do
+  resources :chef_profiles, only: [:index, :show, :create, :update, :new, :edit] do
     resources :menu_items do # Allow all CRUD actions for menu items
       resources :ingredients, only: [:create, :update, :destroy]
+      # Ensure the destroy action is available for menu items
+      delete :destroy, on: :member
     end
     resources :reviews, only: [:index, :create, :update, :destroy]
     resources :chef_availabilities, only: [:index, :create, :destroy] # Add chef availabilities routes

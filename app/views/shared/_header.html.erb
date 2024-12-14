@@ -27,7 +27,7 @@
           <li class="user-menu">
             <div class="dropdown">
               <button class="dropdown-toggle">
-                <%= image_tag asset_path('default_avatar.png'), class: "user-avatar" %>
+                <%= image_tag current_user.profile_picture.attached? ? url_for(current_user.profile_picture) : asset_path('default_avatar.png'), class: "user-avatar" %>
                 <i class="fas fa-chevron-down"></i>
               </button>
               <div class="dropdown-menu">

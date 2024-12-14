@@ -1,9 +1,9 @@
-<div class="profile-header">
+<div class="profile-header" style="position: relative;">
   <div class="profile-image">
-    <% if @chef_profile.user.respond_to?(:avatar) && @chef_profile.user.avatar.present? %>
-      <%= image_tag @chef_profile.user.avatar.url, alt: @chef_profile.user.name %>
+    <% if @chef_profile.user.respond_to?(:profile_picture) && @chef_profile.user.profile_picture.attached? %>
+      <%= image_tag url_for(@chef_profile.user.profile_picture), alt: @chef_profile.user.name, class: "rounded-circle shadow" %>
     <% else %>
-      <%= image_tag "default_avatar.png", alt: @chef_profile.user.name %>
+      <%= image_tag "default_avatar.png", alt: @chef_profile.user.name, class: "rounded-circle shadow" %>
     <% end %>
   </div>
   <div class="profile-info">
@@ -13,5 +13,12 @@
     </h2>
     <p class="profile-specialty">Specialty: <%= @chef_profile.specialty %></p>
     <p class="profile-bio"><%= @chef_profile.bio %></p>
+  </div>
+  
+  <!-- Edit Profile link -->
+  <div class="button-edit">
+    <%= link_to edit_chef_profile_path(@chef_profile), title: "Edit Profile" do %>
+      <%= image_tag('edit_icon.png', class: 'edit-icon', style: 'width: 20px; height: 20px;') %>
+    <% end %>
   </div>
 </div>

@@ -11,8 +11,10 @@
           <%= image_tag 'default_image.png', class: "menu-item-image" %>
         <% end %>
         <% if current_user == @chef_profile.user %>
-          <%= link_to image_tag('edit_icon.png', class: 'edit-icon', style: 'width: 10px; height: 10px; position: absolute; bottom: 0; left: 0;'), edit_chef_profile_menu_item_path(@chef_profile, menu_item), class: "button-edit", title: "Edit Menu Item" %>
-          <%= link_to image_tag('delete_icon.png', class: 'delete-icon', style: 'width: 10px; height: 10px; position: absolute; bottom: 0; right: 0;'), chef_profile_menu_item_path(@chef_profile, menu_item), method: :delete, data: { confirm: 'Are you sure you want to delete this menu item?' }, class: "button-delete", title: "Delete Menu Item" %>
+        <% if current_user == @chef_profile.user %>
+        <%= link_to image_tag('edit_icon.png', class: 'edit-icon', style: 'width: 10px; height: 10px; position: absolute; bottom: 0; left: 0;'), edit_chef_profile_menu_item_path(@chef_profile, menu_item), class: "button-edit", title: "Edit Menu Item" %>
+        <%= link_to image_tag('delete_icon.png', class: 'delete-icon', style: 'width: 10px; height: 10px; position: absolute; bottom: 0; right: 0;'), chef_profile_menu_item_path(@chef_profile, menu_item), method: :delete, data: { confirm: 'Are you sure you want to delete this menu item?' }, class: "button-delete", title: "Delete Menu Item" %>
+      <% end %>
         <% end %>
       </div>
     <% end %>

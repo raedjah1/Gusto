@@ -21,11 +21,11 @@
 
       <!-- Profile Picture -->
       <div class="field">
-        <%= f.label :avatar, "Profile Picture" %>
-        <%= f.file_field :avatar, class: "input-field" %>
-        <% if resource.avatar.attached? %>
+        <%= f.label :profile_picture, "Profile Picture" %>
+        <%= f.file_field :profile_picture, class: "input-field" %>
+        <% if resource.profile_picture.attached? %>
           <div class="current-avatar">
-            <%= image_tag resource.avatar, class: "avatar-preview" %>
+            <%= image_tag resource.profile_picture, class: "avatar-preview" %>
           </div>
         <% end %>
       </div>

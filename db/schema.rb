@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_11_224411) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_14_211406) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_11_224411) do
     t.text "cuisine_types"
     t.integer "profile_completion_step", default: 0
     t.decimal "wallet_balance"
+    t.string "availability"
     t.index ["user_id"], name: "index_chef_profiles_on_user_id"
   end
 

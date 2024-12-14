@@ -2,6 +2,7 @@ class ChefProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_chef_profile, only: [:show, :edit, :update]
   before_action :check_existing_profile, only: [:new, :create]
+  before_action :authorize_user!, only: [:edit, :update]
 
   def index
     @chef_profiles = ChefProfile.all
@@ -51,20 +52,9 @@ class ChefProfilesController < ApplicationController
   end
 
   def edit
-    unless @chef_profile.user == current_user
-      redirect_to chef_profiles_path, alert: 'You are not authorized to edit this profile.'
-      return
-    end
-  rescue ActiveRecord::RecordNotFound
-    redirect_to chef_profiles_path, alert: 'Chef profile not found.'
   end
 
   def update
-    if @chef_profile.user != current_user
-      redirect_to chef_profiles_path, alert: 'You are not authorized to update this profile.'
-      return
-    end
-
     if @chef_profile.update(chef_profile_params)
       redirect_to @chef_profile, notice: 'Your chef profile was successfully updated.'
     else
@@ -95,6 +85,12 @@ class ChefProfilesController < ApplicationController
     if current_user.chef_profile.present?
       redirect_to edit_chef_profile_path(current_user.chef_profile), 
                   alert: 'You already have a chef profile. You can edit it here.'
+    end
+  end
+
+  def authorize_user!
+    unless @chef_profile.user == current_user
+      redirect_to chef_profiles_path, alert: 'You are not authorized to edit this profile.'
     end
   end
 end
