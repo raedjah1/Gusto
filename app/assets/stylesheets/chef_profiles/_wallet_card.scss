@@ -1,16 +1,16 @@
 .wallet-section {
   padding: 1.5rem; // Reduced padding for a sleeker look
-  background: rgba(#ffffff, 0.9); // Slightly more transparent for a modern touch
+  background: rgba(#ffffff, 0.85); // More subtle transparency for a modern touch
   border-radius: 10px; // Reduced border-radius for sharper edges
-  box-shadow: 0 2px 15px rgba(#000, 0.1); // Softer shadow for a cleaner appearance
+  box-shadow: 0 2px 10px rgba(#000, 0.05); // Softer shadow for a cleaner appearance
   animation: fadeInScale 0.4s ease-out; // Slightly faster animation
-  backdrop-filter: blur(8px); // Reduced blur for a more subtle effect
+  backdrop-filter: blur(6px); // Reduced blur for a more subtle effect
   margin: 1.5rem 0; // Reduced margin for a more compact design
 
   h3 {
     font-size: 1.6rem; // Slightly smaller font size for a modern feel
-    font-weight: 600; // Reduced weight for a lighter appearance
-    color: #2d3436;
+    font-weight: 500; // Reduced weight for a lighter appearance
+    color: #2c2c2c; // Subtler color for a softer look
     margin-bottom: 1rem; // Reduced margin for a tighter layout
     position: relative;
     
@@ -21,34 +21,34 @@
       left: 0;
       width: 40px; // Reduced width for a sleeker look
       height: 2px; // Reduced height for a more modern touch
-      background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+      background: linear-gradient(90deg, #ff8e8e, #ff8e8e);
       border-radius: 2px;
     }
   }
 
   .wallet-content {
     .balance-display {
-      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      background: linear-gradient(135deg,  #ff8e8e, #ff8e8e);
       border-radius: 10px; // Adjusted for consistency
-      color: white;
+      color: rgba(255, 255, 255, 0.9); // Subtler text color
       padding: 1.5rem; // Reduced padding for a more compact design
       margin-bottom: 1.5rem; // Reduced margin for a sleeker look
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(6px);
       
       .balance-amount {
-        font-size: 2rem; // Reduced font size for a more modern appearance
-        font-weight: 600;
+        font-size: 1.8rem; // Reduced font size for a more modern appearance
+        font-weight: 500; // Reduced weight for a lighter appearance
         margin-bottom: 0.5rem;
         
         .currency {
-          font-size: 1.8rem; // Adjusted for consistency
-          opacity: 0.9;
+          font-size: 1.6rem; // Adjusted for consistency
+          opacity: 0.8; // More subtle opacity
         }
       }
       
       .balance-label {
-        font-size: 1rem; // Reduced font size for a more compact design
-        opacity: 0.9;
+        font-size: 0.9rem; // Reduced font size for a more compact design
+        opacity: 0.8; // More subtle opacity
       }
     }
 
@@ -56,8 +56,8 @@
       margin: 1rem 0; // Reduced margin for a sleeker look
       
       .btn-secondary {
-        background: #2d3436;
-        color: white;
+        background: #2c2c2c; // Subtler background color
+        color: rgba(255, 255, 255, 0.9); // Subtler text color
         border: none;
         padding: 0.6rem 1.2rem; // Adjusted padding for a more compact button
         border-radius: 6px; // Reduced border-radius for a sharper edge
@@ -65,7 +65,7 @@
         transition: all 0.3s ease;
         
         &:hover {
-          background: #ff6b6b;
+          background: #ff6b6b; // Keep hover effect
           transform: translateY(-2px);
         }
         
@@ -77,7 +77,7 @@
 
     .recent-transactions {
       h4 {
-        color: #2d3436;
+        color: #2c2c2c; // Subtler color for a softer look
         font-size: 1.2rem; // Reduced font size for a more modern feel
         margin-bottom: 0.8rem; // Reduced margin for a tighter layout
       }
@@ -85,7 +85,7 @@
       .transaction-list {
         .transaction-item {
           padding: 0.8rem; // Reduced padding for a sleeker look
-          border-bottom: 1px solid rgba(#dfe6e9, 0.4); // Adjusted border for better visibility
+          border-bottom: 1px solid rgba(#dfe6e9, 0.3); // Adjusted border for better visibility
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -96,40 +96,40 @@
 
           .transaction-info {
             .transaction-type {
-              font-weight: 600;
+              font-weight: 500; // Reduced weight for a lighter appearance
               margin-right: 0.8rem; // Reduced margin for a tighter layout
               
               &.deposit {
-                color: #ff6b6b;
+                color: #ff6b6b; // Keep deposit color
               }
               
               &.withdrawal {
-                color: #636e72;
+                color: #7f8c8d; // More subtle withdrawal color
               }
             }
             
             .transaction-date {
-              color: #636e72;
+              color: #7f8c8d; // More subtle date color
               font-size: 0.8rem; // Reduced font size for a more modern feel
             }
           }
 
           .transaction-amount {
-            font-weight: 600;
+            font-weight: 500; // Reduced weight for a lighter appearance
             
             &.positive {
-              color: #ff6b6b;
+              color: #ff6b6b; // Keep positive color
             }
             
             &.negative {
-              color: #636e72;
+              color: #7f8c8d; // More subtle negative color
             }
           }
         }
       }
 
       .no-transactions {
-        color: #636e72;
+        color: #7f8c8d; // More subtle color for no transactions
         text-align: center;
         padding: 0.8rem; // Reduced padding for a sleeker look
       }
@@ -143,13 +143,13 @@ body.dark-theme {
     background: rgba(#2d2d2d, 0.95);
     
     h3 {
-      color: #fff;
+      color: rgba(255, 255, 255, 0.9); // Subtler text color
     }
 
     .wallet-content {
       .recent-transactions {
         h4 {
-          color: #fff;
+          color: rgba(255, 255, 255, 0.9); // Subtler text color
         }
 
         .transaction-item {
@@ -157,13 +157,13 @@ body.dark-theme {
           
           .transaction-info {
             .transaction-date {
-              color: #a0a0a0;
+              color: rgba(255, 255, 255, 0.6); // More subtle date color
             }
           }
         }
 
         .no-transactions {
-          color: #a0a0a0;
+          color: rgba(255, 255, 255, 0.6); // More subtle color for no transactions
         }
       }
     }

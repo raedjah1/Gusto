@@ -1,4 +1,4 @@
-@import "animations"; 
+ @import "animations"; 
 
 /* Chef Profile Container */
 .chef-profile-container {
@@ -20,33 +20,57 @@
 /* Back Button */
 .back-section {
   margin-bottom: 2rem;
+  display: flex; /* Added flex display for alignment */
+  align-items: center; /* Center items vertically */
 
   .back-button {
     display: inline-flex;
     align-items: center;
-    padding: 0.8rem 1.2rem;
-    background: rgba(#2d2d2d, 0.8);
-    border-radius: 8px;
-    color: #fff;
+    padding: 0.5rem; /* Reduced padding for a smaller button */
+    background: linear-gradient(135deg, #ffb3b3, #ff9999); /* Softer gradient background */
+    border-radius: 10px; /* Slightly larger border radius */
+    color: #333333; /* Darker text color for better contrast */
     text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(#fff, 0.1);
+    transition: background 0.3s ease, transform 0.3s ease; /* Adjusted transition to remove flash */
+    border: none; /* Removed border for a cleaner look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reduced box-shadow for a subtler effect */
+    margin-right: 1rem; /* Added margin for spacing between buttons */
 
     i {
-      margin-right: 0.5rem;
-      font-size: 1rem;
+      font-size: 1.5rem; /* Increased icon size for better visibility */
       transition: transform 0.3s ease;
     }
 
-    span {
-      font-size: 0.9rem;
-      font-weight: 500;
+    &:hover {
+      background: rgba(#ff9999, 0.9); /* Slightly darker on hover */
+      transform: translateY(-3px) scale(1.05); /* Added scale transformation for hover effect */
+
+      i {
+        transform: translateX(-3px);
+      }
+    }
+  }
+
+  /* Placeholder buttons */
+  .placeholder-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem; /* Consistent padding */
+    background: rgba(255, 255, 255, 0.1); /* Light background for placeholder */
+    border-radius: 10px; /* Consistent border radius */
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    margin-left: 1rem; /* Space between buttons */
+    transition: background 0.3s ease, transform 0.3s ease; /* Transition effects */
+
+    i {
+      font-size: 1.5rem; /* Consistent icon size */
+      transition: transform 0.3s ease;
     }
 
     &:hover {
-      background: rgba(#2d2d2d, 0.95);
-      border-color: rgba(#fff, 0.2);
-      transform: translateX(-5px);
+      background: rgba(255, 255, 255, 0.2); /* Slightly darker on hover */
+      transform: translateY(-3px) scale(1.05); /* Added scale transformation for hover effect */
 
       i {
         transform: translateX(-3px);
