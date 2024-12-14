@@ -17,11 +17,12 @@
     <link rel="icon" type="image/svg+xml" href="<%= asset_path('gusto_logo.png') %>">
     <link rel="apple-touch-icon" href="<%= asset_path('gusto_logo.png') %>">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!-- Stylesheets and Scripts -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_importmap_tags %>
-
 
     <!-- Additional Head Content -->
     <%= yield :head %>

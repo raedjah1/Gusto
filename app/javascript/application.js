@@ -1,14 +1,17 @@
 import "@hotwired/turbo-rails";
+import "./dark_mode_toggle";  
 import "controllers";
 import './dropdown-toggle';
-import "./dark_mode_toggle";
 import "@nathanvda/cocoon";
 
 document.addEventListener("turbo:load", function () {
-  // Set dark mode as default
-  if (!localStorage.getItem("darkMode")) {
+  // Check and apply saved dark mode preference
+  const savedDarkMode = localStorage.getItem("darkMode");
+  
+  if (savedDarkMode === "true") {
     document.body.classList.add("dark-theme");
-    localStorage.setItem("darkMode", "true");
+  } else {
+    document.body.classList.remove("dark-theme");
   }
 
   // Handle removal of ingredient fields

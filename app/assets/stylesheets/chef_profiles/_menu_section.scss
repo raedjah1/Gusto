@@ -1,53 +1,52 @@
-// app/assets/stylesheets/chef_profiles/_menu_section.scss
-@import "colors";       // Must be first to define variables
-@import "typography";   // Next, typography styles
-@import "buttons";      // Then, buttons styles that might use color variables
-@import "forms";        // Import forms styles
+@import "colors";       
+@import "typography";   
+@import "buttons";      
+@import "forms";        
 @import "layout";
 @import "animations";
 
 .menu-section {
-  padding: 3rem;
+  padding: 1.5rem; // Consistent padding
   background: rgba(#ffffff, 0.98);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(#000, 0.08);
+  border-radius: 8px; // Sleek border-radius
+  box-shadow: 0 4px 12px rgba(#000, 0.1); // Soft shadow
   animation: fadeInScale 0.6s ease-out;
-  backdrop-filter: blur(10px);
-  margin: 2.5rem 0;
+  backdrop-filter: blur(6px); // Clean appearance
+  margin: 1.5rem 0; // Better spacing
 
   h3 {
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: 1.6rem; // Improved readability
+    font-weight: 600; // Lighter feel
     color: #2d3436;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem; // Better spacing
     position: relative;
-    
+
     &:after {
       content: '';
       position: absolute;
-      bottom: -0.8rem;
+      bottom: -0.4rem; // Alignment
       left: 0;
-      width: 60px;
-      height: 4px;
+      width: 40px; // Subtle effect
+      height: 2px; // Sleeker look
       background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
-      border-radius: 4px;
+      border-radius: 2px; // Consistent border-radius
       animation: slideIn 0.8s ease-out;
     }
   }
 
   .menu-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); // Improved layout
+    gap: 1.2rem; // Better spacing
+    margin-top: 1.2rem; // Better spacing
 
     .menu-item {
-      padding: 2rem;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(#dfe6e9, 0.6);
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      padding: 1.2rem; // Consistent padding
+      border-radius: 8px; // Sleek border-radius
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.4)); // Softer look
+      backdrop-filter: blur(8px); // Clean appearance
+      border: 1px solid rgba(#dfe6e9, 0.4); // Consistent border opacity
+      transition: all 0.2s ease; // Responsive transition
       animation: fadeIn 0.6s ease-out;
       position: relative;
       overflow: hidden;
@@ -61,42 +60,52 @@
         height: 100%;
         background: linear-gradient(135deg, rgba(255,107,107,0.1), transparent);
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.2s ease; // Consistent transition
       }
 
       &:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        transform: translateY(-2px) scale(1.02); // Subtle effect
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1); // Softer shadow
 
         &::before {
           opacity: 1;
         }
 
         .menu-item-name {
-          transform: translateX(8px);
+          transform: translateX(4px); // Consistent transform
         }
       }
 
       .menu-item-name {
-        font-size: 1.5rem;
-        font-weight: 700;
+        font-size: 1.3rem; // Improved readability
+        font-weight: 500; // Lighter feel
         color: #443c3c;
-        margin-bottom: 1rem;
-        transition: all 0.3s ease;
+        margin-bottom: 0.6rem; // Better spacing
+        transition: all 0.2s ease; // Consistent transition
         display: inline-block;
+
+        // Adding an edit icon next to the menu item name
+        &::after {
+          content: url('path/to/edit-icon.svg'); // Path to the edit icon
+          display: inline-block;
+          width: 0.8rem; // Icon size adjusted to be super small
+          height: 0.8rem; // Icon size adjusted to be super small
+          margin-left: 0.5rem; // Space between name and icon
+          vertical-align: middle; // Align icon with text
+        }
 
         &:hover {
           color: #ff4757;
-          text-shadow: 0 2px 4px rgba(255,107,107,0.2);
+          text-shadow: 0 1px 2px rgba(255,107,107,0.2); // Consistent shadow effect
         }
       }
 
       .menu-item-description {
         color: #4a4a4a;
-        line-height: 1.7;
-        font-size: 1.1rem;
-        letter-spacing: 0.4px;
-        transition: color 0.3s ease;
+        line-height: 1.4; // Improved readability
+        font-size: 0.9rem; // Consistent font size
+        letter-spacing: 0.1px; // Cleaner look
+        transition: color 0.2s ease; // Consistent transition
       }
     }
   }
@@ -109,14 +118,14 @@ body.dark-theme {
     
     h3 {
       color: #f5f5f5;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2); // Consistent shadow effect
     }
 
     .menu-items {
       .menu-item {
         background: linear-gradient(135deg, rgba(45,45,45,0.9), rgba(30,30,30,0.7));
-        border-color: rgba(#fff, 0.15);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        border-color: rgba(#fff, 0.1); // Consistent border opacity
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2); // Consistent shadow effect
 
         &::before {
           background: linear-gradient(135deg, rgba(255,107,107,0.05), transparent);
@@ -124,7 +133,7 @@ body.dark-theme {
 
         .menu-item-name {
           color: #ff6b6b;
-          text-shadow: 0 2px 4px rgba(255,107,107,0.1);
+          text-shadow: 0 1px 2px rgba(255,107,107,0.1); // Consistent shadow effect
         }
 
         .menu-item-description {
@@ -132,7 +141,7 @@ body.dark-theme {
         }
 
         &:hover {
-          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.3); // Consistent shadow effect
         }
       }
     }

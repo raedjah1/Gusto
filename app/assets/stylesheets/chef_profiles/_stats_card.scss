@@ -2,48 +2,48 @@
 @import "typography";
 
 .stats-card {
-  padding: 2.5rem;
-  background: rgba(#ffffff, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(#000, 0.1);
-  animation: fadeInScale 0.6s ease-out;
-  backdrop-filter: blur(10px);
-  margin: 2rem 0;
+  padding: 1.5rem; // Reduced padding for a sleeker look
+  background: rgba(#ffffff, 0.9); // Slightly more transparent for a modern touch
+  border-radius: 8px; // Reduced border-radius for sharper edges
+  box-shadow: 0 2px 10px rgba(#000, 0.1); // Softer shadow for a cleaner appearance
+  animation: fadeInScale 0.4s ease-out; // Slightly faster animation
+  backdrop-filter: blur(8px); // Reduced blur for a more subtle effect
+  margin: 1.5rem 0; // Reduced margin for a more compact design
 
   h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.6rem; // Slightly smaller font size for a modern feel
+    font-weight: 600; // Reduced weight for a lighter appearance
     color: #2d3436;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem; // Reduced margin for a tighter layout
     position: relative;
     
     &:after {
       content: '';
       position: absolute;
-      bottom: -0.5rem;
+      bottom: -0.3rem; // Adjusted position for a more subtle underline
       left: 0;
-      width: 50px;
-      height: 3px;
+      width: 40px; // Reduced width for a sleeker look
+      height: 2px; // Reduced height for a more modern touch
       background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
       border-radius: 2px;
     }
   }
 
   .card-content {
-    padding: 1.5rem;
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(#dfe6e9, 0.5);
-    transition: all 0.3s ease;
-    animation: fadeIn 0.5s ease-out;
+    padding: 1rem; // Reduced padding for a more compact design
+    border-radius: 8px; // Reduced border-radius for consistency
+    background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.3)); // More subtle gradient
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(#dfe6e9, 0.4); // Slightly darker border for better definition
+    transition: all 0.2s ease; // Faster transition for a snappier feel
+    animation: fadeIn 0.4s ease-out; // Slightly faster animation
 
     p {
-      font-size: 1.2rem;
+      font-size: 1rem; // Reduced font size for a more modern appearance
       color: #636e72;
-      margin: 1rem 0;
-      padding: 0.8rem;
-      border-bottom: 1px solid rgba(#dfe6e9, 0.5);
+      margin: 0.5rem 0; // Reduced margin for a tighter layout
+      padding: 0.5rem; // Reduced padding for a sleeker look
+      border-bottom: 1px solid rgba(#dfe6e9, 0.4); // Slightly darker border for better visibility
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -58,19 +58,19 @@
 /* Dark Mode */
 body.dark-theme {
   .stats-card {
-    background: rgba(#2d2d2d, 0.95);
+    background: rgba(#2d2d2d, 0.9); // Slightly more transparent for a modern touch
     
     h3 {
       color: #fff;
     }
 
     .card-content {
-      background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
-      border-color: rgba(#fff, 0.1);
+      background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)); // More subtle gradient
+      border-color: rgba(#fff, 0.2); // Slightly lighter border for better contrast
 
       p {
         color: #a0a0a0;
-        border-bottom-color: rgba(#fff, 0.1);
+        border-bottom-color: rgba(#fff, 0.2); // Slightly lighter border for better visibility
       }
     }
   }

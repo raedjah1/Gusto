@@ -33,6 +33,12 @@
               <div class="dropdown-menu">
                 <%= link_to 'Profile Settings', edit_user_registration_path %>
                 <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-button", data: { turbo_method: :delete } %>
+                <div class="theme-toggle">
+                  <button id="theme-toggle-button" class="theme-toggle-button" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun" id="sun-icon"></i>
+                    <i class="fas fa-moon" id="moon-icon" style="display: none;"></i>
+                  </button>
+                </div>
               </div>
             </div>
           </li>

@@ -1,147 +1,172 @@
 .menu-item-form-container {
     max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .form-header h1 {
-    color: #2c3e50;
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .subtitle {
-    color: #7f8c8d;
-    font-size: 1.1rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #dce4ec;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-control:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
-  }
-  
-  .price-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .currency-symbol {
-    position: absolute;
-    left: 12px;
-    color: #7f8c8d;
-  }
-  
-  .price-input-wrapper .form-control {
-    padding-left: 25px;
-  }
-  
-  .image-upload-wrapper {
-    border: 2px dashed #dce4ec;
-    padding: 1.5rem;
-    border-radius: 6px;
-    text-align: center;
-  }
-  
-  .file-requirements {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-  }
-  
-  .ingredients-section {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-  
-  .add-ingredient-btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: #2ecc71;
-    color: white;
-    border-radius: 4px;
-    text-decoration: none;
-    margin-top: 1rem;
-  }
-  
-  .form-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  .submit-btn {
-    flex: 1;
-    padding: 1rem;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-btn:hover {
-    background: #2980b9;
-  }
-  
-  .cancel-btn {
-    flex: 1;
-    padding: 1rem;
-    background: #e74c3c;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cancel-btn:hover {
-    background: #c0392b;
-  }
-  
-  .error-messages {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    background: #ffebee;
-    border-left: 4px solid #e74c3c;
-    border-radius: 4px;
-  }
-  
-  .error-messages h2 {
-    color: #c0392b;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .error-messages ul {
-    color: #e74c3c;
-    margin-left: 1.5rem;
-  }
-  
+    margin: 1rem auto; // Centered with reduced margin for a sleek look
+    padding: 1.5rem; // Consistent padding for a modern feel
+    background: rgba($background-color-light, 0.95); // Light background for contrast
+    border-radius: 8px; // Rounded edges for a softer appearance
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    transition: box-shadow 0.3s ease, transform 0.3s ease; // Smooth transitions
+    animation: fadeInScale 0.6s ease-out; // Animation for entrance
+    backdrop-filter: blur(5px); // Soft blur effect for modern aesthetics
+}
+
+.menu-item-form-container:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); // Enhanced shadow on hover
+    transform: translateY(-2px); // Slight lift effect
+}
+
+.form-header {
+    text-align: center; // Centered text for a clean look
+    margin-bottom: 1.5rem; // Spacing below header
+}
+
+.form-header h1 {
+    color: $background-color-dark; // Dark color for contrast
+    font-size: 2rem; // Consistent font size
+    margin-bottom: 0.5rem; // Spacing below title
+    font-weight: 600; // Medium weight for emphasis
+}
+
+.subtitle {
+    color: $background-color-dark; // Dark color for readability
+    font-size: 1rem; // Standard font size
+    font-style: italic; // Italic style for differentiation
+}
+
+.form-group {
+    margin-bottom: 1rem; // Spacing between form groups
+}
+
+.form-control {
+    width: 100%; // Full width for inputs
+    padding: 0.5rem; // Consistent padding
+    border: 1px solid rgba(220, 228, 236, 0.5); // Light border for subtle definition
+    border-radius: 4px; // Rounded edges for inputs
+    font-size: 0.9rem; // Standard font size
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; // Smooth transitions
+}
+
+.form-control:focus {
+    border-color: $primary-color; // Highlight border on focus
+    outline: none; // Remove default outline
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2); // Subtle shadow on focus
+}
+
+.price-input-wrapper {
+    position: relative; // Positioning for currency symbol
+    display: flex; // Flexbox for alignment
+    align-items: center; // Center alignment
+}
+
+.currency-symbol {
+    position: absolute; // Absolute positioning for overlay
+    left: 10px; // Positioning from left
+    color: $background-color-dark; // Dark color for visibility
+}
+
+.price-input-wrapper .form-control {
+    padding-left: 20px; // Padding for currency symbol
+}
+
+.image-upload-wrapper {
+    border: 2px dashed rgba(220, 228, 236, 0.5); // Dashed border for upload area
+    padding: 1rem; // Consistent padding
+    border-radius: 4px; // Rounded edges for upload area
+    text-align: center; // Centered text
+    transition: border-color 0.3s ease; // Smooth border color transition
+}
+
+.image-upload-wrapper:hover {
+    border-color: $primary-color; // Highlight border on hover
+}
+
+.file-requirements {
+    color: $background-color-dark; // Dark color for readability
+    font-size: 0.8rem; // Smaller font size for requirements
+    margin-top: 0.5rem; // Spacing above requirements
+}
+
+.ingredients-section {
+    margin: 1.5rem 0; // Spacing above and below section
+    padding: 1rem; // Consistent padding
+    background: rgba($background-color-light, 0.9); // Light background for contrast
+    border-radius: 6px; // Rounded edges for section
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); // Soft shadow for depth
+}
+
+.add-ingredient-btn {
+    display: inline-block; // Inline block for button
+    padding: 0.4rem 0.8rem; // Consistent padding
+    background: transparent; // Transparent background for outlined style
+    color: $primary-color; // Primary color for text
+    border: 2px solid $primary-color; // Outlined border with primary color
+    border-radius: 4px; // Rounded edges for button
+    text-decoration: none; // No underline
+    margin-top: 0.8rem; // Spacing above button
+    transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transitions
+}
+
+.add-ingredient-btn:hover {
+    background: rgba($background-color-light, 0.95); // Same background as form on hover
+    transform: translateY(-2px); // Lift effect on hover
+}
+
+.form-actions {
+    display: flex; // Flexbox for layout
+    gap: 0.8rem; // Spacing between buttons
+    margin-top: 1.5rem; // Spacing above actions
+}
+
+.submit-btn {
+    flex: 1; // Flex grow for equal sizing
+    padding: 0.8rem; // Consistent padding
+    background: transparent; // Transparent background for outlined style
+    color: $primary-color; // Primary color for text
+    border: 2px solid $primary-color; // Outlined border with primary color
+    border-radius: 4px; // Rounded edges for button
+    font-size: 1rem; // Standard font size
+    cursor: pointer; // Pointer cursor on hover
+    transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transitions
+}
+
+.submit-btn:hover {
+    background: rgba($background-color-light, 0.95); // Same background as form on hover
+    transform: translateY(-2px); // Lift effect on hover
+}
+
+.cancel-btn {
+    flex: 1; // Flex grow for equal sizing
+    padding: 0.8rem; // Consistent padding
+    background: transparent; // Transparent background for outlined style
+    color: #e74c3c; // Red color for text
+    border: 2px solid #e74c3c; // Outlined border for cancel
+    text-align: center; // Centered text
+    text-decoration: none; // No underline
+    border-radius: 4px; // Rounded edges for button
+    font-size: 1rem; // Standard font size
+    transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transitions
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 235, 238, 0.9); // Same background as form on hover
+    transform: translateY(-2px); // Lift effect on hover
+}
+
+.error-messages {
+    padding: 0.8rem; // Consistent padding
+    margin-bottom: 1rem; // Spacing below error messages
+    background: rgba(255, 235, 238, 0.9); // Light background for errors
+    border-left: 4px solid #e74c3c; // Red left border for emphasis
+    border-radius: 4px; // Rounded edges for error box
+}
+
+.error-messages h2 {
+    color: #c0392b; // Dark red for error title
+    font-size: 1rem; // Standard font size
+    margin-bottom: 0.5rem; // Spacing below title
+}
+
+.error-messages ul {
+    color: #e74c3c; // Red for error messages
+    margin-left: 1rem; // Indentation for list
+}

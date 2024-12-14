@@ -8,29 +8,34 @@
 
 .reviews-section {
   display: flex;
-  justify-content: center;
+  flex-direction: column; // Changed to column for a more modern layout
   align-items: center;
-  margin: 2rem 0;
+  margin: 1rem 0; // Reduced margin to save space
+  padding: 1rem; // Reduced padding for a more compact feel
+
+  border-radius: 10px; // Reduced border-radius for a sharper edge
 
   .rating-summary {
+    text-align: center; // Centered text for a cohesive look
     .average-rating {
       .stars {
-        font-size: 3rem;
+        font-size: 3rem; // Slightly smaller for a more balanced appearance
         color: #ffd700;
-        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        filter: drop-shadow(0 0 10px rgba(255, 237, 136, 0.5)); // Adjusted shadow for depth
         animation: starPulse 1.5s infinite ease-in-out;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, color 0.3s ease; // Added color transition
 
         &:hover {
           transform: scale(1.1);
+          color: #ffcc00; // Change color on hover for a dynamic effect
         }
 
         &.empty-stars {
           &::before {
             content: '★★★★★';
-            opacity: 0.6;
-            color: #ffd700;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            opacity: 0.5; // Increased visibility for a clearer effect
+            color: rgba(255, 228, 75, 0.7); // More visible color for empty stars
+            filter: blur(0); // Removed blur effect for a sharper appearance
           }
         }
       }
@@ -44,7 +49,7 @@
     opacity: 1;
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.1); // Increased scale for a more pronounced effect
     opacity: 0.9;
   }
   100% {
@@ -56,10 +61,11 @@
 /* Dark Mode */
 body.dark-theme {
   .reviews-section {
+    background: rgba(40, 40, 40, 0.95); // Darker background for contrast
     .rating-summary {
       .average-rating {
         .stars {
-          filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+          filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5)); // Enhanced shadow for dark mode
         }
       }
     }
