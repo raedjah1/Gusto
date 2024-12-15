@@ -2,31 +2,46 @@
   <div class="booking-form">
     <div class="booking-header">
       <h1>Book Your Chef Experience</h1>
-      <p class="booking-subtitle">Fill in the details below to customize your experience</p>
+      <p class="booking-subtitle">Customize your culinary adventure with the details below</p>
     </div>
 
     <% if @booking %>
       <%= form_for(@booking) do |f| %>
+        <!-- Step 1: Select Date -->
         <div class="booking-form-group">
           <%= f.label :date, "Preferred Date", class: "form-label" %>
-          <%= f.date_field :date, class: "input-field", required: true %>
+          <%= f.date_field :date, class: "input-field", required: true, placeholder: "Select a date" %>
         </div>
 
+        <!-- Step 2: Select Time -->
         <div class="booking-form-group">
           <%= f.label :time, "Preferred Time", class: "form-label" %>
-          <%= f.time_field :time, class: "input-field", required: true %>
+          <%= f.time_field :time, class: "input-field", required: true, placeholder: "Select a time" %>
         </div>
 
+        <!-- Step 3: Number of Guests -->
         <div class="booking-form-group">
           <%= f.label :guests, "Number of Guests", class: "form-label" %>
-          <%= f.number_field :guests, class: "input-field", min: 1, required: true %>
+          <%= f.number_field :guests, class: "input-field", min: 1, required: true, placeholder: "Enter number of guests" %>
         </div>
 
+        <!-- Step 4: Special Requests -->
         <div class="booking-form-group">
           <%= f.label :special_requests, "Special Requests", class: "form-label" %>
-          <%= f.text_area :special_requests, class: "input-field", placeholder: "Any dietary restrictions or requirements?" %>
+          <%= f.text_area :special_requests, class: "input-field", placeholder: "Any dietary restrictions or special requests?" %>
         </div>
 
+        <!-- Progress Bar -->
+        <div class="booking-progress">
+          <div class="progress-bar">
+            <div class="progress-step current">1. Select Date</div>
+            <div class="progress-step">2. Choose Time</div>
+            <div class="progress-step">3. Guests</div>
+            <div class="progress-step">4. Special Requests</div>
+          </div>
+        </div>
+
+        <!-- Submit Section -->
         <div class="booking-actions">
           <%= f.submit "Request Booking", class: "button primary-button" %>
         </div>

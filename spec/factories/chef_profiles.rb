@@ -3,7 +3,7 @@ FactoryBot.define do
     # Associate with a user that has role 'chef'
     association :user, factory: :user, role: 'chef'
 
-    specialty { Faker::Restaurant.type }
+    specialty { "Italian, French" }  # Ensure this matches the validation format
     bio { Faker::Lorem.paragraph(sentence_count: 3) }
 
     # Generate array of dates for next 30 days

@@ -68,7 +68,9 @@ gem 'rspec-rails', group: [:development, :test]
 group :development, :test do
   gem 'faker' # For generating fake data (optional)
 end
-
+group :test do
+  gem 'rails-controller-testing'
+end
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'

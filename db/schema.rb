@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_14_211406) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_14_235644) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -74,6 +74,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_211406) do
     t.decimal "wallet_balance"
     t.string "availability"
     t.index ["user_id"], name: "index_chef_profiles_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -153,6 +161,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_211406) do
   add_foreign_key "bookings", "users"
   add_foreign_key "chef_availabilities", "chef_profiles"
   add_foreign_key "chef_profiles", "users"
+  add_foreign_key "favorites", "users"
   add_foreign_key "ingredients", "menu_items"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "menu_items", "chef_profiles"

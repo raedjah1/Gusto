@@ -7,7 +7,7 @@
 @import "animations"; 
 @import "chef_profiles/index";
 @import "chef_profiles/stats_card";
-
+@import "pages/edit_profile"; 
 // Component styles
 @import "components/header";
 @import "components/footer";
@@ -28,6 +28,7 @@
 @import "chef_profiles/stats_card";
 @import "ingredients/ingredient_fields";  
 @import "pages/menu_item_form";  
+@import "favorites/index";
 
 // Light Theme (default)
 body {
