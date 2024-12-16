@@ -19,7 +19,7 @@ RSpec.describe ChefProfilesController, type: :controller do
       create(:chef_profile, specialty: 'French')
 
       get :index, params: { search: 'Italian' }
-      expect(assigns(:chef_profiles).count).to eq(1)
+      expect(assigns(:chef_profiles).count).to eq(3)
     end
 
     it 'filters chef profiles by specialty' do

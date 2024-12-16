@@ -29,8 +29,8 @@ RSpec.describe 'home/index.html.erb', type: :view do
     expect(rendered).to have_link('Meet Our Chefs', href: '/chef_profiles')
   end
 
-  it 'includes a link to start a new booking' do
-    expect(rendered).to have_link('Start Booking', href: '/bookings/new')
+  it "includes a link to start a new booking" do
+    expect(rendered).to have_link('Book Now', href: wizard_step_bookings_path(step: :select_chef))
   end
 
   it 'includes a call to action section' do
