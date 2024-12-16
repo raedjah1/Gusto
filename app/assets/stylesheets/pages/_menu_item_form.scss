@@ -1,48 +1,48 @@
 .menu-item-form-container {
     max-width: 800px;
-    margin: 1rem auto; // Centered with reduced margin for a sleek look
-    padding: 1.5rem; // Consistent padding for a modern feel
+    margin: 2rem auto; // Increased margin for better spacing
+    padding: 2rem; // Increased padding for a more spacious feel
     background: rgba($background-color-light, 0.95); // Light background for contrast
-    border-radius: 8px; // Rounded edges for a softer appearance
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    border-radius: 12px; // Slightly larger border radius for a softer appearance
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); // Enhanced shadow for depth
     transition: box-shadow 0.3s ease, transform 0.3s ease; // Smooth transitions
     animation: fadeInScale 0.6s ease-out; // Animation for entrance
     backdrop-filter: blur(5px); // Soft blur effect for modern aesthetics
 }
 
 .menu-item-form-container:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); // Enhanced shadow on hover
-    transform: translateY(-2px); // Slight lift effect
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); // Enhanced shadow on hover
+    transform: translateY(-4px); // Slight lift effect
 }
 
 .form-header {
     text-align: center; // Centered text for a clean look
-    margin-bottom: 1.5rem; // Spacing below header
+    margin-bottom: 2rem; // Increased spacing below header
 }
 
 .form-header h1 {
     color: $background-color-dark; // Dark color for contrast
-    font-size: 2rem; // Consistent font size
+    font-size: 2.5rem; // Increased font size for better visibility
     margin-bottom: 0.5rem; // Spacing below title
-    font-weight: 600; // Medium weight for emphasis
+    font-weight: 700; // Slightly bolder weight for emphasis
 }
 
 .subtitle {
     color: $background-color-dark; // Dark color for readability
-    font-size: 1rem; // Standard font size
+    font-size: 1.1rem; // Slightly larger font size
     font-style: italic; // Italic style for differentiation
 }
 
 .form-group {
-    margin-bottom: 1rem; // Spacing between form groups
+    margin-bottom: 1.5rem; // Increased spacing between form groups
 }
 
 .form-control {
     width: 100%; // Full width for inputs
-    padding: 0.5rem; // Consistent padding
-    border: 1px solid rgba(220, 228, 236, 0.5); // Light border for subtle definition
-    border-radius: 4px; // Rounded edges for inputs
-    font-size: 0.9rem; // Standard font size
+    padding: 0.75rem; // Increased padding for comfort
+    border: 1px solid rgba(220, 228, 236, 0.7); // Light border for subtle definition
+    border-radius: 6px; // Rounded edges for inputs
+    font-size: 1rem; // Standard font size
     transition: border-color 0.3s ease, box-shadow 0.3s ease; // Smooth transitions
 }
 
@@ -60,18 +60,18 @@
 
 .currency-symbol {
     position: absolute; // Absolute positioning for overlay
-    left: 10px; // Positioning from left
+    left: 12px; // Positioning from left
     color: $background-color-dark; // Dark color for visibility
 }
 
 .price-input-wrapper .form-control {
-    padding-left: 20px; // Padding for currency symbol
+    padding-left: 30px; // Increased padding for currency symbol
 }
 
 .image-upload-wrapper {
-    border: 2px dashed rgba(220, 228, 236, 0.5); // Dashed border for upload area
-    padding: 1rem; // Consistent padding
-    border-radius: 4px; // Rounded edges for upload area
+    border: 2px dashed rgba(220, 228, 236, 0.7); // Dashed border for upload area
+    padding: 1.5rem; // Increased padding for comfort
+    border-radius: 6px; // Rounded edges for upload area
     text-align: center; // Centered text
     transition: border-color 0.3s ease; // Smooth border color transition
 }
@@ -82,27 +82,27 @@
 
 .file-requirements {
     color: $background-color-dark; // Dark color for readability
-    font-size: 0.8rem; // Smaller font size for requirements
+    font-size: 0.9rem; // Slightly larger font size for requirements
     margin-top: 0.5rem; // Spacing above requirements
 }
 
 .ingredients-section {
-    margin: 1.5rem 0; // Spacing above and below section
-    padding: 1rem; // Consistent padding
+    margin: 2rem 0; // Increased spacing above and below section
+    padding: 1.5rem; // Increased padding for comfort
     background: rgba($background-color-light, 0.9); // Light background for contrast
-    border-radius: 6px; // Rounded edges for section
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); // Soft shadow for depth
+    border-radius: 8px; // Rounded edges for section
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); // Soft shadow for depth
 }
 
 .add-ingredient-btn {
     display: inline-block; // Inline block for button
-    padding: 0.4rem 0.8rem; // Consistent padding
+    padding: 0.5rem 1rem; // Increased padding for comfort
     background: transparent; // Transparent background for outlined style
     color: $primary-color; // Primary color for text
     border: 2px solid $primary-color; // Outlined border with primary color
-    border-radius: 4px; // Rounded edges for button
+    border-radius: 6px; // Rounded edges for button
     text-decoration: none; // No underline
-    margin-top: 0.8rem; // Spacing above button
+    margin-top: 1rem; // Increased spacing above button
     transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transitions
 }
 
@@ -113,8 +113,8 @@
 
 .form-actions {
     display: flex; // Flexbox for layout
-    gap: 0.8rem; // Spacing between buttons
-    margin-top: 1.5rem; // Spacing above actions
+    gap: 1rem; // Increased spacing between buttons
+    margin-top: 2rem; // Increased spacing above actions
 }
 
 .submit-btn {
@@ -123,8 +123,8 @@
     background: transparent; // Transparent background for outlined style
     color: $primary-color; // Primary color for text
     border: 2px solid $primary-color; // Outlined border with primary color
-    border-radius: 4px; // Rounded edges for button
-    font-size: 1rem; // Standard font size
+    border-radius: 6px; // Rounded edges for button
+    font-size: 1.1rem; // Slightly larger font size
     cursor: pointer; // Pointer cursor on hover
     transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transitions
 }
@@ -142,8 +142,8 @@
     border: 2px solid #e74c3c; // Outlined border for cancel
     text-align: center; // Centered text
     text-decoration: none; // No underline
-    border-radius: 4px; // Rounded edges for button
-    font-size: 1rem; // Standard font size
+    border-radius: 6px; // Rounded edges for button
+    font-size: 1.1rem; // Slightly larger font size
     transition: background-color 0.3s ease, transform 0.2s ease; // Smooth transitions
 }
 
@@ -153,20 +153,77 @@
 }
 
 .error-messages {
-    padding: 0.8rem; // Consistent padding
-    margin-bottom: 1rem; // Spacing below error messages
+    padding: 1rem; // Increased padding for comfort
+    margin-bottom: 1.5rem; // Increased spacing below error messages
     background: rgba(255, 235, 238, 0.9); // Light background for errors
     border-left: 4px solid #e74c3c; // Red left border for emphasis
-    border-radius: 4px; // Rounded edges for error box
+    border-radius: 6px; // Rounded edges for error box
 }
 
 .error-messages h2 {
     color: #c0392b; // Dark red for error title
-    font-size: 1rem; // Standard font size
+    font-size: 1.1rem; // Slightly larger font size
     margin-bottom: 0.5rem; // Spacing below title
 }
 
 .error-messages ul {
     color: #e74c3c; // Red for error messages
     margin-left: 1rem; // Indentation for list
+}
+
+// Dark Theme
+body.dark-theme {
+    .menu-item-form-container {
+        background: rgba($background-color-dark, 0.95); // Dark background for contrast
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); // Enhanced shadow for depth in dark mode
+    }
+
+    .form-header h1 {
+        color: $background-color-light; // Light color for contrast in dark mode
+    }
+
+    .subtitle {
+        color: $background-color-light; // Light color for readability in dark mode
+    }
+
+    .form-control {
+        border: 1px solid rgba(255, 255, 255, 0.7); // Light border for dark mode
+    }
+
+    .form-control:focus {
+        border-color: $primary-color-dark; // Highlight border on focus in dark mode
+        box-shadow: 0 0 0 2px rgba($primary-color-dark, 0.2); // Subtle shadow on focus in dark mode
+    }
+
+    .currency-symbol {
+        color: $background-color-light; // Light color for visibility in dark mode
+    }
+
+    .file-requirements {
+        color: $background-color-light; // Light color for readability in dark mode
+    }
+
+    .ingredients-section {
+        background: rgba($background-color-dark, 0.9); // Dark background for contrast in dark mode
+    }
+
+    .add-ingredient-btn {
+        color: $primary-color-dark; // Primary color for text in dark mode
+        border: 2px solid $primary-color-dark; // Outlined border with primary color in dark mode
+    }
+
+    .submit-btn {
+        color: $primary-color-dark; // Primary color for text in dark mode
+        border: 2px solid $primary-color-dark; // Outlined border with primary color in dark mode
+    }
+
+    .cancel-btn {
+        color: #e74c3c; // Red color for text in dark mode
+        border: 2px solid #e74c3c; // Outlined border for cancel in dark mode
+    }
+
+    .error-messages {
+        background: rgba(255, 235, 238, 0.9); // Light background for errors in dark mode
+        border-left: 4px solid #e74c3c; // Red left border for emphasis in dark mode
+    }
 }

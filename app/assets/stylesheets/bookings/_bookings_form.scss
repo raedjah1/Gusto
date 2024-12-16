@@ -1,5 +1,3 @@
-
-
 // Importing essential variables and styles in order
 @import "colors";       // Global color variables
 @import "typography";   // Typography, referencing colors where needed
@@ -13,19 +11,21 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: $padding-medium;
-  background: linear-gradient(120deg, lighten($background-color-light, 5%), darken($background-color-light, 5%));
+  padding: $padding-large;
+  background: linear-gradient(135deg, lighten($background-color-light, 5%), darken($background-color-light, 5%));
+  border-radius: $border-radius-large;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 // Booking Form
 .booking-form {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px; // Increased max-width for a more spacious layout
   padding: $padding-large;
   background-color: $background-color-light;
-  border-radius: $border-radius;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.5s ease-in-out;
+  border-radius: $border-radius-large;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
 
   @media (max-width: 600px) {
     padding: $padding-medium;
@@ -35,30 +35,33 @@
 // Booking Header
 .booking-header {
   text-align: center;
-  margin-bottom: $padding-small;
+  margin-bottom: $padding-large; // Increased margin for better spacing
 
   h1 {
-    font-size: $font-size-large;
+    font-size: $font-size-large; // Increased font size for prominence
     color: $primary-color; // Corrected to use $primary-color from _colors.scss
     margin-bottom: $padding-small;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; // Increased letter-spacing for a more modern look
   }
 
   .booking-subtitle {
-    font-size: $font-size-small;
+    font-size: $font-size-large; // Increased font size for better readability
     color: $tertiary-color; // Corrected to use $tertiary-color from _colors.scss
+    font-weight: 300;
   }
 }
 
 // Booking Form Group
 .booking-form-group {
-  margin-bottom: $padding-small;
+  margin-bottom: $padding-large; // Increased margin for better spacing
 
   .form-label {
     display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     color: $secondary-color; // Corrected to use $secondary-color from _colors.scss
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .input-field {
@@ -69,10 +72,11 @@
     border-radius: $border-radius;
     color: $secondary-color; // Corrected to use $secondary-color from _colors.scss
     background-color: $input-background-color;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
     &:focus {
       border-color: $primary-color; // Corrected to use $primary-color from _colors.scss
+      box-shadow: 0 0 5px rgba($primary-color, 0.5);
       outline: none;
     }
   }
@@ -81,7 +85,7 @@
 // Booking Button
 .primary-button {
   width: 100%;
-  padding: $padding-small;
+  padding: $padding-medium;
   font-size: 1rem;
   font-weight: bold;
   background-color: $primary-color; // Corrected to use $primary-color from _colors.scss
@@ -89,26 +93,28 @@
   border: none;
   border-radius: $border-radius-large;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
     background-color: $button-primary-hover; // Assuming $button-primary-hover is defined in _colors.scss
+    transform: translateY(-2px);
   }
 }
 
 // Booking Links
 .booking-links {
   text-align: center;
-  margin-top: $padding-medium;
+  margin-top: $padding-large;
 
   .link {
-    font-size: $font-size-small;
+    font-size: $font-size-medium;
     color: $primary-color; // Corrected to use $primary-color from _colors.scss
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 
     &:hover {
       color: $primary-color-dark; // Assuming $primary-color-dark is defined in _colors.scss
+      transform: scale(1.05);
     }
   }
 }

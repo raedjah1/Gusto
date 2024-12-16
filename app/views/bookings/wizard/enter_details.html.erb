@@ -1,0 +1,20 @@
+<!-- app/views/bookings/wizard/enter_details.html.erb -->
+
+<h2>Enter Booking Details</h2>
+
+<%= form_for @booking, url: wizard_booking_path(@booking, step: step), method: :put do |f| %>
+  <div class="field">
+    <%= f.label :guests, "Number of Guests" %><br>
+    <%= f.number_field :guests, min: 1, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :special_requests, "Special Requests" %><br>
+    <%= f.text_area :special_requests %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Back", previous_wizard_path(@booking) %>
+    <%= f.submit "Next" %>
+  </div>
+<% end %>

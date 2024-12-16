@@ -15,6 +15,7 @@
 // Page-specific styles
 @import "pages/home";
 @import "chef_profiles/chef_profiles";  
+
 @import "chef_profiles/show"; 
 @import "chef_profiles/menu_section";
 @import "chef_profiles/reviews_section";
@@ -28,8 +29,9 @@
 @import "chef_profiles/stats_card";
 @import "ingredients/ingredient_fields";  
 @import "pages/menu_item_form";  
-@import "favorites/index";
-
+@import "bookings/wizard/select_chef";  
+@import "bookings/wizard/select_datetime";
+@import "bookings/wizard/enter_details";
 // Light Theme (default)
 body {
   background-color: $background-color-light;

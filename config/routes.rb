@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   root to: 'home#index'  # Ensure HomeController exists and has an index action
 
   resources :reviews, only: [:index, :show, :new, :create]
+  
   # Devise for User authentication with custom registrations controller
   devise_for :users, controllers: { registrations: 'users/registrations' }
+  
   resources :users, only: [:show, :update]
   get 'search', to: 'search#show', as: 'search'
   get 'favorites', to: 'favorites#index', as: 'favorites'
+  
   # Custom route for user dashboard
   get 'dashboard', to: 'users#dashboard', as: 'consumer_dashboard'
 
@@ -31,7 +34,11 @@ Rails.application.routes.draw do
   end
 
   # Bookings routes (not nested, accessible by both chefs and consumers)
-  resources :bookings, only: [:index, :show, :create, :update, :destroy, :new]
+  resources :bookings do
+    collection do
+      get ':step', to: 'bookings#wizard', as: 'wizard_step'  # Routes individual steps
+    end
+  end
 
   # Messages routes
   resources :messages, only: [:index, :create]

@@ -1,4 +1,3 @@
-// app/assets/stylesheets/chef_profiles/edit.scss
 @import "colors";       // Must be first to define variables
 @import "typography";   // Next, typography styles
 @import "buttons";      // Then, buttons styles that might use color variables
@@ -6,61 +5,136 @@
 @import "layout";
 @import "animations";
 
-/* Auth Container */
-.auth-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1.5rem;
+/* Chef Profile Container */
+.chef-profile-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem; // Increased padding for a more spacious feel
+  border-radius: 12px; // Slightly reduced border-radius for a modern touch
+  background: rgba(26, 26, 26, 0.95); // Slightly transparent background for depth
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); // Softer shadow for a modern touch
+
+  /* Use the animated border */
+  @extend .animated-border;
 }
 
-.auth-form {
-  background: rgba(#fff, 0.95);
+/* Back Button */
+.back-section {
+  margin-bottom: 2rem;
+  display: flex; /* Added flex display for alignment */
+  align-items: center; /* Center items vertically */
+
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1rem; /* Adjusted padding for a more modern button */
+    background: linear-gradient(135deg, #ff4757, #ff9999); /* Softer gradient background */
+    border-radius: 12px; /* Slightly larger border radius */
+    color: #ffffff; /* White text for better contrast */
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease; /* Adjusted transition to remove flash */
+    border: none; /* Removed border for a cleaner look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reduced box-shadow for a subtler effect */
+    margin-right: 1rem; /* Added margin for spacing between buttons */
+
+    i {
+      font-size: 1.5rem; /* Increased icon size for better visibility */
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: rgba(#ff9999, 0.9); /* Slightly darker on hover */
+      transform: translateY(-3px) scale(1.05); /* Added scale transformation for hover effect */
+
+      i {
+        transform: translateX(-3px);
+      }
+    }
+  }
+
+  /* Placeholder buttons */
+  .placeholder-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1rem; /* Consistent padding */
+    background: rgba(255, 255, 255, 0.1); /* Light background for placeholder */
+    border-radius: 12px; /* Consistent border radius */
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    margin-left: 1rem; /* Space between buttons */
+    transition: background 0.3s ease, transform 0.3s ease; /* Transition effects */
+
+    i {
+      font-size: 1.5rem; /* Consistent icon size */
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2); /* Slightly darker on hover */
+      transform: translateY(-3px) scale(1.05); /* Added scale transformation for hover effect */
+
+      i {
+        transform: translateX(-3px);
+      }
+    }
+  }
+}
+
+/* Form Wrapper */
+.form-wrapper {
+  background: rgba(45, 45, 45, 0.95);
   border-radius: 12px;
   padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(#000, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   animation: fadeInScale 0.6s ease-out;
   backdrop-filter: blur(10px);
+  color: #fff;
 }
 
-.auth-header {
-  text-align: center;
-  margin-bottom: 2rem;
+.form-title {
+  font-size: 2.4rem; // Increased font size for prominence
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
 
-  .logo-image {
-    width: 120px;
-    height: auto;
+.form-subtitle {
+  font-size: 1.1rem; // Slightly increased font size for better readability
+  color: #a0a0a0;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  
+  .section-title {
+    font-size: 1.5rem; // Increased font size for section titles
+    color: #ff6b6b;
     margin-bottom: 1rem;
   }
-
-  h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #2d3436;
-    margin-bottom: 0.5rem;
+  
+  .form-group {
+    margin-bottom: 1.5rem;
   }
-
-  .subtitle {
-    font-size: 1rem;
-    color: #636e72;
-  }
-}
-
-.field {
-  margin-bottom: 1.5rem;
-
-  label {
+  
+  .form-label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #2d3436;
-    font-weight: 500;
+    color: #fff;
   }
-
+  
   .input-field {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #dfe6e9;
-    border-radius: 6px;
-    background: #fff;
+    border: 1px solid #444;
+    border-radius: 8px; // Increased border-radius for a softer look
+    background: #333;
+    color: #fff;
     
     &:focus {
       border-color: #ff6b6b;
@@ -68,35 +142,93 @@
       box-shadow: 0 0 0 2px rgba(#ff6b6b, 0.1);
     }
   }
-
-  i, em {
-    display: block;
-    font-size: 0.875rem;
-    color: #636e72;
-    margin-top: 0.25rem;
-  }
 }
 
-.current-avatar {
-  margin: 1rem 0;
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
   
-  .avatar-preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+  .button-primary, .button-secondary {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .button-primary {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    animation: pulseGlow 2s infinite ease-in-out;
+    
+    &:hover {
+      background: #ff4757;
+      animation: buttonGlow 1s infinite alternate ease-in-out;
+    }
+  }
+  
+  .button-secondary {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #444;
+    
+    &:hover {
+      background: rgba(#ff6b6b, 0.1);
+    }
   }
 }
 
-.error-message {
+/* Info Sidebar */
+.info-sidebar {
+  background: rgba(45, 45, 45, 0.95);
+  border-radius: 10px;
+  padding: 2rem;
+  animation: sidebarFade 0.6s ease-out;
+  backdrop-filter: blur(10px);
+  color: #fff;
+}
+
+.info-card {
+  .info-title {
+    font-size: 1.6rem;
+    color: #ff6b6b;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-list {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: #fff;
+      
+      .icon {
+        color: #ff6b6b;
+        margin-right: 0.8rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Error Messages */
+.error-messages {
   background: rgba(#ff4757, 0.1);
   border-left: 4px solid #ff4757;
   color: #ff4757;
   padding: 1rem;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-
+  margin-bottom: 2rem;
+  
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
   ul {
     margin: 0.5rem 0 0;
     padding-left: 1.5rem;
@@ -108,111 +240,28 @@
   }
 }
 
-.auth-button {
-  width: 100%;
-  padding: 0.8rem 1.5rem;
-  background: #ff6b6b;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: #ff4757;
+/* Light Mode */
+body.light-theme {
+  .chef-profile-container {
+    background: white;
   }
-}
-
-.cancel-account {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid #dfe6e9;
-
-  h3 {
-    font-size: 1.2rem;
+  
+  .form-wrapper, .info-sidebar {
+    background: rgba(#fff, 0.95);
     color: #2d3436;
-    margin-bottom: 1rem;
   }
-
-  .cancel-button {
-    background: #ff4757;
-    color: #fff;
-    padding: 0.6rem 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-
-    &:hover {
-      background: darken(#ff4757, 10%);
-    }
+  
+  .form-title, .form-label, .info-card li {
+    color: #2d3436;
   }
-}
-
-.auth-links {
-  margin-top: 1.5rem;
-  text-align: center;
-
-  .link-back {
+  
+  .form-subtitle {
     color: #636e72;
-    text-decoration: none;
-    
-    &:hover {
-      color: #ff6b6b;
-    }
   }
-}
-
-/* Dark Mode */
-body.dark-theme {
-  .auth-form {
-    background: rgba(#2d2d2d, 0.95);
-    color: #fff;
-  }
-
-  .auth-header {
-    h2 {
-      color: #fff;
-    }
-
-    .subtitle {
-      color: #a0a0a0;
-    }
-  }
-
-  .field {
-    label {
-      color: #fff;
-    }
-
-    .input-field {
-      background: #333;
-      border-color: #444;
-      color: #fff;
-    }
-
-    i, em {
-      color: #a0a0a0;
-    }
-  }
-
-  .cancel-account {
-    border-color: #444;
-    
-    h3 {
-      color: #fff;
-    }
-  }
-
-  .auth-links {
-    .link-back {
-      color: #a0a0a0;
-      
-      &:hover {
-        color: #ff6b6b;
-      }
-    }
+  
+  .input-field {
+    background: #fff;
+    border-color: #dfe6e9;
+    color: #2d3436;
   }
 }

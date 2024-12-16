@@ -1,0 +1,14 @@
+<!-- app/views/bookings/wizard/select_chef.html.erb -->
+
+<h2>Select Your Chef</h2>
+
+<%= form_for @booking, url: wizard_booking_path(@booking, step: step), method: :put do |f| %>
+  <div class="field">
+    <%= f.label :chef_profile_id, "Choose a Chef" %><br>
+    <%= f.collection_select :chef_profile_id, ChefProfile.all, :id, :bio, prompt: "Select a Chef" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Next" %>
+  </div>
+<% end %>

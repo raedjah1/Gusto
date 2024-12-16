@@ -1,0 +1,91 @@
+
+.select-datetime {
+  padding: 2rem; // Increased padding for a spacious feel
+  background: rgba(255, 255, 255, 0.95); // Light background for a modern look
+  border-radius: 12px; // Rounded corners for a softer appearance
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); // Softer shadow for depth
+  animation: fadeInScale 0.6s ease-out; // Animation for a smooth entrance
+  backdrop-filter: blur(8px); // Slight blur for a modern touch
+  margin: 2rem 0; // Margin for spacing
+
+  h2 {
+    font-size: 2rem; // Larger font size for prominence
+    font-weight: 700; // Bold font weight for emphasis
+    color: #2d3436; // Dark color for contrast
+    margin-bottom: 1.5rem; // Space below the heading
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem; 
+      left: 0;
+      width: 50px; 
+      height: 2px; 
+      background: linear-gradient(90deg, #ff6b6b, #ff8e8e); // Gradient underline
+      border-radius: 2px; 
+      animation: slideIn 0.8s ease-out; // Animation for the underline
+    }
+  }
+
+  .field {
+    margin-bottom: 1.5rem; // Space between fields
+
+    label {
+      font-size: 1.1rem; // Slightly larger label font
+      color: #444; // Darker label color
+      margin-bottom: 0.5rem; // Space below label
+      display: block; // Block display for proper spacing
+    }
+
+    input[type="date"],
+    input[type="time"] {
+      width: 100%; // Full width for inputs
+      padding: 0.8rem; // Padding for inputs
+      border: 1px solid #ccc; // Light border for inputs
+      border-radius: 6px; // Rounded corners for inputs
+      background: #f9f9f9; // Light background for inputs
+      transition: border-color 0.3s ease; // Transition for border color
+
+      &:focus {
+        border-color: #ff6b6b; // Change border color on focus
+        outline: none; // Remove outline
+        box-shadow: 0 0 0 2px rgba(#ff6b6b, 0.2); // Shadow effect on focus
+      }
+    }
+  }
+
+  .actions {
+    display: flex; // Flexbox for alignment
+    justify-content: space-between; // Space between buttons
+    margin-top: 1.5rem; // Space above actions
+
+    a {
+      background: #ff6b6b; // Background color for back button
+      color: #fff; // White text for contrast
+      padding: 0.8rem 1.5rem; // Padding for button
+      border-radius: 8px; // Rounded corners for button
+      text-decoration: none; // Remove underline
+      transition: background 0.3s ease; // Transition for background color
+
+      &:hover {
+        background: #ff4757; // Darker background on hover
+      }
+    }
+
+    input[type="submit"] {
+      background: #4caf50; // Green background for submit button
+      color: #fff; // White text for contrast
+      padding: 0.8rem 1.5rem; // Padding for button
+      border-radius: 8px; // Rounded corners for button
+      border: none; // No border
+      cursor: pointer; // Pointer cursor on hover
+      transition: background 0.3s ease; // Transition for background color
+
+      &:hover {
+        background: #45a049; // Darker green on hover
+      }
+    }
+  }
+}
+

@@ -1,0 +1,16 @@
+<!-- app/views/bookings/wizard/review.html.erb -->
+
+<h2>Review Your Booking</h2>
+
+<p><strong>Chef:</strong> <%= @booking.chef.name %></p>
+<p><strong>Date:</strong> <%= @booking.date.strftime("%B %d, %Y") %></p>
+<p><strong>Time:</strong> <%= @booking.time.strftime("%I:%M %p") %></p>
+<p><strong>Number of Guests:</strong> <%= @booking.guests %></p>
+<p><strong>Special Requests:</strong> <%= @booking.special_requests.present? ? @booking.special_requests : "None" %></p>
+
+<%= form_for @booking, url: wizard_booking_path(@booking, step: step), method: :put do |f| %>
+  <div class="actions">
+    <%= link_to "Back", previous_wizard_path(@booking) %>
+    <%= f.submit "Confirm Booking" %>
+  </div>
+<% end %>

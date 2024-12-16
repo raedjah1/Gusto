@@ -1,7 +1,7 @@
 <div class="auth-container">
   <div class="auth-form">
     <div class="auth-header">
-      <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" class="logo-image">
+      <img src="<%= asset_path('gusto_logo.png') %>" alt="Gusto Logo" class="logo-image" style="max-width: 100%; height: auto;">
       <h2>Edit <%= resource_name.to_s.humanize %></h2>
       <p class="subtitle">Update your account details</p>
     </div>
@@ -25,7 +25,7 @@
         <%= f.file_field :profile_picture, class: "input-field" %>
         <% if resource.profile_picture.attached? %>
           <div class="current-avatar">
-            <%= image_tag resource.profile_picture, class: "avatar-preview" %>
+            <%= image_tag resource.profile_picture, class: "avatar-preview", style: "max-width: 100%; height: auto;" %>
           </div>
         <% end %>
       </div>

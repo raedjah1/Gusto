@@ -1,0 +1,24 @@
+<% case step %>
+<% when 'select_chef' %>
+  <h3>Select a Chef</h3>
+  <!-- Form for selecting a chef -->
+  <%= form_with model: @booking, url: wizard_step_bookings_path(step: :confirm_details), local: true do |form| %>
+    <%= form.label :chef_profile_id, 'Choose a Chef' %>
+    <%= form.collection_select :chef_profile_id, ChefProfile.all, :id, :specialty, prompt: 'Select a Chef', class: 'chef-dropdown' %>
+    <%= form.submit 'Next', class: 'submit-btn' %>
+  <% end %>
+
+<% when 'confirm_details' %>
+  <h3>Confirm Your Details</h3>
+  <!-- Display selected chef and other details -->
+  <p>Selected Chef: <%= @booking.chef_profile&.specialty || 'None selected' %></p>
+  <p>Date: <%= @booking.date || 'Not specified' %></p>
+  <p>Guests: <%= @booking.guests || 'Not specified' %></p>
+
+  <%= form_with model: @booking, url: bookings_path, local: true do |form| %>
+    <%= form.submit 'Confirm Booking', class: 'submit-btn' %>
+  <% end %>
+
+<% else %>
+  <p>Unknown step</p>
+<% end %>

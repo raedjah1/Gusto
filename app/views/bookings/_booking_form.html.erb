@@ -1,57 +1,53 @@
 <div class="booking-container">
   <div class="booking-form">
+    <!-- Booking Header -->
     <div class="booking-header">
-      <h1>Book Your Chef Experience</h1>
-      <p class="booking-subtitle">Customize your culinary adventure with the details below</p>
+      <h1>Bookings</h1>
+      <p class="booking-subtitle">Manage your reservations seamlessly</p>
     </div>
 
-    <% if @booking %>
-      <%= form_for(@booking) do |f| %>
-        <!-- Step 1: Select Date -->
-        <div class="booking-form-group">
-          <%= f.label :date, "Preferred Date", class: "form-label" %>
-          <%= f.date_field :date, class: "input-field", required: true, placeholder: "Select a date" %>
-        </div>
+    <!-- New Booking Button -->
+    <%= link_to "New Booking", new_wizard_bookings_path(step: 'details'), class: "primary-button" %>
 
-        <!-- Step 2: Select Time -->
-        <div class="booking-form-group">
-          <%= f.label :time, "Preferred Time", class: "form-label" %>
-          <%= f.time_field :time, class: "input-field", required: true, placeholder: "Select a time" %>
-        </div>
+    <!-- Bookings Table -->
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>Chef</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Guests</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @bookings.present? %>
+          <% @bookings.each do |booking| %>
+            <tr>
+              <td><%= booking.chef.name %></td>
+              <td><%= booking.date.strftime("%B %d, %Y") %></td>
+              <td><%= booking.time.strftime("%I:%M %p") %></td>
+              <td><%= booking.guests %></td>
+              <td>
+                <%= link_to "View", booking_path(booking), class: "button secondary-button" %>
+                <%= link_to "Edit", edit_booking_path(booking), class: "button tertiary-button" %>
+                <%= link_to "Cancel", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "button danger-button" %>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5" class="no-bookings">No bookings available.</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-        <!-- Step 3: Number of Guests -->
-        <div class="booking-form-group">
-          <%= f.label :guests, "Number of Guests", class: "form-label" %>
-          <%= f.number_field :guests, class: "input-field", min: 1, required: true, placeholder: "Enter number of guests" %>
-        </div>
-
-        <!-- Step 4: Special Requests -->
-        <div class="booking-form-group">
-          <%= f.label :special_requests, "Special Requests", class: "form-label" %>
-          <%= f.text_area :special_requests, class: "input-field", placeholder: "Any dietary restrictions or special requests?" %>
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="booking-progress">
-          <div class="progress-bar">
-            <div class="progress-step current">1. Select Date</div>
-            <div class="progress-step">2. Choose Time</div>
-            <div class="progress-step">3. Guests</div>
-            <div class="progress-step">4. Special Requests</div>
-          </div>
-        </div>
-
-        <!-- Submit Section -->
-        <div class="booking-actions">
-          <%= f.submit "Request Booking", class: "button primary-button" %>
-        </div>
-
-        <div class="booking-links">
-          <%= link_to "Back to Bookings", bookings_path, class: "link" %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>Booking information is not available.</p>
-    <% end %>
+    <!-- Optional Booking Links -->
+    <div class="booking-links">
+      <%= link_to "Back to Dashboard", consumer_dashboard_path, class: "link" %>
+      <%= link_to "View Favorites", favorites_path, class: "link" %>
+      <%= link_to "Select Chef", new_booking_path, class: "link" %> <!-- Updated link to new_booking_path -->
+    </div>
   </div>
 </div>

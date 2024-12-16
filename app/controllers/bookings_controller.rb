@@ -1,40 +1,52 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_booking, only: [:show, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
-    bookings = current_user.role == 'chef' ? current_user.chef_profile.bookings : current_user.bookings
-    render json: bookings
+    @bookings = current_user.bookings
   end
 
   def show
-    render json: @booking
+  end
+
+  def new
+    @booking = Booking.new
+    # Redirect to the wizard starting at the 'select_chef' step
+    redirect_to wizard_step_bookings_path(step: :select_chef)
+  end
+
+  def edit
   end
 
   def create
-    @booking = current_user.bookings.build(booking_params.except(:chef_profile_id))
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+
     if @booking.save
-      render json: @booking, status: :created
+      redirect_to @booking, notice: 'Booking was successfully created.'
     else
-      render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+      render :new
     end
   end
 
   def update
     if @booking.update(booking_params)
-      render json: @booking, status: :ok
+      redirect_to @booking, notice: 'Booking was successfully updated.'
     else
-      render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+      render :edit
     end
   end
 
   def destroy
     @booking.destroy
-    head :no_content
+    redirect_to bookings_url, notice: 'Booking was successfully canceled.'
   end
 
-  def new
-    @booking = Booking.new
+  # Wizard step controller
+  def wizard
+    @step = params[:step]
+    @booking = current_user.bookings.new # Initialize or retrieve the booking
+    render 'wizard'
   end
 
   private
@@ -44,6 +56,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date, :status)
+    params.require(:booking).permit(:chef_profile_id, :date, :time, :guests, :special_requests, :user_id, :status)
   end
 end
