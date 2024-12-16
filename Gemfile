@@ -87,7 +87,7 @@ source 'https://rubygems.org'
 
 
 # Core Rails and Utilities
-gem 'rails', '~> 7.2.1'
+gem 'rails', '~> 8.0.1'
 gem 'sqlite3', '>= 1.4'
 gem 'puma', '>= 5.0'
 gem 'turbo-rails'
