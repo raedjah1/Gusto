@@ -1,7 +1,6 @@
  ## Gusto
 ======
 
- Group Members : Jah, Victor and Chris
 
 
 Concept: A platform that connects private chefs with consumers seeking personalized dining experiences. The app allows chefs to showcase their menus, specialties, and services, while consumers can browse, book, and review chefs.
@@ -285,5 +284,6 @@ assets folder, along with the description. (this being said, the description of 
 
 9. Add a return icon on Gustogram. Currently the user have to manually cllick on the "returning" on webpage in order to go back. 
 Attempt to add features such that the user is able to go back to the homepage at any page it currently is. 
+
 
 
